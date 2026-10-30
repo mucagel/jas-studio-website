@@ -14,6 +14,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Archivo:ital,wdth,wght@0,62..125,300..800;1,62..125,300..800&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
+<script>
+// Picture spaces are plain photos on the live page, so a click must not open the file picker.
+['click', 'dblclick'].forEach(function (type) {
+  document.addEventListener(type, function (e) {
+    if (e.target.closest && e.target.closest('image-slot')) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+});
+</script>
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:#0a0a0a;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
@@ -38,8 +46,7 @@ input,select,textarea{font-family:inherit}
       <a href="#teachers" onClick="{{ goTeachers }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Instructors</a>
       <a href="#prices" onClick="{{ goPrices }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Prices</a>
       <a href="#terms" onClick="{{ goTerms }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Terms &amp; Conditions</a>
-      <a href="#gallery" onClick="{{ goGallery }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Gallery</a>
-      <a href="#community" onClick="{{ goCommunity }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Community</a>
+            <a href="#community" onClick="{{ goCommunity }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Community</a>
       <a href="#events" onClick="{{ goEvents }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Events</a>
       <a href="#contact" onClick="{{ goContact }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Contact</a>
       <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#0a0a0a;background:#f4f2ee;border:0;border-radius:999px;padding:11px 18px;cursor:pointer;white-space:nowrap" style-hover="background:#fff">Book Now</button>
@@ -61,8 +68,7 @@ input,select,textarea{font-family:inherit}
       <a href="#teachers" onClick="{{ goTeachers }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Instructors</a>
       <a href="#prices" onClick="{{ goPrices }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Prices</a>
       <a href="#terms" onClick="{{ goTerms }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Terms &amp; Conditions</a>
-      <a href="#gallery" onClick="{{ goGallery }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Gallery</a>
-      <a href="#community" onClick="{{ goCommunity }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Community</a>
+            <a href="#community" onClick="{{ goCommunity }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Community</a>
       <a href="#events" onClick="{{ goEvents }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Events</a>
       <a href="#contact" onClick="{{ goContact }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Contact</a>
     </div>
@@ -559,55 +565,6 @@ input,select,textarea{font-family:inherit}
 
   </sc-if>
 
-  <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
-  <section id="gallery" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:1440px;margin:0 auto">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px">
-      <div>
-        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Gallery</p>
-        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05">Poses from <i>the studio</i></h2>
-      </div>
-      <div role="tablist" style="display:flex;gap:8px;flex-wrap:wrap">
-        <sc-for list="{{ galTabs }}" as="t" hint-placeholder-count="4">
-          <button onClick="{{ t.pick }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:13px 20px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};cursor:pointer">{{ t.label }}</button>
-        </sc-for>
-      </div>
-    </div>
-
-    <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
-      <div style="border:1px solid #222;padding:clamp(20px,3vw,32px);margin-bottom:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;align-items:end">
-        <label style="position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;border:1px dashed #555;background:#111 center/cover no-repeat;background-image:{{ galDraftBg }};cursor:pointer;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a6a0;filter:grayscale(1)" style-hover="border-color:#f4f2ee">
-          <span style="background:rgba(10,10,10,.75);padding:10px 14px">{{ galDraftLabel }}</span>
-          <input type="file" accept="image/*" onChange="{{ onGalFile }}" style="display:none">
-        </label>
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <p style="margin:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#f4f2ee">Post a photo</p>
-          <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Pose name<input type="text" value="{{ galDraftName }}" onChange="{{ onGalName }}" placeholder="e.g. Butterfly" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
-          <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Category<select value="{{ galDraftCat }}" onChange="{{ onGalCat }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"><option value="Hoop">Hoop</option><option value="Pole">Pole</option><option value="Heels">Heels</option></select></label>
-          <sc-if value="{{ galError }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:13px;color:#f0a0a0">Add a photo and a pose name first.</p></sc-if>
-          <button onClick="{{ postGal }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:16px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer" style-hover="background:#fff">Post</button>
-        </div>
-      </div>
-    </sc-if>
-
-    <sc-if value="{{ galEmpty }}" hint-placeholder-val="{{ false }}">
-      <p style="margin:0;padding:30px 0;border-top:1px solid #222;font-size:16px;color:#a9a6a0">{{ galEmptyText }}</p>
-    </sc-if>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:clamp(16px,2vw,24px)">
-      <sc-for list="{{ galList }}" as="g" hint-placeholder-count="0">
-        <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
-          <div role="img" aria-label="{{ g.name }}" style="width:100%;aspect-ratio:4/5;background:#111 center/cover no-repeat;background-image:{{ g.bg }};filter:grayscale(1)"></div>
-          <figcaption style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-            <span style="font-weight:600;font-stretch:115%;font-size:18px;text-transform:uppercase;letter-spacing:.02em">{{ g.name }}</span>
-            <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85;white-space:nowrap">{{ g.cat }}</span>
-          </figcaption>
-          <sc-if value="{{ g.canEdit }}" hint-placeholder-val="{{ false }}">
-            <button onClick="{{ g.remove }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:10px 16px;border:1px solid #6b2b2b;border-radius:999px;background:transparent;color:#f0a0a0;cursor:pointer" style-hover="background:#2a1414">Delete</button>
-          </sc-if>
-        </figure>
-      </sc-for>
-    </div>
-  </section>
-  </sc-if>
 
   <sc-if value="{{ isPrices }}" hint-placeholder-val="{{ false }}">
   <section id="prices" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:1200px;margin:0 auto">
@@ -733,8 +690,7 @@ input,select,textarea{font-family:inherit}
       <a href="#kprices" onClick="{{ goKPrices }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Prices</a>
       <a href="#kbook" onClick="{{ goKBook }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Book Now</a>
       <a href="#kterms" onClick="{{ goKTerms }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Terms &amp; Conditions</a>
-      <a href="#kgallery" onClick="{{ goKGallery }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Gallery</a>
-      <a href="#kcontact" onClick="{{ goKContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Contact</a>
+            <a href="#kcontact" onClick="{{ goKContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Contact</a>
       <button onClick="{{ toMain }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#fff;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;background:#0a0a0a" style-hover="background:#333">Jas' Studio</button>
     </nav>
     </sc-if>
@@ -749,8 +705,7 @@ input,select,textarea{font-family:inherit}
       <a href="#kprices" onClick="{{ goKPrices }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Prices</a>
       <a href="#kbook" onClick="{{ goKBook }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Book Now</a>
       <a href="#kterms" onClick="{{ goKTerms }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Terms &amp; Conditions</a>
-      <a href="#kgallery" onClick="{{ goKGallery }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Gallery</a>
-      <a href="#kcontact" onClick="{{ goKContact }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Contact</a>
+            <a href="#kcontact" onClick="{{ goKContact }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Contact</a>
       <button onClick="{{ toMain }}" style="margin-top:28px;align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#fff;border:0;border-radius:999px;padding:16px 24px;cursor:pointer;background:#0a0a0a">Jas' Studio</button>
     </div>
   </sc-if>
@@ -884,57 +839,6 @@ input,select,textarea{font-family:inherit}
   </section>
   </sc-if>
 
-  <sc-if value="{{ isKidGallery }}" hint-placeholder-val="{{ false }}">
-  <section id="kgallery" style="padding:clamp(130px,12vw,170px) clamp(20px,4vw,56px) clamp(64px,8vw,120px);max-width:1440px;margin:0 auto">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px">
-      <div>
-        <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Gallery</p>
-        <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6vw,84px);line-height:.98;text-transform:uppercase;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Look what we can do</h1>
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <sc-for list="{{ kgalTabs }}" as="t" hint-placeholder-count="3">
-          <button onClick="{{ t.pick }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:13px 20px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};cursor:pointer">{{ t.label }}</button>
-        </sc-for>
-      </div>
-    </div>
-
-    <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
-      <div style="border-radius:28px;background:linear-gradient(120deg,#fde7f5,#efe7fd 50%,#e3f5fd);padding:clamp(20px,3vw,32px);margin-bottom:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;align-items:end">
-        <label style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;border:2px dashed #c9bfe3;border-radius:22px;background:#fff center/cover no-repeat;background-image:{{ kgalDraftBg }};cursor:pointer;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#7a6f9a" style-hover="border-color:#b99cf0">
-          <span style="background:rgba(255,255,255,.85);padding:10px 14px;border-radius:999px">{{ kgalDraftLabel }}</span>
-          <input type="file" accept="image/*" onChange="{{ konGalFile }}" style="display:none">
-        </label>
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <p style="margin:0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#2b2838">Post a photo</p>
-          <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Pose name<input type="text" value="{{ kgalDraftName }}" onChange="{{ konGalName }}" placeholder="e.g. Fireman Spin" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #e2dbef;border-radius:14px;background:#fff;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
-          <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Class<select value="{{ kgalDraftCat }}" onChange="{{ konGalCat }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #e2dbef;border-radius:14px;background:#fff;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"><option value="Pole Fitness">Pole Fitness</option><option value="Aerial Hoop">Aerial Hoop</option></select></label>
-          <sc-if value="{{ kgalError }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:13px;color:#c0397a">Add a photo and a pose name first.</p></sc-if>
-          <button onClick="{{ kpostGal }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:16px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);color:#fff;cursor:pointer" style-hover="filter:brightness(1.05)">Post</button>
-        </div>
-      </div>
-    </sc-if>
-
-    <sc-if value="{{ kgalEmpty }}" hint-placeholder-val="{{ false }}">
-      <p style="margin:0;padding:30px 0;border-top:1px solid #eee9f5;font-size:16px;color:#7a6f9a">{{ kgalEmptyText }}</p>
-    </sc-if>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:clamp(16px,2vw,24px)">
-      <sc-for list="{{ kgalList }}" as="g" hint-placeholder-count="0">
-        <figure style="margin:0;padding:2px;border-radius:26px;background:{{ g.grad }}">
-          <div style="background:#fff;border-radius:24px;padding:10px;display:flex;flex-direction:column;gap:12px;height:100%;box-sizing:border-box">
-            <div role="img" aria-label="{{ g.name }}" style="width:100%;aspect-ratio:4/5;border-radius:18px;background:#f6f3fb center/cover no-repeat;background-image:{{ g.bg }}"></div>
-            <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 6px 6px">
-              <span style="font-weight:700;font-stretch:112%;font-size:17px;text-transform:uppercase;color:#2b2838">{{ g.name }}</span>
-              <span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;padding:6px 10px;border-radius:999px;background:{{ g.grad }};white-space:nowrap">{{ g.cat }}</span>
-            </figcaption>
-            <sc-if value="{{ g.canEdit }}" hint-placeholder-val="{{ false }}">
-              <button onClick="{{ g.remove }}" style="align-self:flex-start;margin:0 6px 6px;font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:10px 16px;border:1px solid #f2b8d4;border-radius:999px;background:#fff;color:#c0397a;cursor:pointer">Delete</button>
-            </sc-if>
-          </div>
-        </figure>
-      </sc-for>
-    </div>
-  </section>
-  </sc-if>
 
   <sc-if value="{{ isKidPrices }}" hint-placeholder-val="{{ false }}">
   <section id="kprices" style="padding:clamp(130px,12vw,170px) clamp(20px,4vw,56px) clamp(64px,8vw,120px);max-width:1100px;margin:0 auto">
@@ -1078,7 +982,7 @@ class Component extends DCLogic {
     window.addEventListener('resize', this.onResize); this.onResize();
     this.startTimer();
     this.startStory();
-    try { const ev = JSON.parse(localStorage.getItem('jas-events') || 'null'); if (Array.isArray(ev)) this.setState({ events: this.norm(ev) }); const pr = JSON.parse(localStorage.getItem('jas-prices') || 'null'); if (Array.isArray(pr)) this.setState({ prices: pr }); const ins = JSON.parse(localStorage.getItem('jas-instructors') || 'null'); if (Array.isArray(ins)) this.setState({ instructors: ins }); const gal = JSON.parse(localStorage.getItem('jas-gallery') || 'null'); if (Array.isArray(gal)) this.setState({ gallery: gal }); const kgal = JSON.parse(localStorage.getItem('jas-kids-gallery') || 'null'); if (Array.isArray(kgal)) this.setState({ kgallery: kgal }); if (sessionStorage.getItem('jas-instructor') === '1') this.setState({ instructor: true }); } catch (e) {}
+    try { const ev = JSON.parse(localStorage.getItem('jas-events') || 'null'); if (Array.isArray(ev)) this.setState({ events: this.norm(ev) }); const pr = JSON.parse(localStorage.getItem('jas-prices') || 'null'); if (Array.isArray(pr)) this.setState({ prices: pr }); const ins = JSON.parse(localStorage.getItem('jas-instructors') || 'null'); if (Array.isArray(ins)) this.setState({ instructors: ins }); if (sessionStorage.getItem('jas-instructor') === '1') this.setState({ instructor: true }); } catch (e) {}
     let gated = false; try { gated = sessionStorage.getItem('jas-gate') === '1'; } catch (e) {}
     if (!gated) { this.setState({ gate: true }); requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ gateIn: true }))); }
     else this.schedulePop();
@@ -1157,29 +1061,6 @@ class Component extends DCLogic {
     this.setEvents(a => a.map(x => x.id === id ? { ...x, photos: [...(x.photos || []), ...urls].slice(0, 4) } : x));
   };
   setHero = async (id, file) => { const url = await this.readPhoto(file, 1600); if (url) this.updEv(id, { hero: url }); };
-  setGal = (key, store, fn) => this.setState(s => { const a = fn([...(s[key] || [])]); try { localStorage.setItem(store, JSON.stringify(a)); } catch (e) { alert('Storage is full. Delete some photos and try again.'); return {}; } return { [key]: a }; });
-  buildGallery(key, store, cats, inst, p) {
-    const gal = this.state[key] || [], fk = key + 'Filter', dk = key + 'Draft', ek = key + 'Err';
-    const f = this.state[fk] || 'All', list = f === 'All' ? gal : gal.filter(g => g.cat === f), d = this.state[dk] || {};
-    const defCat = f === 'All' ? cats[0] : f, kid = p === 'k';
-    const grads = ['linear-gradient(135deg,#f6a6da,#c9aef3)', 'linear-gradient(135deg,#c9aef3,#9fd6f6)', 'linear-gradient(135deg,#9fd6f6,#8ee6ee)'];
-    const o = {
-      galTabs: ['All', ...cats].map((l, i) => ({ label: l, pick: () => this.setState({ [fk]: l }),
-        bg: l === f ? (kid ? grads[i % 3] : '#f4f2ee') : (kid ? '#fff' : 'transparent'), fg: l === f ? (kid ? '#fff' : '#0a0a0a') : (kid ? '#2b2838' : '#f4f2ee'), border: l === f ? (kid ? 'transparent' : '#f4f2ee') : (kid ? '#e2dbef' : '#333') })),
-      galEmpty: list.length === 0, galEmptyText: gal.length === 0 ? 'No photos yet.' : 'No ' + f + ' photos yet.',
-      galList: list.map((g, i) => ({ ...g, bg: 'url("' + g.src + '")', grad: grads[i % 3], canEdit: inst, remove: () => this.setGal(key, store, a => a.filter(x => x.id !== g.id)) })),
-      galDraftBg: d.src ? 'url("' + d.src + '")' : 'none', galDraftLabel: d.src ? 'Change photo' : '+ Add photo',
-      galDraftName: d.name || '', galDraftCat: d.cat || defCat, galError: !!this.state[ek],
-      galCatOpts: cats.map(c => ({ c })),
-      onGalFile: async (x) => { const file = x.target.files && x.target.files[0]; x.target.value = ''; if (!file) return; const src = await this.readPhoto(file, 1200); if (src) this.setState(s => ({ [dk]: { ...(s[dk] || {}), src }, [ek]: false })); },
-      onGalName: (x) => { const v = x.target.value; this.setState(s => ({ [dk]: { ...(s[dk] || {}), name: v } })); },
-      onGalCat: (x) => { const v = x.target.value; this.setState(s => ({ [dk]: { ...(s[dk] || {}), cat: v } })); },
-      postGal: () => { const dd = this.state[dk] || {}; if (!dd.src || !(dd.name || '').trim()) return this.setState({ [ek]: true });
-        const full = (this.state[key] || []).length >= 100; this.setGal(key, store, a => [{ id: 'g' + Date.now().toString(36), src: dd.src, name: dd.name.trim(), cat: dd.cat || defCat }, ...a].slice(0, 100)); this.setState({ [dk]: {}, [ek]: false }); if (full) this.showCap('You reached the maximum cap of 100 pictures. The oldest picture was removed.'); }
-    };
-    if (!p) return o;
-    const r = {}; for (const k in o) r[p + k] = o[k]; return r;
-  }
   pillRef = (el) => { this._pills = el; };
   startInstrRoll() { clearInterval(this.instrT); this.instrT = setInterval(() => { if (this.state.openInstr) this.setState(s => ({ instrPhoto: (s.instrPhoto || 0) + 1 })); }, 3500); }
   prices = () => this.state.prices || DEFAULT_PRICES;
@@ -1261,11 +1142,7 @@ class Component extends DCLogic {
       coursesPad: page === 'courses' ? 'clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px)' : 'clamp(80px,10vw,140px) clamp(20px,4vw,56px)',
       coursesBorder: page === 'courses' ? '0' : '1px solid #222',
       goCourses: nav('courses'), goEvents: nav('events'), goTeachers: nav('coaches'), goPrices: nav('prices'), goTerms: nav('terms'),
-      isPrices: page === 'prices', isTerms: page === 'terms', isGallery: page === 'gallery', goGallery: nav('gallery'),
-      ...this.buildGallery('gallery', 'jas-gallery', ['Hoop', 'Pole', 'Heels'], inst, ''),
-      ...this.buildGallery('kgallery', 'jas-kids-gallery', ['Pole Fitness', 'Aerial Hoop'], inst, 'k'),
-      isKidGallery: page === 'kidgallery', goKGallery: nav('kidgallery'),
-      mobileBook: (e) => { this.setState({ mOpen: false }); nav('main', 'book')(e); },
+      isPrices: page === 'prices', isTerms: page === 'terms',                         mobileBook: (e) => { this.setState({ mOpen: false }); nav('main', 'book')(e); },
       isInstructor: inst,
       loginLabel: inst ? 'Instructor ▾' : 'Login ▾', loginLabelLong: inst ? 'Instructor: Log out' : 'Instructor Login', loggedOut: !inst,
       loginMenuOpen: menu === 'login', openLoginMenu: () => this.setState({ menu: 'login' }),
@@ -1379,13 +1256,13 @@ class Component extends DCLogic {
           pillRef: this.pillRef, pillPrev: () => this._pills && this._pills.scrollBy({ left: -320, behavior: 'smooth' }), pillNext: () => this._pills && this._pills.scrollBy({ left: 320, behavior: 'smooth' }),
           addInstr: () => this.setInstrs(a => [...a, { id: 'i' + Date.now().toString(36), name: 'New instructor', roles: '', title: '', bio: '', photo: '', featured: false }]) };
       })(),
-      isMain: !['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery'].includes(page), isKids: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery'].includes(page), isKidPrices: page === 'kidprices', isKidTerms: page === 'kidterms', isKidsHome: page === 'kids', isKidCourse: page === 'kidcourse', kd,
+      isMain: !['kids', 'kidcourse', 'kidprices', 'kidterms'].includes(page), isKids: ['kids', 'kidcourse', 'kidprices', 'kidterms'].includes(page), isKidPrices: page === 'kidprices', isKidTerms: page === 'kidterms', isKidsHome: page === 'kids', isKidCourse: page === 'kidcourse', kd,
       navBgDark: (scrolled || page !== 'main') ? 'rgba(10,10,10,.92)' : 'transparent',
       navBgLight: scrolled ? 'rgba(255,255,255,.9)' : 'rgba(255,255,255,0)',
       slides: mkSlides, kidSlides: mkSlides,
       slideLabel: `0${idx + 1} / 0${this.N}`,
       prev: () => this.setIdx(idx - 1), next: () => this.setIdx(idx + 1),
-      goTop: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery'].includes(page) ? nav('kids') : nav('main'),
+      goTop: ['kids', 'kidcourse', 'kidprices', 'kidterms'].includes(page) ? nav('kids') : nav('main'),
       goKCourses: nav('kids', 'kcourses'), goKBook: nav('kids', 'kbook'), goKContact: this.go('kcontact'), goKPrices: nav('kidprices'), goKTerms: nav('kidterms'),
       priceCols: mob ? 'minmax(0,1fr)' : 'minmax(0,1fr) auto auto',
       kidPrices: [
