@@ -30,35 +30,44 @@ input,select,textarea{font-family:inherit}
     <a href="#top" onClick="{{ goTop }}" style="display:block;width:{{ logoSize }};height:{{ logoSize }};flex-shrink:0"><img src="assets/logo-square.png" alt="Jas' Studio — Pole &amp; Aerial Arts" style="width:100%;height:100%;display:block;object-fit:contain"></a>
     <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
     <nav style="display:flex;align-items:center;gap:clamp(14px,2.2vw,34px);flex-wrap:wrap;justify-content:flex-end">
-      <a href="#about" onClick="{{ goAbout }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">About us</a>
+      <a href="#about" onClick="{{ goAbout }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">About us</a>
       <div onMouseEnter="{{ openCourses }}" onMouseLeave="{{ closeMenu }}" style="position:relative;padding:8px 0">
-        <a href="#courses" onClick="{{ goCourses }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Courses ▾</a>
-        <sc-if value="{{ coursesOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:100%;left:-18px;padding-top:14px;min-width:220px"><div style="background:#0a0a0a;border:1px solid #262626;padding:8px;display:flex;flex-direction:column"><a href="#course-pole" onClick="{{ goPole }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Pole</a><a href="#course-hoop" onClick="{{ goHoop }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Aerial Hoop</a><a href="#course-heels" onClick="{{ goHeels }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Heels</a><a href="#courses" onClick="{{ goCourses }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">All courses</a></div></div></sc-if>
+        <a href="#courses" onClick="{{ goCourses }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Classes ▾</a>
+        <sc-if value="{{ coursesOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:100%;left:-18px;padding-top:14px;min-width:220px"><div style="background:#0a0a0a;border:1px solid #262626;padding:8px;display:flex;flex-direction:column"><a href="#course-pole" onClick="{{ goPole }}" style="display:flex;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Pole</a><a href="#course-hoop" onClick="{{ goHoop }}" style="display:flex;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Aerial Hoop</a><a href="#course-heels" onClick="{{ goHeels }}" style="display:flex;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Heels</a><a href="#courses" onClick="{{ goCourses }}" style="display:flex;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">All classes</a></div></div></sc-if>
       </div>
-      <a href="#events" onClick="{{ goEvents }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Events</a>
-      <a href="#teachers" onClick="{{ goTeachers }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Coaches</a>
-      <a href="#community" onClick="{{ goCommunity }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Community</a>
-      <a href="#book" onClick="{{ goBook }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Book Now</a>
-      <a href="#contact" onClick="{{ goContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Contact</a>
-      <button onClick="{{ toKids }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#0a0a0a;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;background:linear-gradient(90deg,#f7a8dc,#c9aef3,#9fd6f6)" style-hover="filter:brightness(1.06)">Jas' Studio Kids</button>
+      <a href="#teachers" onClick="{{ goTeachers }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Instructors</a>
+      <a href="#prices" onClick="{{ goPrices }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Prices</a>
+      <a href="#terms" onClick="{{ goTerms }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Terms &amp; Conditions</a>
+      <a href="#gallery" onClick="{{ goGallery }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Gallery</a>
+      <a href="#community" onClick="{{ goCommunity }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Community</a>
+      <a href="#events" onClick="{{ goEvents }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Events</a>
+      <a href="#contact" onClick="{{ goContact }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Contact</a>
+      <button onClick="{{ toKids }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#0a0a0a;border:0;border-radius:999px;padding:10px 16px;cursor:pointer;white-space:nowrap;background:linear-gradient(90deg,#f7a8dc,#c9aef3,#9fd6f6)" style-hover="filter:brightness(1.06)">Jas' Studio Kids</button>
+      <a href="#login" onClick="{{ loginClick }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap;color:#a9a6a0">{{ loginLabel }}</a>
     </nav>
     </sc-if>
     <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:10px">
+    <button onClick="{{ mobileBook }}" style="height:48px;padding:0 20px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer;white-space:nowrap">Book Now</button>
     <button onClick="{{ toggleMobile }}" aria-label="Menu" style="width:48px;height:48px;border-radius:999px;border:1px solid rgba(244,242,238,.4);background:transparent;color:#f4f2ee;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif">{{ burgerIcon }}</button>
+    </div>
     </sc-if>
   </header>
 
   <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeMobile }}" style="position:fixed;inset:0;z-index:45;background:#0a0a0a;padding:120px 24px 40px;overflow-y:auto;display:flex;flex-direction:column">
-      <a href="#about" onClick="{{ goAbout }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">About us</a>
-      <a href="#courses" onClick="{{ goCourses }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Courses</a>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;padding:0 0 8px"><a href="#course-pole" onClick="{{ goPole }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:10px 0;color:#a9a6a0">Pole</a><a href="#course-hoop" onClick="{{ goHoop }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:10px 0;color:#a9a6a0">Aerial Hoop</a><a href="#course-heels" onClick="{{ goHeels }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:10px 0;color:#a9a6a0">Heels</a></div>
-      <a href="#events" onClick="{{ goEvents }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Events</a>
-      <a href="#teachers" onClick="{{ goTeachers }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Coaches</a>
-      <a href="#community" onClick="{{ goCommunity }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Community</a>
-      <a href="#book" onClick="{{ goBook }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Book Now</a>
-      <a href="#contact" onClick="{{ goContact }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Contact</a>
+      <a href="#about" onClick="{{ goAbout }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">About us</a>
+      <a href="#courses" onClick="{{ goCourses }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Classes</a>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;padding:0 0 6px"><a href="#course-pole" onClick="{{ goPole }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:8px 0;color:#a9a6a0">Pole</a><a href="#course-hoop" onClick="{{ goHoop }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:8px 0;color:#a9a6a0">Aerial Hoop</a><a href="#course-heels" onClick="{{ goHeels }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:8px 0;color:#a9a6a0">Heels</a></div>
+      <a href="#teachers" onClick="{{ goTeachers }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Instructors</a>
+      <a href="#prices" onClick="{{ goPrices }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Prices</a>
+      <a href="#terms" onClick="{{ goTerms }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Terms &amp; Conditions</a>
+      <a href="#gallery" onClick="{{ goGallery }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Gallery</a>
+      <a href="#community" onClick="{{ goCommunity }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Community</a>
+      <a href="#events" onClick="{{ goEvents }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Events</a>
+      <a href="#contact" onClick="{{ goContact }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Contact</a>
       <button onClick="{{ toKids }}" style="margin-top:28px;align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#0a0a0a;border:0;border-radius:999px;padding:16px 24px;cursor:pointer;background:linear-gradient(90deg,#f7a8dc,#c9aef3,#9fd6f6)">Jas' Studio Kids</button>
+      <a href="#login" onClick="{{ loginClick }}" style="margin-top:24px;padding:12px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#a9a6a0;border-top:1px solid #222">{{ loginLabelLong }}</a>
     </div>
   </sc-if>
 
@@ -69,9 +78,9 @@ input,select,textarea{font-family:inherit}
       <div style="background:#f4f2ee;color:#0a0a0a;padding:28px;box-shadow:0 24px 70px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:16px;position:relative">
         <button onClick="{{ closePop }}" aria-label="Close" style="position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:transparent;color:#0a0a0a;font-size:16px;cursor:pointer;border-radius:999px" style-hover="background:#e2dfd9">✕</button>
         <p style="margin:0;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#6f6c68">New to the studio?</p>
-        <h3 style="margin:0;padding-right:40px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:34px;line-height:1.05">Book a <i>trial</i> class</h3>
-        <p style="margin:0;font-size:15px;line-height:1.6;color:#4a4845">Choose any class marked as a free trial on the timetable.</p>
-        <button onClick="{{ popBook }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:16px 28px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book your trial →</button>
+        <h3 style="margin:0;padding-right:40px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:34px;line-height:1.05">Book <i>now</i></h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#4a4845">Choose a class from the timetable and reserve your spot.</p>
+        <button onClick="{{ popBook }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:16px 28px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book your class →</button>
       </div>
     </div>
   </sc-if>
@@ -103,15 +112,62 @@ input,select,textarea{font-family:inherit}
     </div>
   </section>
 
-  <section id="about" style="padding:clamp(80px,12vw,160px) clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);align-items:center;max-width:1440px;margin:0 auto">
-    <div>
-      <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">01 — About us</p>
-      <h2 style="margin:0 0 32px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">A quiet room for <i>loud</i> progress.</h2>
-      <p style="margin:0 0 20px;font-size:17px;line-height:1.7;color:#c9c6c0;max-width:52ch;text-wrap:pretty">Jas' Studio is a pole and aerial arts studio built around technique, conditioning and artistry. Small classes, attentive coaching and a calm, focused space let every student train at their own pace.</p>
-      <p style="margin:0;font-size:17px;line-height:1.7;color:#c9c6c0;max-width:52ch;text-wrap:pretty">Whether it's your first spin or your next competition routine, we coach the fundamentals first and build from there.</p>
+  <section id="about" style="padding:clamp(80px,12vw,160px) clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,4vw,56px) clamp(40px,6vw,96px);align-items:start;max-width:1440px;margin:0 auto">
+    <div style="grid-column:1/-1">
+      <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">01 — Our Story</p>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Our <i>Story</i></h2>
     </div>
-    <div style="aspect-ratio:4/5;filter:grayscale(1)">
-      <image-slot id="main-about" shape="rect" placeholder="Studio or coach portrait"></image-slot>
+    <div style="position:{{ storySticky }};top:120px">
+      <div style="position:relative;aspect-ratio:4/5;filter:grayscale(1);overflow:hidden;background:#111">
+        <sc-for list="{{ storySlides }}" as="s" hint-placeholder-count="1">
+          <div style="position:absolute;inset:0;opacity:{{ s.opacity }};transition:opacity 1.2s ease;pointer-events:{{ s.pe }}">
+            <image-slot id="{{ s.id }}" shape="rect" placeholder="{{ s.ph }}"></image-slot>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:8px;margin-top:16px">
+          <sc-for list="{{ storySlides }}" as="s" hint-placeholder-count="5">
+            <button onClick="{{ s.go }}" aria-label="Show story photo {{ s.n }}" style="width:{{ s.dotW }};height:2px;border:0;padding:0;cursor:pointer;background:{{ s.dotBg }};transition:all .4s"></button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:62ch">
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Jas’ Studio was founded in 2016 by Jasmin, but the dream behind it began long before the doors first opened.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Before having a studio of her own, Jasmin taught pole fitness in hired venues, including rooms in pubs. Every class meant setting up the poles, teaching, then taking everything down again.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">She loved teaching, but always wished she could offer her students something more. A permanent space where nobody had to pack everything away at the end of the night. Somewhere people could feel comfortable, make friends, celebrate their achievements and feel like they belonged.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">In 2016, she decided to turn that dream into reality.</p>
+        <p style="margin:12px 0;font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(24px,2.6vw,34px);line-height:1.3;color:#f4f2ee;text-wrap:balance">And so, Jas’ Studio was born.</p>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:4/5;filter:grayscale(1);margin:24px 0 0"><image-slot id="story-1" shape="rect" placeholder="Story photo 1 — the studio is born"></image-slot></div></sc-if>
+        <h3 style="margin:40px 0 0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2vw,26px);line-height:1.2;text-transform:uppercase;letter-spacing:.02em;color:#f4f2ee">But Where Did the Name Come From?</h3>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Here’s a little fun fact: Jas’ Studio wasn’t actually the original name!</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Jasmin had planned to call it Unique Fitness 4 All and had everything ready to launch under that name.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">But her students had other ideas!</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Everyone naturally started calling it “Jas’ Studio”. Whether they were heading to class or telling friends where they trained, the name just stuck.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Eventually, Jasmin decided to embrace the name everyone was already using.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">So, in a way, Jas’ Studio was named by the very people it was created for.</p>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:4/5;filter:grayscale(1);margin:24px 0 0"><image-slot id="story-2" shape="rect" placeholder="Story photo 2 — before “From Three Poles to Six”"></image-slot></div></sc-if>
+        <h3 style="margin:40px 0 0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2vw,26px);line-height:1.2;text-transform:uppercase;letter-spacing:.02em;color:#f4f2ee">From Three Poles to Six (and Counting!)</h3>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Jas’ Studio began with just three poles, one instructor and Pole Fitness classes.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Today, there are six poles, with plans for nine, and a team of six instructors.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Students can now enjoy Pole Fitness, Aerial Hoop and Pole Choreo, with two distinct Choreo styles: Pole Flow and Heels After Dark.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">There’s also Jas’ Studio Kids, offering Pole Fitness and Aerial Hoop classes for younger students.</p>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:4/5;filter:grayscale(1);margin:24px 0 0"><image-slot id="story-3" shape="rect" placeholder="Story photo 3 — before “More Than Just Classes”"></image-slot></div></sc-if>
+        <h3 style="margin:40px 0 0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2vw,26px);line-height:1.2;text-transform:uppercase;letter-spacing:.02em;color:#f4f2ee">More Than Just Classes</h3>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Jas’ Studio isn’t somewhere students simply turn up for an hour and leave.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Members also have access to Open Training sessions, giving them the opportunity to practise independently, work on their skills and enjoy the studio outside their regular classes.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Not everyone has a pole or aerial equipment at home, so having a dedicated space to train makes a real difference.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">The studio also hosts monthly calisthenics workshops, specialist sessions, events and professional photoshoots.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">The annual photoshoots have become so popular that what originally took one weekend now takes two!</p>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:4/5;filter:grayscale(1);margin:24px 0 0"><image-slot id="story-4" shape="rect" placeholder="Story photo 4 — before “The Heart of Jas’ Studio”"></image-slot></div></sc-if>
+        <h3 style="margin:40px 0 0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2vw,26px);line-height:1.2;text-transform:uppercase;letter-spacing:.02em;color:#f4f2ee">The Heart of Jas’ Studio</h3>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Although a lot has changed since 2016, the reason Jasmin opened the studio hasn’t.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">To create a welcoming, supportive space where people can challenge themselves, discover what they’re capable of and feel part of something special.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">For many students, Jas’ Studio has become more than somewhere to exercise. It’s a place to escape the stresses of everyday life, make lasting friendships and feel completely at home.</p>
+        <p style="margin:12px 0;font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(24px,2.6vw,34px);line-height:1.3;color:#f4f2ee;text-wrap:balance">A second home for some, and a home for those who need one.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">Because at Jas’ Studio, it’s not just about what you achieve on the pole or in the air.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#c9c6c0;text-wrap:pretty">It’s about the people, the confidence and the memories made along the way.</p>
     </div>
   </section>
 
@@ -119,13 +175,13 @@ input,select,textarea{font-family:inherit}
   <section id="trial" style="padding:0 clamp(20px,4vw,56px) clamp(80px,10vw,140px)">
     <div ref="{{ trialRef }}" style="max-width:1440px;margin:0 auto;background:#f4f2ee;color:#0a0a0a;opacity:{{ trialRevealOpacity }};transform:{{ trialRevealTransform }};transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1);padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px">
       <div>
-        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">02 — Trial class</p>
-        <h2 style="margin:0 0 20px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.05">Book a <i>trial</i> class</h2>
-        <p style="margin:0;font-size:16px;line-height:1.7;color:#4a4845;max-width:44ch">New to the studio? Pick a discipline and we'll find the right first class for you.</p>
+        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Book now</p>
+        <h2 style="margin:0 0 20px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.05">Book <i>your</i> class</h2>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#4a4845;max-width:44ch">Pick a discipline and a time that suits you.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:20px;justify-content:center;align-items:flex-start">
-        <p style="margin:0;font-size:16px;line-height:1.7;color:#4a4845">Choose any class marked as a free trial on the timetable.</p>
-        <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book your trial →</button>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#4a4845">Choose a class from the timetable and reserve your spot.</p>
+        <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book your class →</button>
       </div>
     </div>
   </section>
@@ -135,7 +191,7 @@ input,select,textarea{font-family:inherit}
   <section id="courses" style="padding:{{ coursesPad }};border-top:{{ coursesBorder }};max-width:1440px;margin:0 auto">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:56px">
       <div>
-        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Courses</p>
+        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">02 — Classes</p>
         <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05">Disciplines</h2>
       </div>
       <a href="#book" onClick="{{ goBook }}" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #f4f2ee;padding-bottom:6px">Book a class →</a>
@@ -157,34 +213,239 @@ input,select,textarea{font-family:inherit}
 
   <sc-if value="{{ isEvents }}" hint-placeholder-val="{{ false }}">
   <section id="events" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:1440px;margin:0 auto">
-    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Events</p>
-    <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance;margin-bottom:56px">Workshops &amp; <i>showcases</i></h2>
-    <div style="display:flex;flex-direction:column">
-      <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
-        <div style="display:grid;grid-template-columns:{{ eventCols }};gap:{{ rowGap }};align-items:baseline;padding:30px 0;border-top:1px solid #222">
-          <span style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#a9a6a0">{{ e.date }}</span>
-          <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;letter-spacing:.02em">{{ e.name }}</h3>
-          <p style="margin:0;font-size:15px;line-height:1.6;color:#a9a6a0">{{ e.desc }}</p>
-          <a href="#book" onClick="{{ goBook }}" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #333;padding:12px 18px;border-radius:999px;white-space:nowrap;justify-self:start">Book</a>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:56px">
+      <div>
+        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Events</p>
+        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Upcoming <i>events</i></h2>
+      </div>
+      <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#0a0a0a;background:#f4f2ee;padding:6px 10px;border-radius:999px">Instructor mode</span>
+          <button onClick="{{ addEvent }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:14px 20px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer">+ Add event</button>
+          <button onClick="{{ logout }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:14px 20px;border:1px solid #444;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer">Log out</button>
         </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ noEvents }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:0;padding:30px 0;border-top:1px solid #222;font-size:16px;color:#a9a6a0">No upcoming events. Check back soon.</p>
+    </sc-if>
+    <div style="display:flex;flex-direction:column;border-bottom:1px solid #222">
+      <sc-for list="{{ eventList }}" as="e" hint-placeholder-count="3">
+        <article style="border-top:1px solid #222;padding:clamp(32px,4vw,56px) 0">
+          <sc-if value="{{ e.view }}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid;grid-template-columns:{{ eventCols }};gap:{{ eventGap }};align-items:start">
+              <div style="display:flex;flex-direction:{{ dateDir }};align-items:{{ dateAlign }};gap:12px">
+                <span style="font-size:15px;letter-spacing:.2em;font-weight:600;color:#f4f2ee">{{ e.mon }}</span>
+                <span style="width:22px;height:2px;background:#444"></span>
+                <span style="font-weight:700;font-stretch:112%;font-size:{{ dayFont }};line-height:.9;color:#f4f2ee">{{ e.day }}</span>
+              </div>
+              <div role="img" aria-label="{{ e.name }}" style="width:100%;aspect-ratio:16/10;background:#161616 center/cover no-repeat;background-image:{{ e.heroBg }};filter:grayscale(1)"></div>
+              <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+                <h3 style="margin:0 0 6px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(26px,2.6vw,36px);line-height:1.1;text-wrap:balance">{{ e.name }}</h3>
+                <p style="margin:0;font-size:14px;letter-spacing:.04em;color:#a9a6a0;font-weight:500">{{ e.location }}</p>
+                <p style="margin:0;font-size:14px;letter-spacing:.04em;color:#a9a6a0;font-weight:500">{{ e.time }}</p>
+                <p style="margin:12px 0 0;font-size:16px;line-height:1.7;color:#c9c6c0;text-wrap:pretty">{{ e.desc }}</p>
+                <button onClick="{{ e.toggle }}" style="margin-top:24px;padding:24px 0 0;border:0;border-top:1px solid #2a2a2a;background:transparent;color:#f4f2ee;display:flex;align-items:center;gap:16px;cursor:pointer;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;text-align:left" style-hover="opacity:.7">{{ e.toggleLabel }}<span style="display:inline-block;font-size:18px;transition:transform .4s ease;transform:{{ e.arrowRot }}">→</span></button>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-rows:{{ e.rows }};transition:grid-template-rows .55s cubic-bezier(.2,.8,.2,1)">
+              <div style="overflow:hidden;min-height:0">
+                <div style="padding-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:{{ detailCols }};gap:{{ eventGap }}">
+                  <div style="display:{{ spacerDisplay }}"></div>
+                  <div style="display:flex;flex-direction:column;gap:28px;min-width:0;opacity:{{ e.detailOpacity }};transition:opacity .5s ease .1s">
+                    <h4 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(22px,2.4vw,32px);text-transform:uppercase;letter-spacing:.02em">{{ e.name }}</h4>
+                    <p style="margin:0;font-size:16px;line-height:1.8;color:#c9c6c0;max-width:72ch;white-space:pre-line;text-wrap:pretty">{{ e.detailsText }}</p>
+                    <sc-if value="{{ e.hasPhotos }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:12px">
+                        <sc-for list="{{ e.photoList }}" as="ph" hint-placeholder-count="0">
+                          <div role="img" aria-label="Event photo" style="width:100%;aspect-ratio:4/3;background:#111 center/cover no-repeat;background-image:{{ ph.bg }};filter:grayscale(1)"></div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                    <button onClick="{{ goBook }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:16px 30px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer" style-hover="background:#fff">Book Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ e.edit }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px;align-items:start">
+              <label style="position:relative;display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:16/10;border:1px dashed #555;background:#111 center/cover no-repeat;background-image:{{ e.heroBg }};cursor:pointer;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a6a0" style-hover="border-color:#f4f2ee">
+                <span style="background:rgba(10,10,10,.75);padding:10px 14px">{{ e.heroLabel }}</span>
+                <input type="file" accept="image/*" onChange="{{ e.onHero }}" style="display:none">
+              </label>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px">
+                <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Date<input type="date" value="{{ e.date }}" onChange="{{ e.onDate }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none;color-scheme:dark"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Time<input type="text" value="{{ e.time }}" onChange="{{ e.onTime }}" placeholder="7:00 pm — 8:00 pm" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85;grid-column:1/-1">Event name<input type="text" value="{{ e.name }}" onChange="{{ e.onName }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85;grid-column:1/-1">Location<input type="text" value="{{ e.location }}" onChange="{{ e.onLocation }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+                <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85;grid-column:1/-1">Short description<textarea value="{{ e.desc }}" onChange="{{ e.onDesc }}" rows="3" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none;resize:vertical"></textarea></label>
+              </div>
+            </div>
+            <div style="margin-top:20px;padding:20px;border:1px solid #222;display:flex;flex-direction:column;gap:16px">
+              <p style="margin:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#f4f2ee;font-weight:600">View details section</p>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">More about the event<textarea value="{{ e.details }}" onChange="{{ e.onDetails }}" rows="5" placeholder="Write more about the event…" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none;resize:vertical"></textarea></label>
+              <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+                <sc-for list="{{ e.photoList }}" as="ph" hint-placeholder-count="0">
+                  <div style="position:relative;width:120px;height:90px">
+                    <div role="img" aria-label="Event photo" style="width:100%;height:100%;background:#111 center/cover no-repeat;background-image:{{ ph.bg }};filter:grayscale(1)"></div>
+                    <button onClick="{{ ph.remove }}" aria-label="Remove photo" style="position:absolute;top:4px;right:4px;width:28px;height:28px;border:0;border-radius:999px;background:rgba(10,10,10,.8);color:#f4f2ee;cursor:pointer;font-size:12px">✕</button>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ e.canAdd }}" hint-placeholder-val="{{ true }}">
+                  <label style="width:120px;height:90px;border:1px dashed #555;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a6a0;text-align:center" style-hover="border-color:#f4f2ee;color:#f4f2ee">
+                    <span style="font-size:20px">+</span>Add photo
+                    <input type="file" accept="image/*" multiple="multiple" onChange="{{ e.onPhotos }}" style="display:none">
+                  </label>
+                </sc-if>
+                <span style="font-size:12px;color:#6f6c68">{{ e.photoCount }} / 4 photos (optional)</span>
+              </div>
+            </div>
+            <button onClick="{{ e.remove }}" style="margin-top:16px;height:46px;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:0 20px;border:1px solid #6b2b2b;border-radius:999px;background:transparent;color:#f0a0a0;cursor:pointer" style-hover="background:#2a1414">Delete event</button>
+          </sc-if>
+        </article>
       </sc-for>
     </div>
+    <sc-if value="{{ hasEvPages }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Event pages" style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding-top:40px">
+        <button onClick="{{ evPrev }}" aria-label="Previous page" style="width:44px;height:44px;border:1px solid #333;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer;font-size:16px;opacity:{{ evPrevOpacity }}">←</button>
+        <sc-for list="{{ evPages }}" as="p" hint-placeholder-count="2">
+          <button onClick="{{ p.go }}" aria-label="Page {{ p.n }}" style="min-width:44px;height:44px;padding:0 10px;border:1px solid {{ p.border }};border-radius:999px;background:{{ p.bg }};color:{{ p.fg }};cursor:pointer;font-family:'Archivo',sans-serif;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums">{{ p.n }}</button>
+        </sc-for>
+        <button onClick="{{ evNext }}" aria-label="Next page" style="width:44px;height:44px;border:1px solid #333;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer;font-size:16px;opacity:{{ evNextOpacity }}">→</button>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:24px 0 0;font-size:13px;color:#6f6c68">Changes save automatically.</p>
+    </sc-if>
   </section>
 
   </sc-if>
 
   <sc-if value="{{ isCoaches }}" hint-placeholder-val="{{ false }}">
   <section id="teachers" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:1440px;margin:0 auto">
-    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Coaches</p>
-    <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance;margin-bottom:56px">Meet the team</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
-      <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="4">
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <div style="aspect-ratio:3/4;filter:grayscale(1)"><image-slot id="main-teacher-{{ t.n }}" shape="rect" placeholder="Coach photo"></image-slot></div>
-          <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:20px;text-transform:uppercase">{{ t.name }}</h3>
-          <p style="margin:0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8d8a85">{{ t.role }}</p>
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Instructors</p>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:56px">
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Meet the team</h2>
+      <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#0a0a0a;background:#f4f2ee;padding:6px 10px;border-radius:999px">Instructor mode</span>
+          <button onClick="{{ addInstr }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:14px 20px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer">+ Add instructor</button>
         </div>
-      </sc-for>
+      </sc-if>
+    </div>
+    <sc-for list="{{ featuredList }}" as="f" hint-placeholder-count="1">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding-bottom:clamp(56px,7vw,96px);margin-bottom:clamp(56px,7vw,96px);border-bottom:1px solid #222">
+        <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}"><div><sc-if value="{{ f.hasPhoto }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ f.name }}" style="width:100%;aspect-ratio:4/5;background:#111 center/cover no-repeat;background-image:{{ f.bg }};filter:grayscale(1)"></div></sc-if>
+          <sc-if value="{{ f.noPhoto }}" hint-placeholder-val="{{ true }}"><div style="aspect-ratio:4/5;filter:grayscale(1)"><image-slot id="{{ f.slotId }}" shape="rect" placeholder="{{ f.name }} photo"></image-slot></div></sc-if></div></sc-if>
+        <sc-if value="{{ f.edit }}" hint-placeholder-val="{{ false }}"><label style="display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/5;border:1px dashed #555;background:#111 center/cover no-repeat;background-image:{{ f.bg }};cursor:pointer;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a6a0;filter:grayscale(1)" style-hover="border-color:#f4f2ee"><span style="background:rgba(10,10,10,.75);padding:10px 14px">{{ f.photoLabel }}</span><input type="file" accept="image/*" onChange="{{ f.onPhoto }}" style="display:none"></label></sc-if>
+        <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <p style="margin:0;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">{{ f.title }}</p>
+            <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(56px,8vw,112px);line-height:.95">{{ f.name }}</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ f.roleList }}" as="r" hint-placeholder-count="2"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #444;padding:9px 14px;border-radius:999px">{{ r.label }}</span></sc-for>
+            </div>
+            <p style="margin:0;font-size:17px;line-height:1.75;color:#c9c6c0;max-width:48ch;text-wrap:pretty">{{ f.bio }}</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ f.edit }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#f4f2ee">Featured instructor</p>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Title<input type="text" value="{{ f.title }}" onChange="{{ f.onTitle }}" placeholder="e.g. Founder &amp; Head Instructor" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Name<input type="text" value="{{ f.name }}" onChange="{{ f.onName }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Roles (separate with commas)<input type="text" value="{{ f.roles }}" onChange="{{ f.onRoles }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">About<textarea value="{{ f.bio }}" onChange="{{ f.onBio }}" rows="4" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none;resize:vertical"></textarea></label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button onClick="{{ f.unfeature }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #444;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer">Move to team</button>
+              <button onClick="{{ f.remove }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #6b2b2b;border-radius:999px;background:transparent;color:#f0a0a0;cursor:pointer">Remove instructor</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+    <sc-if value="{{ instrView }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px">
+        <button onClick="{{ pillPrev }}" aria-label="Scroll left" style="width:56px;height:44px;border:0;background:transparent;color:#f4f2ee;cursor:pointer;font-size:22px" style-hover="opacity:.6">⟵</button>
+        <p style="margin:0;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#a9a6a0">The team</p>
+        <button onClick="{{ pillNext }}" aria-label="Scroll right" style="width:56px;height:44px;border:0;background:transparent;color:#f4f2ee;cursor:pointer;font-size:22px" style-hover="opacity:.6">⟶</button>
+      </div>
+      <div ref="{{ pillRef }}" style="display:flex;gap:clamp(14px,2vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:8px">
+        <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="5">
+          <div role="button" tabindex="0" onClick="{{ t.toggle }}" aria-expanded="{{ t.isOpen }}" aria-label="{{ t.name }}" style="flex:0 0 clamp(180px,22vw,260px);aspect-ratio:1/1.95;border-radius:999px;overflow:hidden;position:relative;border:{{ t.pillBorder }};cursor:pointer;scroll-snap-align:start;background:#1a1a1a;filter:grayscale(1);transition:transform .4s ease,border-color .3s" style-hover="transform:translateY(-6px)">
+            <sc-if value="{{ t.noPhoto }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0"><image-slot id="{{ t.slotId }}" shape="rect" placeholder="{{ t.name }} photo"></image-slot></div></sc-if>
+            <sc-if value="{{ t.hasPhoto }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#1a1a1a center/cover no-repeat;background-image:{{ t.bg }}"></div></sc-if>
+            <span style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,0,0,.45),rgba(0,0,0,.1) 70%)"></span>
+            <span style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);pointer-events:none;text-align:center;font-family:'Archivo',sans-serif;font-weight:500;font-stretch:110%;font-size:clamp(18px,1.8vw,24px);letter-spacing:.16em;text-transform:uppercase;color:#fff">{{ t.name }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-rows:{{ instrRows }};transition:grid-template-rows .6s cubic-bezier(.2,.8,.2,1)">
+        <div style="overflow:hidden;min-height:0">
+          <div style="padding-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,4vw,64px);align-items:center;opacity:{{ instrPanelOpacity }};transition:opacity .5s ease .1s">
+            <div style="position:relative;aspect-ratio:4/5;border-radius:{{ panelRadius }};overflow:hidden;background:#161616;filter:grayscale(1)">
+              <sc-for list="{{ openPhotos }}" as="p" hint-placeholder-count="0">
+                <div role="img" aria-label="{{ openName }}" style="position:absolute;inset:0;background:#161616 center/cover no-repeat;background-image:{{ p.bg }};opacity:{{ p.opacity }};transition:opacity 1.1s ease"></div>
+              </sc-for>
+              <sc-for list="{{ openSlots }}" as="p" hint-placeholder-count="0">
+                <div style="position:absolute;inset:0;opacity:{{ p.opacity }};pointer-events:{{ p.pe }};transition:opacity 1.1s ease"><image-slot id="{{ p.id }}" shape="rect" placeholder="{{ p.ph }}"></image-slot></div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(44px,6vw,88px);line-height:.95">{{ openName }}</h3>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ openRoles }}" as="r" hint-placeholder-count="1"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #444;padding:9px 14px;border-radius:999px">{{ r.label }}</span></sc-for>
+              </div>
+              <p style="margin:0;font-size:17px;line-height:1.75;color:#c9c6c0;max-width:52ch;white-space:pre-line;text-wrap:pretty">{{ openBio }}</p>
+              <sc-if value="{{ openMulti }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:8px">
+                  <sc-for list="{{ openDots }}" as="p" hint-placeholder-count="0">
+                    <button onClick="{{ p.go }}" aria-label="Photo {{ p.n }}" style="width:{{ p.dotW }};height:2px;border:0;padding:0;cursor:pointer;background:{{ p.dotBg }};transition:all .4s"></button>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <button onClick="{{ closeInstr }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #444;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer">Close ✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ instrEdit }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px">
+        <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="0">
+          <div style="display:flex;flex-direction:column;gap:12px;border:1px solid #222;padding:16px">
+            <label style="display:flex;align-items:center;justify-content:center;width:60%;align-self:center;aspect-ratio:1/1.95;border-radius:999px;border:1px dashed #555;background:#111 center/cover no-repeat;background-image:{{ t.bg }};cursor:pointer;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9a6a0;filter:grayscale(1);text-align:center" style-hover="border-color:#f4f2ee"><span style="background:rgba(10,10,10,.75);padding:8px 10px">{{ t.photoLabel }}</span><input type="file" accept="image/*" onChange="{{ t.onPhoto }}" style="display:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Name<input type="text" value="{{ t.name }}" onChange="{{ t.onName }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Roles (separate with commas)<input type="text" value="{{ t.roles }}" onChange="{{ t.onRoles }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Introduction<textarea value="{{ t.bio }}" onChange="{{ t.onBio }}" rows="4" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none;resize:vertical"></textarea></label>
+            <p style="margin:4px 0 0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Drop-down photos ({{ t.galCount }} / 3)</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <sc-for list="{{ t.galList }}" as="g" hint-placeholder-count="0">
+                <div style="position:relative;width:72px;height:90px">
+                  <div role="img" aria-label="Photo" style="width:100%;height:100%;background:#111 center/cover no-repeat;background-image:{{ g.bg }};filter:grayscale(1)"></div>
+                  <button onClick="{{ g.remove }}" aria-label="Remove photo" style="position:absolute;top:2px;right:2px;width:24px;height:24px;border:0;border-radius:999px;background:rgba(10,10,10,.8);color:#f4f2ee;cursor:pointer;font-size:11px">✕</button>
+                </div>
+              </sc-for>
+              <sc-if value="{{ t.galCanAdd }}" hint-placeholder-val="{{ true }}">
+                <label style="width:72px;height:90px;border:1px dashed #555;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:#a9a6a0" style-hover="border-color:#f4f2ee">+<input type="file" accept="image/*" multiple="multiple" onChange="{{ t.onGal }}" style="display:none"></label>
+              </sc-if>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+              <button onClick="{{ t.feature }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #444;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer">Feature</button>
+              <button onClick="{{ t.remove }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #6b2b2b;border-radius:999px;background:transparent;color:#f0a0a0;cursor:pointer">Remove</button>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:24px 0 0;font-size:13px;color:#6f6c68">Changes save automatically.</p>
+    </sc-if>
+  </section>
+  <section style="background:#f4f2ee;color:#0a0a0a;padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px)">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,3.6vw,48px);line-height:1.05">Train with <i>our team</i>.</h2>
+      <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book Now</button>
     </div>
   </section>
 
@@ -196,7 +457,7 @@ input,select,textarea{font-family:inherit}
     <div style="position:absolute;left:0;right:0;top:0;height:22%;background:linear-gradient(rgba(10,10,10,.55),rgba(10,10,10,0));pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(rgba(10,10,10,0),rgba(10,10,10,.6) 45%,#0a0a0a);pointer-events:none"></div>
     <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(32px,6vh,64px);display:flex;flex-direction:column;gap:20px;pointer-events:none">
-      <a href="#courses" onClick="{{ goCourses }}" style="pointer-events:auto;align-self:flex-start;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#bdbab4">← All courses</a>
+      <a href="#courses" onClick="{{ goCourses }}" style="pointer-events:auto;align-self:flex-start;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#bdbab4">← All classes</a>
       <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(44px,8vw,120px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em">{{ cd.name }}</h1>
       <span style="align-self:flex-start;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(244,242,238,.4);padding:7px 12px;border-radius:999px">{{ cd.level }}</span>
     </div>
@@ -249,7 +510,7 @@ input,select,textarea{font-family:inherit}
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <button onClick="{{ cd.book }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book {{ cd.name }}</button>
-        <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:1px solid #0a0a0a;border-radius:999px;background:transparent;color:#0a0a0a;cursor:pointer" style-hover="background:#0a0a0a;color:#f4f2ee">Book a trial</button>
+        <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:1px solid #0a0a0a;border-radius:999px;background:transparent;color:#0a0a0a;cursor:pointer" style-hover="background:#0a0a0a;color:#f4f2ee">Book your class</button>
       </div>
     </div>
   </section>
@@ -260,7 +521,7 @@ input,select,textarea{font-family:inherit}
     <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">03 — Community</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;align-items:end;margin-bottom:56px">
       <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Train together. <i>Perform</i> together.</h2>
-      <p style="margin:0;font-size:17px;line-height:1.7;color:#c9c6c0;max-width:48ch;text-wrap:pretty">Open training sessions, student showcases and workshops with guest coaches keep the studio connected beyond the weekly class.</p>
+      <p style="margin:0;font-size:17px;line-height:1.7;color:#c9c6c0;max-width:48ch;text-wrap:pretty">Open training sessions, student showcases and workshops with guest instructors keep the studio connected beyond the weekly class.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;filter:grayscale(1)">
       <div style="aspect-ratio:3/4"><image-slot id="main-comm-1" shape="rect" placeholder="Showcase"></image-slot></div>
@@ -281,12 +542,130 @@ input,select,textarea{font-family:inherit}
           <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#6f6c68">04 — Book Now</p>
           <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05">Reserve your spot.</h2>
         </div>
-        <p style="margin:0;font-size:17px;line-height:1.7;color:#4a4845;max-width:44ch">Pick a class from the timetable below to book or start your free trial.</p>
+        <p style="margin:0;font-size:17px;line-height:1.7;color:#4a4845;max-width:44ch">Pick a class from the timetable below to reserve your spot.</p>
       </div>
       <div ref="{{ teamupRef }}" style="background:#fff;min-height:640px;padding:clamp(12px,2vw,24px)"></div>
     </div>
   </section>
 
+  </sc-if>
+
+  <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
+  <section id="gallery" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:1440px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px">
+      <div>
+        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Gallery</p>
+        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05">Poses from <i>the studio</i></h2>
+      </div>
+      <div role="tablist" style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ galTabs }}" as="t" hint-placeholder-count="4">
+          <button onClick="{{ t.pick }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:13px 20px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};cursor:pointer">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px solid #222;padding:clamp(20px,3vw,32px);margin-bottom:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;align-items:end">
+        <label style="position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;border:1px dashed #555;background:#111 center/cover no-repeat;background-image:{{ galDraftBg }};cursor:pointer;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a6a0;filter:grayscale(1)" style-hover="border-color:#f4f2ee">
+          <span style="background:rgba(10,10,10,.75);padding:10px 14px">{{ galDraftLabel }}</span>
+          <input type="file" accept="image/*" onChange="{{ onGalFile }}" style="display:none">
+        </label>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <p style="margin:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#f4f2ee">Post a photo</p>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Pose name<input type="text" value="{{ galDraftName }}" onChange="{{ onGalName }}" placeholder="e.g. Butterfly" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Category<select value="{{ galDraftCat }}" onChange="{{ onGalCat }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"><option value="Hoop">Hoop</option><option value="Pole">Pole</option><option value="Heels">Heels</option></select></label>
+          <sc-if value="{{ galError }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:13px;color:#f0a0a0">Add a photo and a pose name first.</p></sc-if>
+          <button onClick="{{ postGal }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:16px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer" style-hover="background:#fff">Post</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ galEmpty }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:0;padding:30px 0;border-top:1px solid #222;font-size:16px;color:#a9a6a0">{{ galEmptyText }}</p>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:clamp(16px,2vw,24px)">
+      <sc-for list="{{ galList }}" as="g" hint-placeholder-count="0">
+        <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+          <div role="img" aria-label="{{ g.name }}" style="width:100%;aspect-ratio:4/5;background:#111 center/cover no-repeat;background-image:{{ g.bg }};filter:grayscale(1)"></div>
+          <figcaption style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+            <span style="font-weight:600;font-stretch:115%;font-size:18px;text-transform:uppercase;letter-spacing:.02em">{{ g.name }}</span>
+            <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85;white-space:nowrap">{{ g.cat }}</span>
+          </figcaption>
+          <sc-if value="{{ g.canEdit }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ g.remove }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:10px 16px;border:1px solid #6b2b2b;border-radius:999px;background:transparent;color:#f0a0a0;cursor:pointer" style-hover="background:#2a1414">Delete</button>
+          </sc-if>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ isPrices }}" hint-placeholder-val="{{ false }}">
+  <section id="prices" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:1100px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Prices</p>
+    <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,5.6vw,76px);line-height:1.02;text-wrap:balance">Booking <i>options</i></h1>
+    <p style="margin:24px 0 56px;font-size:17px;line-height:1.7;color:#a9a6a0;max-width:56ch">Choose the option that suits you. You'll pick your classes and pay securely on the next step.</p>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ adultPrices }}" as="p" hint-placeholder-count="4">
+        <div style="display:grid;grid-template-columns:{{ priceCols }};gap:16px 32px;align-items:center;padding:30px 0;border-top:1px solid #222">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2.2vw,26px);text-transform:uppercase">{{ p.name }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#a9a6a0">{{ p.desc }}</p>
+          </div>
+          <span style="font-family:'Bodoni Moda',serif;font-size:34px;white-space:nowrap">{{ p.price }}</span>
+          <button onClick="{{ goBook }}" style="justify-self:start;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:14px 22px;border:1px solid #f4f2ee;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer" style-hover="background:#f4f2ee;color:#0a0a0a">Book</button>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:28px 0 0;font-size:14px;line-height:1.6;color:#8d8a85">Please read our <a href="#terms" onClick="{{ goTerms }}" style="color:#f4f2ee;text-decoration:underline">Terms &amp; Conditions</a> before booking.</p>
+  </section>
+  <section style="background:#f4f2ee;color:#0a0a0a;padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px)">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,3.6vw,48px);line-height:1.05">Ready to book your class?</h2>
+      <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book Now</button>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ isTerms }}" hint-placeholder-val="{{ false }}">
+  <section id="terms" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:900px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Terms &amp; Conditions</p>
+    <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,5.6vw,76px);line-height:1.02;text-wrap:balance">Before you <i>book</i></h1>
+    <div style="display:flex;flex-direction:column;margin-top:48px">
+      <sc-for list="{{ adultTerms }}" as="t" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid #222">
+          <span style="font-size:12px;letter-spacing:.2em;color:#6f6c68">{{ t.no }}</span>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:18px;text-transform:uppercase">{{ t.t }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:#a9a6a0;text-wrap:pretty">{{ t.d }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <section style="background:#f4f2ee;color:#0a0a0a;padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px)">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,3.6vw,48px);line-height:1.05">Happy with the terms?</h2>
+      <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book Now</button>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ loginOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLogin }}" style="position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px">
+      <div onClick="{{ stop }}" style="width:min(440px,100%);background:#0a0a0a;border:1px solid #2a2a2a;padding:clamp(28px,5vw,44px);display:flex;flex-direction:column;gap:22px;color:#f4f2ee">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+          <p style="margin:0;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#8d8a85">Instructors only</p>
+          <button onClick="{{ closeLogin }}" aria-label="Close" style="width:44px;height:44px;border:1px solid #333;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer;font-size:16px">✕</button>
+        </div>
+        <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:38px;line-height:1.05">Instructor Login</h3>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Username<input type="text" autocomplete="username" autocapitalize="none" value="{{ loginEmail }}" onChange="{{ onLoginEmail }}" style="font-size:16px;padding:12px 0;border:0;border-bottom:1px solid #f4f2ee;background:transparent;outline:none;color:#f4f2ee;letter-spacing:0;text-transform:none"></label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Password<input type="password" autocomplete="current-password" value="{{ loginPass }}" onChange="{{ onLoginPass }}" style="font-size:16px;padding:12px 0;border:0;border-bottom:1px solid #f4f2ee;background:transparent;outline:none;color:#f4f2ee;letter-spacing:0;text-transform:none"></label>
+        <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;color:#f0a0a0">Incorrect username or password.</p></sc-if>
+        <button onClick="{{ submitLogin }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer" style-hover="background:#fff">Log in</button>
+        <p style="margin:0;font-size:13px;line-height:1.6;color:#6f6c68">After logging in you can add, edit and delete events.</p>
+      </div>
+    </div>
   </sc-if>
 
   <section id="contact" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px) 48px;max-width:1440px;margin:0 auto">
@@ -316,8 +695,11 @@ input,select,textarea{font-family:inherit}
     <a href="#ktop" onClick="{{ goTop }}" style="display:block;width:{{ kLogoSize }};height:{{ kLogoSize }};flex-shrink:0"><img src="assets/logo-kids-square.png" alt="Jas' Studio Kids" style="width:100%;height:100%;display:block;object-fit:contain"></a>
     <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
     <nav style="display:flex;align-items:center;gap:clamp(14px,2.4vw,36px);flex-wrap:wrap;justify-content:flex-end">
-      <a href="#kcourses" onClick="{{ goKCourses }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Courses</a>
+      <a href="#kcourses" onClick="{{ goKCourses }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Classes</a>
+      <a href="#kprices" onClick="{{ goKPrices }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Prices</a>
       <a href="#kbook" onClick="{{ goKBook }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Book Now</a>
+      <a href="#kterms" onClick="{{ goKTerms }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Terms &amp; Conditions</a>
+      <a href="#kgallery" onClick="{{ goKGallery }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Gallery</a>
       <a href="#kcontact" onClick="{{ goKContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Contact</a>
       <button onClick="{{ toMain }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#fff;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;background:#0a0a0a" style-hover="background:#333">Jas' Studio</button>
     </nav>
@@ -329,8 +711,11 @@ input,select,textarea{font-family:inherit}
 
   <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeMobile }}" style="position:fixed;inset:0;z-index:45;background:#fff;padding:130px 24px 40px;overflow-y:auto;display:flex;flex-direction:column">
-      <a href="#kcourses" onClick="{{ goKCourses }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Courses</a>
+      <a href="#kcourses" onClick="{{ goKCourses }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Classes</a>
+      <a href="#kprices" onClick="{{ goKPrices }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Prices</a>
       <a href="#kbook" onClick="{{ goKBook }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Book Now</a>
+      <a href="#kterms" onClick="{{ goKTerms }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Terms &amp; Conditions</a>
+      <a href="#kgallery" onClick="{{ goKGallery }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Gallery</a>
       <a href="#kcontact" onClick="{{ goKContact }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Contact</a>
       <button onClick="{{ toMain }}" style="margin-top:28px;align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#fff;border:0;border-radius:999px;padding:16px 24px;cursor:pointer;background:#0a0a0a">Jas' Studio</button>
     </div>
@@ -348,7 +733,7 @@ input,select,textarea{font-family:inherit}
     <div style="position:absolute;left:0;right:0;bottom:0;height:42%;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);-webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%);background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.94));pointer-events:none"></div>
     <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(32px,6vh,64px);display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;pointer-events:none">
       <div style="max-width:760px">
-        <p style="margin:0 0 18px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Ages 5–15 · Pole &amp; Aerial</p>
+        <p style="margin:0 0 18px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">School Year 2 – 16 years · Pole &amp; Aerial</p>
         <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6.4vw,92px);line-height:.98;text-transform:uppercase;letter-spacing:-.01em;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Climb. Spin.<br>Fly.</h1>
       </div>
       <div style="display:{{ heroCtrlDisplay }};align-items:center;gap:18px;pointer-events:auto">
@@ -366,7 +751,7 @@ input,select,textarea{font-family:inherit}
   </section>
 
   <section id="kcourses" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto">
-    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Courses</p>
+    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Classes</p>
     <h2 style="margin:0 0 56px;font-weight:700;font-stretch:115%;font-size:clamp(32px,4vw,54px);line-height:1.05;text-transform:uppercase">Classes for young athletes</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
       <sc-for list="{{ kidCourses }}" as="c" hint-placeholder-count="2">
@@ -390,9 +775,9 @@ input,select,textarea{font-family:inherit}
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
         <div>
           <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Book Now</p>
-          <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(30px,3.6vw,46px);line-height:1.05;text-transform:uppercase">Book a trial class</h2>
+          <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(30px,3.6vw,46px);line-height:1.05;text-transform:uppercase">Book your class</h2>
         </div>
-        <p style="margin:0;font-size:16px;line-height:1.7;color:#5d5970;max-width:44ch">Pick a Kids Pole or Kids Hoop class from the timetable below to book or start a free trial.</p>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#5d5970;max-width:44ch">Pick a Kids Pole Fitness or Kids Aerial Hoop class from the timetable below to reserve a spot.</p>
       </div>
       <div ref="{{ teamupRef }}" style="min-height:640px"></div>
     </div>
@@ -402,7 +787,7 @@ input,select,textarea{font-family:inherit}
 
   <sc-if value="{{ isKidCourse }}" hint-placeholder-val="{{ false }}">
   <section style="padding:clamp(130px,12vw,170px) clamp(20px,4vw,56px) 0;max-width:1440px;margin:0 auto">
-    <a href="#kcourses" onClick="{{ goKCourses }}" style="display:inline-block;margin-bottom:28px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#7a6f9a">← All kids courses</a>
+    <a href="#kcourses" onClick="{{ goKCourses }}" style="display:inline-block;margin-bottom:28px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#7a6f9a">← All kids classes</a>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
       <div style="display:flex;flex-direction:column;gap:20px">
         <span style="align-self:flex-start;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#fff;padding:7px 12px;border-radius:999px;background:{{ kd.grad }}">{{ kd.meta }}</span>
@@ -465,6 +850,111 @@ input,select,textarea{font-family:inherit}
   </section>
   </sc-if>
 
+  <sc-if value="{{ isKidGallery }}" hint-placeholder-val="{{ false }}">
+  <section id="kgallery" style="padding:clamp(130px,12vw,170px) clamp(20px,4vw,56px) clamp(64px,8vw,120px);max-width:1440px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px">
+      <div>
+        <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Gallery</p>
+        <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6vw,84px);line-height:.98;text-transform:uppercase;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Look what we can do</h1>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ kgalTabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.pick }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:13px 20px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};cursor:pointer">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
+      <div style="border-radius:28px;background:linear-gradient(120deg,#fde7f5,#efe7fd 50%,#e3f5fd);padding:clamp(20px,3vw,32px);margin-bottom:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;align-items:end">
+        <label style="display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;border:2px dashed #c9bfe3;border-radius:22px;background:#fff center/cover no-repeat;background-image:{{ kgalDraftBg }};cursor:pointer;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#7a6f9a" style-hover="border-color:#b99cf0">
+          <span style="background:rgba(255,255,255,.85);padding:10px 14px;border-radius:999px">{{ kgalDraftLabel }}</span>
+          <input type="file" accept="image/*" onChange="{{ konGalFile }}" style="display:none">
+        </label>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <p style="margin:0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#2b2838">Post a photo</p>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Pose name<input type="text" value="{{ kgalDraftName }}" onChange="{{ konGalName }}" placeholder="e.g. Fireman Spin" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #e2dbef;border-radius:14px;background:#fff;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Class<select value="{{ kgalDraftCat }}" onChange="{{ konGalCat }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #e2dbef;border-radius:14px;background:#fff;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"><option value="Pole Fitness">Pole Fitness</option><option value="Aerial Hoop">Aerial Hoop</option></select></label>
+          <sc-if value="{{ kgalError }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:13px;color:#c0397a">Add a photo and a pose name first.</p></sc-if>
+          <button onClick="{{ kpostGal }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:16px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);color:#fff;cursor:pointer" style-hover="filter:brightness(1.05)">Post</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ kgalEmpty }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:0;padding:30px 0;border-top:1px solid #eee9f5;font-size:16px;color:#7a6f9a">{{ kgalEmptyText }}</p>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:clamp(16px,2vw,24px)">
+      <sc-for list="{{ kgalList }}" as="g" hint-placeholder-count="0">
+        <figure style="margin:0;padding:2px;border-radius:26px;background:{{ g.grad }}">
+          <div style="background:#fff;border-radius:24px;padding:10px;display:flex;flex-direction:column;gap:12px;height:100%;box-sizing:border-box">
+            <div role="img" aria-label="{{ g.name }}" style="width:100%;aspect-ratio:4/5;border-radius:18px;background:#f6f3fb center/cover no-repeat;background-image:{{ g.bg }}"></div>
+            <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 6px 6px">
+              <span style="font-weight:700;font-stretch:112%;font-size:17px;text-transform:uppercase;color:#2b2838">{{ g.name }}</span>
+              <span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;padding:6px 10px;border-radius:999px;background:{{ g.grad }};white-space:nowrap">{{ g.cat }}</span>
+            </figcaption>
+            <sc-if value="{{ g.canEdit }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ g.remove }}" style="align-self:flex-start;margin:0 6px 6px;font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:10px 16px;border:1px solid #f2b8d4;border-radius:999px;background:#fff;color:#c0397a;cursor:pointer">Delete</button>
+            </sc-if>
+          </div>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ isKidPrices }}" hint-placeholder-val="{{ false }}">
+  <section id="kprices" style="padding:clamp(130px,12vw,170px) clamp(20px,4vw,56px) clamp(64px,8vw,120px);max-width:1100px;margin:0 auto">
+    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Prices</p>
+    <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6vw,84px);line-height:.98;text-transform:uppercase;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Booking options</h1>
+    <p style="margin:24px 0 56px;font-size:17px;line-height:1.7;color:#5d5970;max-width:56ch">Choose the option that suits your family. You'll pick classes and pay securely on the next step.</p>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ kidPrices }}" as="p" hint-placeholder-count="4">
+        <div style="padding:2px;border-radius:24px;background:{{ p.grad }}">
+          <div style="background:#fff;border-radius:22px;padding:clamp(22px,3vw,32px);display:grid;grid-template-columns:{{ priceCols }};gap:16px 24px;align-items:center">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h3 style="margin:0;font-weight:700;font-stretch:112%;font-size:22px;text-transform:uppercase">{{ p.name }}</h3>
+              <p style="margin:0;font-size:15px;line-height:1.6;color:#5d5970">{{ p.desc }}</p>
+            </div>
+            <span style="font-weight:700;font-stretch:112%;font-size:30px;color:#2b2838;white-space:nowrap">{{ p.price }}</span>
+            <button onClick="{{ goKBook }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:14px 22px;border:0;border-radius:999px;background:{{ p.grad }};color:#fff;cursor:pointer;justify-self:start">Book</button>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:28px 0 0;font-size:14px;line-height:1.6;color:#7a6f9a">Prices are per child. See <a href="#kterms" onClick="{{ goKTerms }}" style="color:#2b2838;text-decoration:underline">Terms &amp; Conditions</a> before booking.</p>
+  </section>
+  <section style="padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);background:linear-gradient(120deg,#fde7f5,#efe7fd 50%,#e3f5fd)">
+    <div style="max-width:1100px;margin:0 auto;background:#fff;border-radius:32px;padding:clamp(32px,5vw,64px);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;box-shadow:0 20px 60px rgba(150,120,200,.15)">
+      <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(28px,3.4vw,44px);line-height:1.05;text-transform:uppercase;text-wrap:balance">Ready to book your class?</h2>
+      <button onClick="{{ goKBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:18px 36px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;cursor:pointer" style-hover="filter:brightness(1.05)">Book Now</button>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ isKidTerms }}" hint-placeholder-val="{{ false }}">
+  <section id="kterms" style="padding:clamp(130px,12vw,170px) clamp(20px,4vw,56px) clamp(64px,8vw,120px);max-width:900px;margin:0 auto">
+    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Terms &amp; Conditions</p>
+    <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6vw,84px);line-height:.98;text-transform:uppercase;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Before you book</h1>
+    <div style="display:flex;flex-direction:column;margin-top:48px">
+      <sc-for list="{{ kidTerms }}" as="t" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid #eee9f5">
+          <span style="font-size:13px;font-weight:700;color:#b99cf0">{{ t.no }}</span>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-weight:700;font-stretch:112%;font-size:18px;text-transform:uppercase">{{ t.t }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:#5d5970;text-wrap:pretty">{{ t.d }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <section style="padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);background:linear-gradient(120deg,#fde7f5,#efe7fd 50%,#e3f5fd)">
+    <div style="max-width:1100px;margin:0 auto;background:#fff;border-radius:32px;padding:clamp(32px,5vw,64px);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;box-shadow:0 20px 60px rgba(150,120,200,.15)">
+      <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(28px,3.4vw,44px);line-height:1.05;text-transform:uppercase;text-wrap:balance">Happy with the terms?</h2>
+      <button onClick="{{ goKBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:18px 36px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;cursor:pointer" style-hover="filter:brightness(1.05)">Book Now</button>
+    </div>
+  </section>
+  </sc-if>
+
   <section id="kcontact" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px) 48px;max-width:1440px;margin:0 auto">
     <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Contact</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px;padding-bottom:72px;border-bottom:1px solid #eee9f5">
@@ -484,23 +974,64 @@ input,select,textarea{font-family:inherit}
   </section>
 </div>
 </sc-if>
+<sc-if value="{{ gateMounted }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:100;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;opacity:{{ gateOpacity }};transition:opacity .5s ease">
+    <div style="width:min(860px,100%);display:flex;flex-direction:column;align-items:center;gap:32px;transform:{{ gateTransform }};transition:transform .7s cubic-bezier(.2,1.2,.4,1)">
+      <img src="assets/logo-square.png" alt="Jas' Studio" style="width:96px;height:96px;object-fit:contain">
+      <h2 style="margin:0;text-align:center;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.1;color:#f4f2ee">Who is training <i>today</i>?</h2>
+      <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+        <button onClick="{{ pickAdult }}" style="font-family:'Archivo',sans-serif;text-align:left;cursor:pointer;background:#0a0a0a;color:#f4f2ee;border:1px solid #3a3a3a;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px;min-height:200px;justify-content:flex-end" style-hover="border-color:#f4f2ee">
+          <span style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#8d8a85">Jas' Studio</span>
+          <span style="font-weight:700;font-stretch:118%;font-size:clamp(28px,3.4vw,40px);text-transform:uppercase;line-height:1">Adult Class</span>
+          <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">Enter →</span>
+        </button>
+        <button onClick="{{ pickKids }}" style="font-family:'Archivo',sans-serif;text-align:left;cursor:pointer;background:linear-gradient(135deg,#fde7f5,#efe7fd 50%,#e3f5fd);color:#2b2838;border:0;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px;min-height:200px;justify-content:flex-end" style-hover="filter:brightness(1.03)">
+          <span style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Jas' Studio Kids</span>
+          <span style="font-weight:700;font-stretch:118%;font-size:clamp(28px,3.4vw,40px);text-transform:uppercase;line-height:1;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Kids Class</span>
+          <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600">Enter →</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Main&quot;,&quot;Kids&quot;],&quot;default&quot;:&quot;Main&quot;,&quot;tsType&quot;:&quot;'Main'|'Kids'&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;slideSeconds&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:2,&quot;max&quot;:15,&quot;default&quot;:5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
-const KIDS_DETAILS = {"pole":{"intro":"A fun, safe introduction to pole for young athletes, where every spin and climb helps children feel strong and proud of what their bodies can do.","historyTitle":"Where pole comes from","history":["Long before pole was taught in studios, people in India practised Mallakhamb, gymnastic poses on a wooden pole, and Chinese acrobats performed amazing climbs and drops on tall poles in the circus.","Today pole is a sport with its own competitions, including categories for children and teens, where young athletes show strength, flexibility and creativity."],"benefits":[{"t":"Confidence","d":"Learning a new move and getting it right builds real pride and self-belief, week after week."},{"t":"Strength","d":"Climbing and holding on make arms, hands and tummy muscles stronger in a fun way."},{"t":"Coordination","d":"Spins and shapes teach children to control their bodies and move with balance."},{"t":"Focus & friendship","d":"Small groups help children listen, take turns, cheer each other on and make friends."}],"steps":[{"t":"Hello & warm-up","d":"A welcome circle, then games and moves to wake up the body."},{"t":"Strength games","d":"Fun challenges that build grip and core strength."},{"t":"Learn a new move","d":"Coaches teach one move step by step and spot every child."},{"t":"Show & cheer","d":"Children link their moves together and celebrate each other."},{"t":"Stretch & cool down","d":"Gentle stretching and a calm finish."}]},"hoop":{"intro":"Kids Hoop lets children swing, balance and make shapes in the air on a low hoop, building bravery and confidence one small step at a time.","historyTitle":"A circus favourite","history":["The aerial hoop, also called the lyra, is a metal ring that hangs from the ceiling. It started in the circus, where performers made beautiful shapes high in the air.","Now children can learn hoop in a safe studio, with the hoop hung low and coaches close by."],"benefits":[{"t":"Bravery","d":"Trying new shapes in the air, with a coach close by, helps children feel brave and proud."},{"t":"Balance","d":"Sitting and standing in the hoop trains balance and body control."},{"t":"Flexibility","d":"Hoop shapes gently improve stretch in shoulders, back and legs."},{"t":"Creativity","d":"Children invent their own poses and short sequences to music."}],"steps":[{"t":"Hello & warm-up","d":"Games and stretches to get ready to fly."},{"t":"Strength games","d":"Hanging and holding challenges close to the floor."},{"t":"Learn a new shape","d":"A new hoop shape taught slowly, with a coach spotting."},{"t":"Make a mini routine","d":"Linking shapes together to music."},{"t":"Stretch & cool down","d":"Calm stretching and a high-five goodbye."}]}};
+const KIDS_DETAILS = {"pole":{"intro":"A fun, safe introduction to pole for young athletes, where every spin and climb helps children feel strong and proud of what their bodies can do.","historyTitle":"Where pole comes from","history":["Long before pole was taught in studios, people in India practised Mallakhamb, gymnastic poses on a wooden pole, and Chinese acrobats performed amazing climbs and drops on tall poles in the circus.","Today pole is a sport with its own competitions, including categories for children and teens, where young athletes show strength, flexibility and creativity."],"benefits":[{"t":"Confidence","d":"Learning a new move and getting it right builds real pride and self-belief, week after week."},{"t":"Strength","d":"Climbing and holding on make arms, hands and tummy muscles stronger in a fun way."},{"t":"Coordination","d":"Spins and shapes teach children to control their bodies and move with balance."},{"t":"Focus & friendship","d":"Small groups help children listen, take turns, cheer each other on and make friends."}],"steps":[{"t":"Hello & warm-up","d":"A welcome circle, then games and moves to wake up the body."},{"t":"Strength games","d":"Fun challenges that build grip and core strength."},{"t":"Learn a new move","d":"Instructors teach one move step by step and spot every child."},{"t":"Show & cheer","d":"Children link their moves together and celebrate each other."},{"t":"Stretch & cool down","d":"Gentle stretching and a calm finish."}]},"hoop":{"intro":"Kids Hoop lets children swing, balance and make shapes in the air on a low hoop, building bravery and confidence one small step at a time.","historyTitle":"A circus favourite","history":["The aerial hoop, also called the lyra, is a metal ring that hangs from the ceiling. It started in the circus, where performers made beautiful shapes high in the air.","Now children can learn hoop in a safe studio, with the hoop hung low and instructors close by."],"benefits":[{"t":"Bravery","d":"Trying new shapes in the air, with an instructor close by, helps children feel brave and proud."},{"t":"Balance","d":"Sitting and standing in the hoop trains balance and body control."},{"t":"Flexibility","d":"Hoop shapes gently improve stretch in shoulders, back and legs."},{"t":"Creativity","d":"Children invent their own poses and short sequences to music."}],"steps":[{"t":"Hello & warm-up","d":"Games and stretches to get ready to fly."},{"t":"Strength games","d":"Hanging and holding challenges close to the floor."},{"t":"Learn a new shape","d":"A new hoop shape taught slowly, with an instructor spotting."},{"t":"Make a mini routine","d":"Linking shapes together to music."},{"t":"Stretch & cool down","d":"Calm stretching and a high-five goodbye."}]}};
 const COURSE_DETAILS = {"foundations":{"historyTitle":"Where pole began","history":["Pole training draws on two older traditions: Chinese pole, an acrobatic circus discipline, and Mallakhamb, an Indian practice of gymnastic holds on a wooden pole dating back centuries.","Modern pole dance grew out of travelling fair and cabaret performance in the 20th century, and from the 1990s onward developed into a fitness and sport discipline with its own competitions, grading systems and coaching standards."],"benefits":[{"t":"Grip strength","d":"Hands, forearms and wrists strengthen quickly from the first weeks of training."},{"t":"Core control","d":"Every spin and climb engages the deep abdominal and back muscles."},{"t":"Coordination","d":"Linking simple moves builds timing, balance and body awareness."},{"t":"Confidence","d":"Visible progress from week to week builds confidence in and out of the studio."}],"steps":[{"t":"Warm-up","d":"Joint mobility and a pulse-raising sequence to prepare wrists, shoulders, hips and spine."},{"t":"Conditioning","d":"Short grip and core drills that prepare the body for the pole."},{"t":"Technique","d":"One or two foundation moves broken down step by step, with spotting where needed."},{"t":"Combo","d":"Linking the new moves into a short sequence to music."},{"t":"Cool-down","d":"Stretching and mobility to finish."}]},"pole":{"historyTitle":"From circus to sport","history":["Pole training draws on two older traditions: Chinese pole, an acrobatic circus discipline, and Mallakhamb, an Indian practice of gymnastic holds on a wooden pole dating back centuries.","Modern pole dance grew out of travelling fair and cabaret performance in the 20th century, and from the 1990s onward developed into a fitness and sport discipline with its own competitions, grading systems and coaching standards."],"benefits":[{"t":"Upper-body strength","d":"Climbs, inverts and holds develop shoulders, back and arms."},{"t":"Core strength","d":"Inverted and aerial positions demand strong, controlled core engagement."},{"t":"Flexibility","d":"Shapes and lines build active flexibility through the hips, back and shoulders."},{"t":"Focus","d":"Learning complex combinations trains concentration and body awareness."}],"steps":[{"t":"Warm-up","d":"Joint mobility and a pulse-raising sequence to prepare wrists, shoulders, hips and spine."},{"t":"Conditioning","d":"Targeted strength work for inverts and holds."},{"t":"Technique","d":"New tricks and transitions taught progressively for each student's level."},{"t":"Combo","d":"Combining tricks into flowing sequences."},{"t":"Cool-down","d":"Flexibility and mobility work to finish."}]},"hoop":{"historyTitle":"A circus apparatus","history":["The aerial hoop, also called the lyra, is a steel ring suspended from the ceiling. It developed as a circus apparatus in the 20th century, used for both static and spinning aerial acts.","Today it is taught in aerial studios worldwide as an art form and a full-body workout, from low-hung beginner shapes to high, dynamic routines."],"benefits":[{"t":"Full-body strength","d":"Mounting and holding shapes works the arms, back, core and legs together."},{"t":"Flexibility","d":"Hoop lines reward open shoulders, hips and a mobile spine."},{"t":"Balance","d":"Sitting, standing and hanging in a moving hoop trains balance and proprioception."},{"t":"Grace","d":"Fluid transitions develop posture, control and artistry."}],"steps":[{"t":"Warm-up","d":"Joint mobility and a pulse-raising sequence to prepare wrists, shoulders, hips and spine."},{"t":"Conditioning","d":"Hanging, grip and core drills at low height."},{"t":"Technique","d":"Mounts, shapes and transitions on a low-hung hoop."},{"t":"Sequence","d":"Linking shapes into a short flow, adding spin when ready."},{"t":"Cool-down","d":"Stretching for shoulders, hips and back."}]},"heels":{"historyTitle":"Dance in heels","history":["Heels dance draws on cabaret, jazz, commercial dance and pole choreography, where dancing in high heels has long been part of performance.","In recent years heels classes have grown into their own style, focused on walks, floorwork and choreography that build strength, posture and confidence."],"benefits":[{"t":"Leg & ankle strength","d":"Balancing and moving in heels strengthens calves, ankles and feet."},{"t":"Posture","d":"Choreography trains alignment through the spine, hips and shoulders."},{"t":"Cardio","d":"Continuous movement to music raises heart rate and stamina."},{"t":"Self-expression","d":"Musicality and performance build confidence and stage presence."}],"steps":[{"t":"Warm-up","d":"Mobility for ankles, hips and spine, first without heels and then in them."},{"t":"Walks & basics","d":"Heel walks, turns and weight transfers for control and balance."},{"t":"Floorwork","d":"Safe transitions to and from the floor."},{"t":"Choreography","d":"Learning a routine section by section to music."},{"t":"Cool-down","d":"Stretching for calves, feet and hips."}]}};
+const LOGIN_HASH = '0a248f6620c2024ae73ac8cf65d5cfe64601b57c7cc4adc865723954c837696f';
+const DEFAULT_INSTRUCTORS = [
+  { id: 'jas', name: 'Jas', title: 'Founder & Head Instructor', roles: 'Advanced Pole Instructor, Hoop Instructor', bio: 'Jasmin founded Jas’ Studio in 2016 and leads the Advanced Pole and Aerial Hoop classes.', photo: '', featured: true },
+  { id: 'faith', name: 'Faith', roles: 'Heels Instructor', photo: '' },
+  { id: 'bekah', name: 'Bekah', roles: 'Heels Instructor', photo: '' },
+  { id: 'holly', name: 'Holly', roles: 'Beginner Pole Instructor', photo: '' },
+  { id: 'rachael', name: 'Rachael', roles: 'Beginner Pole Instructor', photo: '' },
+  { id: 'vix', name: 'Vix', roles: 'Advanced Pole Instructor', photo: '' }
+];
+const DEFAULT_EVENTS = [1, 2, 3].map(n => ({ id: 'd' + n, date: '', time: 'Time TBC', location: 'Unit 54-55, Shannon Way, Canvey Island', name: 'Event name', desc: 'Short description of the workshop or showcase.', details: '', hero: '', photos: [] }));
 class Component extends DCLogic {
   state = { page: null, idx: 0, scrolled: false, course: 0, kid: 0, booked: false };
   N = 4;
   componentDidMount() {
     this.onScroll = () => { const s = window.scrollY > 60; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
     window.addEventListener('scroll', this.onScroll);
-    this.onResize = () => { const m = window.innerWidth < 900; if (m !== this.state.mobile) this.setState({ mobile: m, mOpen: false }); };
+    this.onResize = () => { const m = window.innerWidth < 1280; if (m !== this.state.mobile) this.setState({ mobile: m, mOpen: false }); };
     window.addEventListener('resize', this.onResize); this.onResize();
     this.startTimer();
+    this.startStory();
+    try { const ev = JSON.parse(localStorage.getItem('jas-events') || 'null'); if (Array.isArray(ev)) this.setState({ events: this.norm(ev) }); const ins = JSON.parse(localStorage.getItem('jas-instructors') || 'null'); if (Array.isArray(ins)) this.setState({ instructors: ins }); const gal = JSON.parse(localStorage.getItem('jas-gallery') || 'null'); if (Array.isArray(gal)) this.setState({ gallery: gal }); const kgal = JSON.parse(localStorage.getItem('jas-kids-gallery') || 'null'); if (Array.isArray(kgal)) this.setState({ kgallery: kgal }); if (sessionStorage.getItem('jas-instructor') === '1') this.setState({ instructor: true }); } catch (e) {}
+    let gated = false; try { gated = sessionStorage.getItem('jas-gate') === '1'; } catch (e) {}
+    if (!gated) { this.setState({ gate: true }); requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ gateIn: true }))); }
+    else this.schedulePop();
+  }
+  schedulePop() {
     let seen = false; try { seen = sessionStorage.getItem('jas-trial-pop') === '1'; } catch (e) {}
     if (!seen) this.popT = setTimeout(() => { this.setState({ popMount: true }); requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ popIn: true }))); }, 3500);
   }
-  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearInterval(this.t); clearTimeout(this.popT); this.trialIO && this.trialIO.disconnect(); }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearInterval(this.t); clearInterval(this.storyT); clearInterval(this.instrT); clearTimeout(this.popT); this.trialIO && this.trialIO.disconnect(); }
+  startStory() {
+    clearInterval(this.storyT);
+    this.storyT = setInterval(() => { if (!this.state.mobile) this.setState(s => ({ storyIdx: ((s.storyIdx || 0) + 1) % 5 })); }, 4500);
+  }
   startTimer() {
     clearInterval(this.t);
     if (this.props.autoplay === false) return;
@@ -530,6 +1061,12 @@ class Component extends DCLogic {
     cfg.text = 'teamup.calendar({provider_id:8619433,type:"main",width:"100%",specific_pages:[],view:"schedule.month",venue_ids:"~all",free_trial_membership:"233061",disable_venue_selector:false,version:3});';
     s.onload = () => el.appendChild(cfg);
   };
+  pickGate = (page) => () => {
+    try { sessionStorage.setItem('jas-gate', '1'); } catch (e) {}
+    this.setState({ page, gateIn: false }); window.scrollTo({ top: 0 });
+    setTimeout(() => this.setState({ gate: false }), 500);
+    if (page === 'main') this.schedulePop();
+  };
   closePop = () => { this.setState({ popIn: false }); try { sessionStorage.setItem('jas-trial-pop', '1'); } catch (e) {} setTimeout(() => this.setState({ popMount: false }), 600); };
   trialRef = (el) => {
     if (!el || el === this._trialEl) return; this._trialEl = el;
@@ -539,6 +1076,53 @@ class Component extends DCLogic {
   };
   touchStart = (e) => { this._tx = e.touches[0].clientX; };
   touchEnd = (e) => { if (this._tx == null) return; const dx = e.changedTouches[0].clientX - this._tx; this._tx = null; if (Math.abs(dx) > 40) this.setIdx(this.state.idx + (dx < 0 ? 1 : -1)); };
+  saveEvents = (a) => { try { localStorage.setItem('jas-events', JSON.stringify(a)); } catch (e) { alert('Storage is full. Remove some photos and try again.'); } };
+  norm = (a) => a.map((x, i) => ({ time: '', location: '', details: '', hero: '', photos: [], ...x, id: x.id || ('m' + i + '_' + Date.now().toString(36)) }));
+  evs = () => this.state.events || DEFAULT_EVENTS;
+  setEvents = (fn) => this.setState(s => { const a = fn(this.norm([...(s.events || DEFAULT_EVENTS)])); this.saveEvents(a); return { events: a }; });
+  updEv = (id, patch) => this.setEvents(a => a.map(x => x.id === id ? { ...x, ...patch } : x));
+  readPhoto = (file, max = 1000) => new Promise((res) => {
+    const r = new FileReader();
+    r.onload = () => { const img = new Image(); img.onload = () => {
+      const s = Math.min(1, max / Math.max(img.width, img.height)); const c = document.createElement('canvas');
+      c.width = Math.round(img.width * s); c.height = Math.round(img.height * s); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      res(c.toDataURL('image/jpeg', 0.75)); }; img.onerror = () => res(null); img.src = r.result; };
+    r.onerror = () => res(null); r.readAsDataURL(file);
+  });
+  addPhotos = async (id, files) => {
+    const ev = this.evs().find(x => x.id === id) || {}; const have = (ev.photos || []).length;
+    const list = [...files].slice(0, Math.max(0, 4 - have));
+    const urls = (await Promise.all(list.map(f => this.readPhoto(f)))).filter(Boolean);
+    this.setEvents(a => a.map(x => x.id === id ? { ...x, photos: [...(x.photos || []), ...urls].slice(0, 4) } : x));
+  };
+  setHero = async (id, file) => { const url = await this.readPhoto(file, 1600); if (url) this.updEv(id, { hero: url }); };
+  setGal = (key, store, fn) => this.setState(s => { const a = fn([...(s[key] || [])]); try { localStorage.setItem(store, JSON.stringify(a)); } catch (e) { alert('Storage is full. Delete some photos and try again.'); return {}; } return { [key]: a }; });
+  buildGallery(key, store, cats, inst, p) {
+    const gal = this.state[key] || [], fk = key + 'Filter', dk = key + 'Draft', ek = key + 'Err';
+    const f = this.state[fk] || 'All', list = f === 'All' ? gal : gal.filter(g => g.cat === f), d = this.state[dk] || {};
+    const defCat = f === 'All' ? cats[0] : f, kid = p === 'k';
+    const grads = ['linear-gradient(135deg,#f6a6da,#c9aef3)', 'linear-gradient(135deg,#c9aef3,#9fd6f6)', 'linear-gradient(135deg,#9fd6f6,#8ee6ee)'];
+    const o = {
+      galTabs: ['All', ...cats].map((l, i) => ({ label: l, pick: () => this.setState({ [fk]: l }),
+        bg: l === f ? (kid ? grads[i % 3] : '#f4f2ee') : (kid ? '#fff' : 'transparent'), fg: l === f ? (kid ? '#fff' : '#0a0a0a') : (kid ? '#2b2838' : '#f4f2ee'), border: l === f ? (kid ? 'transparent' : '#f4f2ee') : (kid ? '#e2dbef' : '#333') })),
+      galEmpty: list.length === 0, galEmptyText: gal.length === 0 ? 'No photos yet.' : 'No ' + f + ' photos yet.',
+      galList: list.map((g, i) => ({ ...g, bg: 'url("' + g.src + '")', grad: grads[i % 3], canEdit: inst, remove: () => this.setGal(key, store, a => a.filter(x => x.id !== g.id)) })),
+      galDraftBg: d.src ? 'url("' + d.src + '")' : 'none', galDraftLabel: d.src ? 'Change photo' : '+ Add photo',
+      galDraftName: d.name || '', galDraftCat: d.cat || defCat, galError: !!this.state[ek],
+      galCatOpts: cats.map(c => ({ c })),
+      onGalFile: async (x) => { const file = x.target.files && x.target.files[0]; x.target.value = ''; if (!file) return; const src = await this.readPhoto(file, 1200); if (src) this.setState(s => ({ [dk]: { ...(s[dk] || {}), src }, [ek]: false })); },
+      onGalName: (x) => { const v = x.target.value; this.setState(s => ({ [dk]: { ...(s[dk] || {}), name: v } })); },
+      onGalCat: (x) => { const v = x.target.value; this.setState(s => ({ [dk]: { ...(s[dk] || {}), cat: v } })); },
+      postGal: () => { const dd = this.state[dk] || {}; if (!dd.src || !(dd.name || '').trim()) return this.setState({ [ek]: true });
+        this.setGal(key, store, a => [{ id: 'g' + Date.now().toString(36), src: dd.src, name: dd.name.trim(), cat: dd.cat || defCat }, ...a]); this.setState({ [dk]: {}, [ek]: false }); }
+    };
+    if (!p) return o;
+    const r = {}; for (const k in o) r[p + k] = o[k]; return r;
+  }
+  pillRef = (el) => { this._pills = el; };
+  startInstrRoll() { clearInterval(this.instrT); this.instrT = setInterval(() => { if (this.state.openInstr) this.setState(s => ({ instrPhoto: (s.instrPhoto || 0) + 1 })); }, 3500); }
+  instrs = () => this.state.instructors || DEFAULT_INSTRUCTORS;
+  setInstrs = (fn) => this.setState(s => { const a = fn([...(s.instructors || DEFAULT_INSTRUCTORS)]); try { localStorage.setItem('jas-instructors', JSON.stringify(a)); } catch (e) { alert('Storage is full. Remove some photos and try again.'); return {}; } return { instructors: a }; });
   setIdx = (i) => { this.setState({ idx: (i + this.N) % this.N }); this.startTimer(); };
   switchTo = (page) => (e) => { e && e.preventDefault(); this.setState({ page, idx: 0, booked: false }); window.scrollTo({ top: 0 }); };
   renderVals() {
@@ -562,8 +1146,8 @@ class Component extends DCLogic {
       book: () => { this.setState({ course: ci, booked: false }); nav('main', 'book')(); } };
     const grads = ['linear-gradient(135deg,#f6a6da,#c9aef3)', 'linear-gradient(135deg,#c9aef3,#9fd6f6)', 'linear-gradient(135deg,#9fd6f6,#8ee6ee)'];
     const kidCourses = [
-      { name: 'Kids Pole', age: 'Pole', desc: 'Spins, climbs and holds taught with safe technique, body awareness and confidence.', meta: 'Ages 5–15' },
-      { name: 'Kids Hoop', age: 'Aerial Hoop', desc: 'Mounts, shapes and spins on the hoop, building strength, balance and flexibility.', meta: 'Ages 5–15' }
+      { name: 'Kids Pole Fitness', age: 'Pole Fitness', desc: 'Spins, climbs and holds taught with safe technique, body awareness and confidence.', meta: 'School Year 2 – 16 years' },
+      { name: 'Kids Aerial Hoop', age: 'Aerial Hoop', desc: 'Mounts, shapes and spins on the hoop, building strength, balance and flexibility.', meta: 'School Year 2 – 16 years' }
     ].map((c, i) => ({ ...c, key: ['pole', 'hoop'][i], grad: grads[i], open: () => { this.setState({ page: 'kidcourse', kdetail: i }); window.scrollTo({ top: 0 }); } }));
     const kc = kidCourses[this.state.kdetail || 0], KD = KIDS_DETAILS[kc.key];
     const kd = { ...kc, ...KD, steps: KD.steps.map((s, j) => ({ ...s, no: j + 1 })), benefits: KD.benefits.map((b, j) => ({ ...b, grad: grads[j % 3] })) };
@@ -575,8 +1159,19 @@ class Component extends DCLogic {
     const close = () => this.setState({ menu: null });
     const goClose = (id) => (e) => { this.go(id)(e); close(); };
     const mob = !!this.state.mobile;
+    const inst = !!this.state.instructor;
+    const PER = 8, blank = inst ? '0000' : '9999';
+    const evSorted = [...this.norm(this.evs())].sort((a, b) => (a.date || blank) < (b.date || blank) ? -1 : 1);
+    const evTotal = Math.max(1, Math.ceil(evSorted.length / PER)), evCur = Math.min(this.state.evPage || 1, evTotal);
+    const evSlice = evSorted.slice((evCur - 1) * PER, evCur * PER);
+    const goEvPage = (n) => () => { if (n < 1 || n > evTotal) return; this.setState({ evPage: n, openEv: {} }); this.go('events')(); };
+    const evPager = { hasEvPages: evTotal > 1,
+      evPages: Array.from({ length: evTotal }, (_, i) => ({ n: i + 1, go: goEvPage(i + 1), bg: i + 1 === evCur ? '#f4f2ee' : 'transparent', fg: i + 1 === evCur ? '#0a0a0a' : '#f4f2ee', border: i + 1 === evCur ? '#f4f2ee' : '#333' })),
+      evPrev: goEvPage(evCur - 1), evNext: goEvPage(evCur + 1), evPrevOpacity: evCur > 1 ? 1 : .3, evNextOpacity: evCur < evTotal ? 1 : .3 };
     const popOn = !!this.state.popIn, trialSeen = !!this.state.trialSeen;
     return {
+      gateMounted: !!this.state.gate, gateOpacity: this.state.gateIn ? 1 : 0, gateTransform: this.state.gateIn ? 'none' : 'translateY(30px) scale(.96)',
+      pickAdult: this.pickGate('main'), pickKids: this.pickGate('kids'),
       heroCtrlDisplay: mob ? 'none' : 'flex', heroH: mob ? 'calc(100vw * 16 / 9)' : '100vh', heroMinH: mob ? '0' : '620px', touchStart: this.touchStart, touchEnd: this.touchEnd,
       trialRef: this.trialRef, trialRevealOpacity: trialSeen ? 1 : 0, trialRevealTransform: trialSeen ? 'none' : 'translateY(48px) scale(.97)',
       trialPopMounted: !!this.state.popMount && page === 'main',
@@ -588,7 +1183,7 @@ class Component extends DCLogic {
       toggleMobile: () => this.setState(s => ({ mOpen: !s.mOpen })), closeMobile: () => this.setState({ mOpen: false }),
       logoSize: mob ? '56px' : '72px', kLogoSize: mob ? '60px' : '80px',
       courseCols: mob ? '32px minmax(0,1fr)' : '56px minmax(0,1.4fr) minmax(0,2fr) auto auto',
-      eventCols: mob ? 'minmax(0,1fr)' : 'minmax(110px,160px) minmax(0,1.4fr) minmax(0,2fr) auto',
+      eventCols: mob ? 'minmax(0,1fr)' : '90px minmax(0,1.15fr) minmax(0,1fr)',
       stepCols: mob ? '32px minmax(0,1fr)' : '56px minmax(0,1fr) minmax(0,2fr)',
       kStepCols: mob ? '44px minmax(0,1fr)' : '52px minmax(0,1fr) minmax(0,2fr)',
       col2: mob ? '2' : 'auto', rowGap: mob ? '12px 16px' : '24px', arrowDisplay: mob ? 'none' : 'inline',
@@ -599,7 +1194,69 @@ class Component extends DCLogic {
       showCourses: page === 'main' || page === 'courses',
       coursesPad: page === 'courses' ? 'clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px)' : 'clamp(80px,10vw,140px) clamp(20px,4vw,56px)',
       coursesBorder: page === 'courses' ? '0' : '1px solid #222',
-      goCourses: nav('courses'), goEvents: nav('events'), goTeachers: nav('coaches'),
+      goCourses: nav('courses'), goEvents: nav('events'), goTeachers: nav('coaches'), goPrices: nav('prices'), goTerms: nav('terms'),
+      isPrices: page === 'prices', isTerms: page === 'terms', isGallery: page === 'gallery', goGallery: nav('gallery'),
+      ...this.buildGallery('gallery', 'jas-gallery', ['Hoop', 'Pole', 'Heels'], inst, ''),
+      ...this.buildGallery('kgallery', 'jas-kids-gallery', ['Pole Fitness', 'Aerial Hoop'], inst, 'k'),
+      isKidGallery: page === 'kidgallery', goKGallery: nav('kidgallery'),
+      mobileBook: (e) => { this.setState({ mOpen: false }); nav('main', 'book')(e); },
+      isInstructor: inst,
+      loginLabel: inst ? 'Instructor ✓' : 'Login', loginLabelLong: inst ? 'Instructor: manage events' : 'Instructor Login',
+      loginClick: (e) => { e.preventDefault(); this.setState({ mOpen: false }); if (inst) nav('events')(); else this.setState({ loginOpen: true, loginError: false }); },
+      loginOpen: !!this.state.loginOpen, closeLogin: () => this.setState({ loginOpen: false }), stop: (e) => e.stopPropagation(),
+      loginEmail: this.state.loginEmail || '', loginPass: this.state.loginPass || '', loginError: !!this.state.loginError,
+      onLoginEmail: (e) => this.setState({ loginEmail: e.target.value }), onLoginPass: (e) => this.setState({ loginPass: e.target.value }),
+      submitLogin: async () => {
+        const u = (this.state.loginEmail || '').trim().toLowerCase(), p = this.state.loginPass || '';
+        let hex = '';
+        try { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(u + ':' + p)); hex = [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); } catch (e) {}
+        if (hex !== LOGIN_HASH) return this.setState({ loginError: true, loginPass: '' });
+        try { sessionStorage.setItem('jas-instructor', '1'); } catch (e) {}
+        this.setState({ instructor: true, loginOpen: false, loginPass: '', loginError: false }); nav('events')();
+      },
+      logout: () => { try { sessionStorage.removeItem('jas-instructor'); } catch (e) {} this.setState({ instructor: false }); },
+      addEvent: () => this.setState({ evPage: 1 }) || this.setEvents(a => [{ id: 'n' + Date.now().toString(36), date: '', time: '', location: 'Unit 54-55, Shannon Way, Canvey Island', name: 'New event', desc: '', details: '', hero: '', photos: [] }, ...a]),
+      noEvents: this.evs().length === 0,
+      eventGap: mob ? '20px' : 'clamp(28px,4vw,56px)', dateDir: mob ? 'row' : 'column', dateAlign: mob ? 'center' : 'flex-start', dayFont: mob ? '32px' : '56px',
+      detailCols: mob ? 'minmax(0,1fr)' : '90px minmax(0,1fr)', spacerDisplay: mob ? 'none' : 'block',
+      storySlides: (mob ? [['main-about', 'Jasmin or studio portrait']] : [['main-about', 'Jasmin or studio portrait'], ['story-1', 'Story photo 1'], ['story-2', 'Story photo 2'], ['story-3', 'Story photo 3'], ['story-4', 'Story photo 4']]).map(([id, ph], i) => {
+        const on = mob ? true : i === (this.state.storyIdx || 0);
+        return { id, ph, n: i + 1, opacity: on ? 1 : 0, pe: on ? 'auto' : 'none', dotW: on ? '28px' : '12px', dotBg: on ? '#f4f2ee' : '#444', go: () => { this.setState({ storyIdx: i }); this.startStory(); } };
+      }), storySticky: mob ? 'static' : 'sticky',
+      ...evPager,
+      eventList: evSlice.map((ev) => {
+        const id = ev.id, open = !!(this.state.openEv || {})[id];
+        const d = /^\d{4}-\d{2}-\d{2}$/.test(ev.date || '') ? new Date(ev.date + 'T00:00:00') : null;
+        const set = (k) => (x) => this.updEv(id, { [k]: x.target.value });
+        return { ...ev, view: !inst, edit: inst,
+          mon: d ? d.toLocaleString('en-GB', { month: 'short' }).toUpperCase() : 'DATE', day: d ? String(d.getDate()).padStart(2, '0') : 'TBC',
+          heroBg: ev.hero ? 'url("' + ev.hero + '")' : 'none', heroLabel: ev.hero ? 'Change hero photo' : '+ Add hero photo',
+          detailsText: ev.details || ev.desc,
+          toggle: () => this.setState(s => ({ openEv: { ...(s.openEv || {}), [id]: !open } })),
+          toggleLabel: open ? 'Hide event details' : 'View event details', arrowRot: open ? 'rotate(90deg)' : 'none',
+          rows: open ? '1fr' : '0fr', detailOpacity: open ? 1 : 0,
+          onDate: set('date'), onTime: set('time'), onName: set('name'), onLocation: set('location'), onDesc: set('desc'), onDetails: set('details'),
+          onHero: (x) => { const f = x.target.files && x.target.files[0]; if (f) this.setHero(id, f); x.target.value = ''; },
+          remove: () => this.setEvents(a => a.filter(y => y.id !== id)),
+          hasPhotos: ev.photos.length > 0, photoCount: ev.photos.length, canAdd: ev.photos.length < 4,
+          onPhotos: (x) => { const f = x.target.files; if (f && f.length) this.addPhotos(id, f); x.target.value = ''; },
+          photoList: ev.photos.map((src, j) => ({ bg: 'url("' + src + '")', remove: () => this.setEvents(a => a.map(y => y.id === id ? { ...y, photos: y.photos.filter((_, k) => k !== j) } : y)) })) };
+      }),
+      adultPrices: [
+        { name: 'Single class', desc: 'One class in any discipline.', price: '£—' },
+        { name: '5-class pass', desc: 'Five classes to use across Pole, Aerial Hoop and Heels.', price: '£—' },
+        { name: '10-class pass', desc: 'Ten classes at a reduced rate per class.', price: '£—' },
+        { name: 'Monthly membership', desc: 'Regular weekly training with a monthly payment.', price: '£—' }
+      ],
+      adultTerms: [
+        { t: 'Bookings & payment', d: 'All classes must be booked and paid for in advance through our booking system.' },
+        { t: 'Cancellations', d: 'Add your cancellation notice period and refund or credit policy here.' },
+        { t: 'Passes & expiry', d: 'Add how long class passes are valid for and whether they can be transferred.' },
+        { t: 'Health & safety', d: 'Tell your instructor about any injuries or medical conditions before class. Instructors may adapt or pause activity for safety.' },
+        { t: 'What to wear', d: 'Shorts and a fitted top for pole, with skin exposed for grip. No lotion on the day of class, and no jewellery.' },
+        { t: 'Late arrival', d: 'Please arrive on time. Late arrivals may not be able to join the warm-up and could be asked to sit out for safety.' },
+        { t: 'Photos & video', d: 'We may take photos or videos in class for social media. Let us know if you would prefer not to be included.' }
+      ].map((t, i) => ({ ...t, no: String(i + 1).padStart(2, '0') })),
       goAbout: nav('main', 'about'), goCommunity: nav('main', 'community'), goBook: nav('main', 'book'), goContact: this.go('contact'),
       isHome: page === 'main', isCourses: page === 'courses', isEvents: page === 'events', isCoaches: page === 'coaches',
       trialChips: trialOpts.map((n, i) => ({ name: n, pick: () => this.setState({ trial: i }), bg: i === (this.state.trial || 0) ? '#f4f2ee' : 'transparent', fg: i === (this.state.trial || 0) ? '#0a0a0a' : '#f4f2ee' })),
@@ -610,15 +1267,65 @@ class Component extends DCLogic {
         { date: 'Date TBC', name: 'Event name', desc: 'Short description of the workshop or showcase.' },
         { date: 'Date TBC', name: 'Event name', desc: 'Short description of the workshop or showcase.' }
       ],
-      teachers: [1, 2, 3, 4].map(n => ({ n, name: 'Coach name', role: 'Pole · Aerial Hoop' })),
-      isMain: page !== 'kids' && page !== 'kidcourse', isKids: page === 'kids' || page === 'kidcourse', isKidsHome: page === 'kids', isKidCourse: page === 'kidcourse', kd,
+      ...(() => {
+        const list = this.instrs();
+        const mk = (x) => {
+          const set = (k) => (ev) => { const v = ev.target.value; this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, [k]: v } : y)); };
+          const roleArr = (x.roles || '').split(',').map(r => r.trim()).filter(Boolean);
+          return { ...x, view: !inst, edit: inst, slotId: 'main-teacher-' + x.id, hasPhoto: !!x.photo, noPhoto: !x.photo,
+            bg: x.photo ? 'url("' + x.photo + '")' : 'none', photoLabel: x.photo ? 'Change photo' : '+ Add photo',
+            roleList: roleArr.map(label => ({ label })), roleText: roleArr.join(' · '),
+            onName: set('name'), onRoles: set('roles'), onTitle: set('title'), onBio: set('bio'),
+            onPhoto: async (ev) => { const f = ev.target.files && ev.target.files[0]; ev.target.value = ''; if (!f) return; const src = await this.readPhoto(f, 1200); if (src) this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photo: src } : y)); },
+            remove: () => { if (confirm('Remove ' + (x.name || 'this instructor') + '?')) this.setInstrs(a => a.filter(y => y.id !== x.id)); },
+            feature: () => this.setInstrs(a => a.map(y => ({ ...y, featured: y.id === x.id }))),
+            unfeature: () => this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, featured: false } : y)),
+            isOpen: this.state.openInstr === x.id ? 'true' : 'false', pillBorder: this.state.openInstr === x.id ? '2px solid #f4f2ee' : '2px solid transparent',
+            toggle: () => { const o = this.state.openInstr === x.id ? null : x.id; this.setState({ openInstr: o, lastInstr: o || this.state.lastInstr, instrPhoto: 0 }); this.startInstrRoll(); },
+            galCount: (x.photos || []).length, galCanAdd: (x.photos || []).length < 3,
+            galList: (x.photos || []).map((src, j) => ({ bg: 'url("' + src + '")', remove: () => this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photos: (y.photos || []).filter((_, k) => k !== j) } : y)) })),
+            onGal: async (ev) => { const files = [...(ev.target.files || [])]; ev.target.value = ''; const have = (x.photos || []).length; const urls = (await Promise.all(files.slice(0, Math.max(0, 3 - have)).map(f => this.readPhoto(f, 1200)))).filter(Boolean); this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photos: [...(y.photos || []), ...urls].slice(0, 3) } : y)); } };
+        };
+        const fe = list.find(x => x.featured);
+        const sel = list.find(x => x.id === (this.state.openInstr || this.state.lastInstr)) || {};
+        const selPhotos = (sel.photos && sel.photos.length) ? sel.photos : (sel.photo ? [sel.photo] : []);
+        const pi = selPhotos.length ? (this.state.instrPhoto || 0) % selPhotos.length : 0;
+        return { featuredList: fe ? [mk(fe)] : [], teachers: list.filter(x => x !== fe).map(mk),
+          instrView: !inst, instrEdit: inst, instrRows: this.state.openInstr ? '1fr' : '0fr', instrPanelOpacity: this.state.openInstr ? 1 : 0,
+          panelRadius: mob ? '24px' : '240px 240px 24px 24px',
+          openName: sel.name || '', openBio: sel.bio || '', openRoles: (sel.roles || '').split(',').map(r => r.trim()).filter(Boolean).map(label => ({ label })),
+          openPhotos: selPhotos.map((src, j) => ({ n: j + 1, bg: 'url("' + src + '")', opacity: j === pi ? 1 : 0, dotW: j === pi ? '28px' : '12px', dotBg: j === pi ? '#f4f2ee' : '#444', go: () => { this.setState({ instrPhoto: j }); this.startInstrRoll(); } })),
+          openSlots: selPhotos.length ? [] : [1, 2, 3].map(n => { const on = n - 1 === (this.state.instrPhoto || 0) % 3; return { id: 'instr-drop-' + (sel.id || 'x') + '-' + n, ph: (sel.name || 'Instructor') + ' photo ' + n, opacity: on ? 1 : 0, pe: on ? 'auto' : 'none', n, go: () => { this.setState({ instrPhoto: n - 1 }); this.startInstrRoll(); }, dotW: on ? '28px' : '12px', dotBg: on ? '#f4f2ee' : '#444' }; }),
+          openMulti: selPhotos.length !== 1,
+          openDots: selPhotos.length ? selPhotos.map((src, j) => ({ n: j + 1, dotW: j === pi ? '28px' : '12px', dotBg: j === pi ? '#f4f2ee' : '#444', go: () => { this.setState({ instrPhoto: j }); this.startInstrRoll(); } })) : [1, 2, 3].map(n => { const on = n - 1 === (this.state.instrPhoto || 0) % 3; return { n, dotW: on ? '28px' : '12px', dotBg: on ? '#f4f2ee' : '#444', go: () => { this.setState({ instrPhoto: n - 1 }); this.startInstrRoll(); } }; }),
+          closeInstr: () => this.setState({ openInstr: null }),
+          pillRef: this.pillRef, pillPrev: () => this._pills && this._pills.scrollBy({ left: -320, behavior: 'smooth' }), pillNext: () => this._pills && this._pills.scrollBy({ left: 320, behavior: 'smooth' }),
+          addInstr: () => this.setInstrs(a => [...a, { id: 'i' + Date.now().toString(36), name: 'New instructor', roles: '', title: '', bio: '', photo: '', featured: false }]) };
+      })(),
+      isMain: !['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery'].includes(page), isKids: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery'].includes(page), isKidPrices: page === 'kidprices', isKidTerms: page === 'kidterms', isKidsHome: page === 'kids', isKidCourse: page === 'kidcourse', kd,
       navBgDark: (scrolled || page !== 'main') ? 'rgba(10,10,10,.92)' : 'transparent',
       navBgLight: scrolled ? 'rgba(255,255,255,.9)' : 'rgba(255,255,255,0)',
       slides: mkSlides, kidSlides: mkSlides,
       slideLabel: `0${idx + 1} / 0${this.N}`,
       prev: () => this.setIdx(idx - 1), next: () => this.setIdx(idx + 1),
-      goTop: (page === 'kids' || page === 'kidcourse') ? nav('kids') : nav('main'),
-      goKCourses: nav('kids', 'kcourses'), goKBook: nav('kids', 'kbook'), goKContact: this.go('kcontact'),
+      goTop: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery'].includes(page) ? nav('kids') : nav('main'),
+      goKCourses: nav('kids', 'kcourses'), goKBook: nav('kids', 'kbook'), goKContact: this.go('kcontact'), goKPrices: nav('kidprices'), goKTerms: nav('kidterms'),
+      priceCols: mob ? 'minmax(0,1fr)' : 'minmax(0,1fr) auto auto',
+      kidPrices: [
+        { name: 'Single class', desc: 'One Kids Pole Fitness or Kids Aerial Hoop class.', price: '£—' },
+        { name: '4-class pack', desc: 'Four classes to use within the term.', price: '£—' },
+        { name: 'Term booking', desc: 'One class a week for the full school term.', price: '£—' },
+        { name: 'Sibling discount', desc: 'Reduced rate for a second child booked for the same term.', price: '£—' }
+      ].map((p, i) => ({ ...p, grad: grads[i % 3] })),
+      kidTerms: [
+        { t: 'Age requirements', d: 'Classes are open to children from School Year 2 up to 16 years old.' },
+        { t: 'Bookings & payment', d: 'All classes must be booked and paid for in advance through our booking system.' },
+        { t: 'Cancellations', d: 'Please let us know as early as possible if your child cannot attend. Add your cancellation notice period and refund policy here.' },
+        { t: 'Health & safety', d: 'Parents must tell us about any medical conditions or injuries before the first class. Instructors may adapt or pause activity for safety.' },
+        { t: 'What to wear', d: 'Fitted shorts and a vest or t-shirt, bare feet, no jewellery, and long hair tied back. Skin contact is needed for grip on the pole.' },
+        { t: 'Drop-off & collection', d: 'A parent or guardian must drop off and collect their child at the studio at the start and end of each class.' },
+        { t: 'Photos & video', d: 'We may take photos or videos in class for our social media. Let us know if you would prefer your child not to be included.' }
+      ].map((t, i) => ({ ...t, no: String(i + 1).padStart(2, '0') })),
       toKids: this.switchTo('kids'), toMain: this.switchTo('main'),
       courses, kidCourses,
       courseChips: courses.map((c, i) => ({ name: c.name, pick: () => this.setState({ course: i }), bg: i === course ? '#0a0a0a' : 'transparent', fg: i === course ? '#f4f2ee' : '#0a0a0a' })),
