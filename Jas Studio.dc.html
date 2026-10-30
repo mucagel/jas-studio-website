@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="ext-resource-dependency" content="assets/hero-team-bw-3.jpg" data-resource-id="heroTeam">
 <meta name="ext-resource-dependency" content="assets/hero-team-mobile.jpg" data-resource-id="heroTeamM">
+<meta name="ext-resource-dependency" content="assets/instructor-holly.jpg" data-resource-id="instrHolly">
+<meta name="ext-resource-dependency" content="assets/class-foundations.jpg" data-resource-id="classFoundations">
+<meta name="ext-resource-dependency" content="assets/instructor-holly-2.jpg" data-resource-id="instrHolly2">
+<meta name="ext-resource-dependency" content="assets/instructor-holly-3.jpg" data-resource-id="instrHolly3">
+<meta name="ext-resource-dependency" content="assets/instructor-holly-4.jpg" data-resource-id="instrHolly4">
 <template id="__bundler_thumbnail" data-bg-color="#0a0a0a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0a0a0a"/><text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="34" fill="#f4f2ee">JS</text></svg></template>
 <script src="./support.js"></script>
 </head>
@@ -38,7 +43,7 @@ input,select,textarea{font-family:inherit}
     <a href="#top" onClick="{{ goTop }}" style="display:block;width:{{ logoSize }};height:{{ logoSize }};flex-shrink:0"><img src="assets/logo-square.png" alt="Jas' Studio — Pole &amp; Aerial Arts" style="width:100%;height:100%;display:block;object-fit:contain"></a>
     <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
     <nav style="display:flex;align-items:center;gap:clamp(14px,2.2vw,34px);flex-wrap:wrap;justify-content:flex-end">
-      <a href="#about" onClick="{{ goAbout }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">About us</a>
+      <a href="#about" onClick="{{ goAbout }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Our Story</a>
       <div onMouseEnter="{{ openCourses }}" onMouseLeave="{{ closeMenu }}" style="position:relative;display:flex;align-items:center;padding:8px 0;line-height:1">
         <a href="#courses" onClick="{{ goCourses }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Classes ▾</a>
         <sc-if value="{{ coursesOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:100%;left:-18px;padding-top:14px;min-width:220px"><div style="background:#0a0a0a;border:1px solid #262626;padding:8px;display:flex;flex-direction:column"><a href="#course-pole" onClick="{{ goPole }}" style="display:flex;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Pole</a><a href="#course-hoop" onClick="{{ goHoop }}" style="display:flex;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Aerial Hoop</a><a href="#course-heels" onClick="{{ goHeels }}" style="display:flex;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Heels</a><a href="#courses" onClick="{{ goCourses }}" style="display:flex;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">All classes</a></div></div></sc-if>
@@ -62,7 +67,7 @@ input,select,textarea{font-family:inherit}
 
   <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeMobile }}" style="position:fixed;inset:0;z-index:45;background:#0a0a0a;padding:120px 24px 40px;overflow-y:auto;display:flex;flex-direction:column">
-      <a href="#about" onClick="{{ goAbout }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">About us</a>
+      <a href="#about" onClick="{{ goAbout }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Our Story</a>
       <a href="#courses" onClick="{{ goCourses }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Classes</a>
       <div style="display:flex;gap:20px;flex-wrap:wrap;padding:0 0 6px"><a href="#course-pole" onClick="{{ goPole }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:8px 0;color:#a9a6a0">Pole</a><a href="#course-hoop" onClick="{{ goHoop }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:8px 0;color:#a9a6a0">Aerial Hoop</a><a href="#course-heels" onClick="{{ goHeels }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:8px 0;color:#a9a6a0">Heels</a></div>
       <a href="#teachers" onClick="{{ goTeachers }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Instructors</a>
@@ -199,15 +204,31 @@ input,select,textarea{font-family:inherit}
       </div>
       <a href="#book" onClick="{{ goBook }}" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #f4f2ee;padding-bottom:6px">Book a class →</a>
     </div>
-    <div style="display:flex;flex-direction:column">
-      <sc-for list="{{ courses }}" as="c" hint-placeholder-count="5">
-        <div id="course-{{ c.key }}" onClick="{{ c.open }}" style="display:grid;grid-template-columns:{{ courseCols }};gap:{{ rowGap }};align-items:baseline;padding:30px 0;border-top:1px solid #222;cursor:pointer" style-hover="background:#111">
-          <span style="font-size:12px;letter-spacing:.2em;color:#6f6c68;font-variant-numeric:tabular-nums">{{ c.no }}</span>
-          <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;letter-spacing:.02em">{{ c.name }}</h3>
-          <p style="margin:0;font-size:15px;line-height:1.6;color:#a9a6a0;text-wrap:pretty;grid-column:{{ col2 }}">{{ c.desc }}</p>
-          <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#f4f2ee;border:1px solid #333;padding:7px 12px;border-radius:999px;white-space:nowrap;justify-self:start;grid-column:{{ col2 }}">{{ c.level }}</span>
-          <span style="font-size:18px;color:#f4f2ee;display:{{ arrowDisplay }}">→</span>
-        </div>
+    <div style="display:grid;grid-template-columns:{{ classCardCols }};gap:clamp(16px,2vw,24px)">
+      <sc-for list="{{ courses }}" as="c" hint-placeholder-count="4">
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><article id="course-{{ c.key }}" onClick="{{ c.open }}" style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#111;cursor:pointer" style-hover="transform:translateY(-4px)">
+          <div style="position:absolute;inset:0;filter:grayscale(1)"><image-slot id="class-thumb-{{ c.key }}" src="{{ c.thumb }}" shape="rect" placeholder="{{ c.name }} photo"></image-slot></div>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,0) 30%,rgba(10,10,10,.25) 50%,rgba(10,10,10,.92) 100%)"></div>
+          <span style="position:absolute;top:16px;left:16px;font-size:8px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#0a0a0a;background:#f4f2ee;padding:6px 10px;border-radius:999px;pointer-events:none">{{ c.level }}</span>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:10px;pointer-events:none">
+            <span style="font-size:11px;letter-spacing:.24em;color:#bdbab4;font-variant-numeric:tabular-nums">{{ c.no }}</span>
+            <h3 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(26px,3vw,40px);line-height:1;text-transform:uppercase;letter-spacing:.01em;color:#fff">{{ c.name }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:#d6d3cd;max-width:44ch;text-wrap:pretty">{{ c.desc }}</p>
+            <span style="margin-top:8px;align-self:flex-start;pointer-events:auto;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:14px 22px;border-radius:999px;background:#f4f2ee;color:#0a0a0a;display:flex;align-items:center;gap:10px">View class <span style="font-size:15px">→</span></span>
+          </div>
+        </article></sc-if>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><article id="course-{{ c.key }}" onClick="{{ c.open }}" style="display:grid;grid-template-columns:minmax(160px,240px) minmax(0,1fr);gap:clamp(20px,2.4vw,32px);align-items:center;padding:16px;border:1px solid #222;cursor:pointer;transition:border-color .3s" style-hover="border-color:#555">
+          <div style="position:relative;aspect-ratio:1/1;overflow:hidden;background:#111;filter:grayscale(1)"><image-slot id="class-thumb-{{ c.key }}" src="{{ c.thumb }}" shape="rect" placeholder="{{ c.name }} photo"></image-slot></div>
+          <div style="display:flex;flex-direction:column;gap:12px;min-width:0;padding-right:8px">
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <span style="font-size:11px;letter-spacing:.24em;color:#6f6c68;font-variant-numeric:tabular-nums">{{ c.no }}</span>
+              <span style="font-size:7px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#0a0a0a;background:#f4f2ee;padding:4px 8px;border-radius:999px">{{ c.level }}</span>
+            </div>
+            <h3 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(24px,2.4vw,34px);line-height:1;text-transform:uppercase;letter-spacing:.01em;color:#f4f2ee">{{ c.name }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#a9a6a0;text-wrap:pretty">{{ c.desc }}</p>
+            <span style="margin-top:6px;align-self:flex-start;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:13px 20px;border-radius:999px;border:1px solid #f4f2ee;color:#f4f2ee;display:flex;align-items:center;gap:10px">View class <span style="font-size:15px">→</span></span>
+          </div>
+        </article></sc-if>
       </sc-for>
     </div>
   </section>
@@ -331,17 +352,22 @@ input,select,textarea{font-family:inherit}
     <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Instructors</p>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:56px">
       <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Meet the team</h2>
-      <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-          <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#0a0a0a;background:#f4f2ee;padding:6px 10px;border-radius:999px">Instructor mode</span>
-          <button onClick="{{ addInstr }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:14px 20px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer">+ Add instructor</button>
-        </div>
-      </sc-if>
     </div>
     <sc-for list="{{ featuredList }}" as="f" hint-placeholder-count="1">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding-bottom:clamp(56px,7vw,96px);margin-bottom:clamp(56px,7vw,96px);border-bottom:1px solid #222">
-        <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}"><div><sc-if value="{{ f.hasPhoto }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ f.name }}" style="width:100%;aspect-ratio:4/5;background:#111 center/cover no-repeat;background-image:{{ f.bg }};filter:grayscale(1)"></div></sc-if>
-          <sc-if value="{{ f.noPhoto }}" hint-placeholder-val="{{ true }}"><div style="aspect-ratio:4/5;filter:grayscale(1)"><image-slot id="{{ f.slotId }}" shape="rect" placeholder="{{ f.name }} photo"></image-slot></div></sc-if></div></sc-if>
+        <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:14px">
+          <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#111;filter:grayscale(1)">
+            <sc-for list="{{ f.slides }}" as="p" hint-placeholder-count="1">
+              <div style="position:absolute;inset:0;opacity:{{ p.opacity }};pointer-events:{{ p.pe }};transition:opacity 1.2s ease">
+                <sc-if value="{{ p.isImg }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ f.name }}" style="position:absolute;inset:0;background:#111 center/cover no-repeat;background-image:{{ p.bg }}"></div></sc-if>
+                <sc-if value="{{ p.isSlot }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ f.slotId }}" shape="rect" placeholder="{{ f.name }} photo"></image-slot></sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ f.multi }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ f.dots }}" as="d" hint-placeholder-count="0"><button onClick="{{ d.go }}" aria-label="Photo {{ d.n }}" style="width:{{ d.w }};height:2px;border:0;padding:0;cursor:pointer;background:{{ d.bg }};transition:all .4s"></button></sc-for>
+          </div></sc-if>
+        </div></sc-if>
         <sc-if value="{{ f.edit }}" hint-placeholder-val="{{ false }}"><label style="display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/5;border:1px dashed #555;background:#111 center/cover no-repeat;background-image:{{ f.bg }};cursor:pointer;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a6a0;filter:grayscale(1)" style-hover="border-color:#f4f2ee"><span style="background:rgba(10,10,10,.75);padding:10px 14px">{{ f.photoLabel }}</span><input type="file" accept="image/*" onChange="{{ f.onPhoto }}" style="display:none"></label></sc-if>
         <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex;flex-direction:column;gap:20px">
@@ -360,8 +386,19 @@ input,select,textarea{font-family:inherit}
             <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Name<input type="text" value="{{ f.name }}" onChange="{{ f.onName }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Roles (separate with commas)<input type="text" value="{{ f.roles }}" onChange="{{ f.onRoles }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">About<textarea value="{{ f.bio }}" onChange="{{ f.onBio }}" rows="4" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none;resize:vertical"></textarea></label>
+            <p style="margin:6px 0 0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.75">Slideshow photos ({{ f.galCount }} / 10)</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <button onClick="{{ f.unfeature }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #444;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer">Move to team</button>
+              <sc-for list="{{ f.galList }}" as="g" hint-placeholder-count="0">
+                <div style="position:relative;width:72px;height:90px">
+                  <div role="img" aria-label="Photo" style="width:100%;height:100%;background:#888 center/cover no-repeat;background-image:{{ g.bg }}"></div>
+                  <button onClick="{{ g.remove }}" aria-label="Remove photo" style="position:absolute;top:2px;right:2px;width:24px;height:24px;border:0;border-radius:999px;background:rgba(10,10,10,.8);color:#f4f2ee;cursor:pointer;font-size:11px">✕</button>
+                </div>
+              </sc-for>
+              <sc-if value="{{ f.galCanAdd10 }}" hint-placeholder-val="{{ true }}">
+                <label style="width:72px;height:90px;border:1px dashed currentColor;opacity:.6;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px">+<input type="file" accept="image/*" multiple="multiple" onChange="{{ f.onGal10 }}" style="display:none"></label>
+              </sc-if>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
               <button onClick="{{ f.remove }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #6b2b2b;border-radius:999px;background:transparent;color:#f0a0a0;cursor:pointer">Remove instructor</button>
             </div>
           </div>
@@ -374,9 +411,9 @@ input,select,textarea{font-family:inherit}
         <p style="margin:0;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#a9a6a0">The team</p>
         <button onClick="{{ pillNext }}" aria-label="Scroll right" style="width:56px;height:44px;border:0;background:transparent;color:#f4f2ee;cursor:pointer;font-size:22px" style-hover="opacity:.6">⟶</button>
       </div>
-      <div ref="{{ pillRef }}" style="display:flex;gap:clamp(14px,2vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:8px">
+      <div ref="{{ pillRef }}" onMouseEnter="{{ pillPause }}" onMouseLeave="{{ pillResume }}" onTouchStart="{{ pillPause }}" style="display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px 0">
         <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="5">
-          <div role="button" tabindex="0" onClick="{{ t.toggle }}" aria-expanded="{{ t.isOpen }}" aria-label="{{ t.name }}" style="flex:0 0 clamp(180px,22vw,260px);aspect-ratio:1/1.95;border-radius:999px;overflow:hidden;position:relative;border:{{ t.pillBorder }};cursor:pointer;scroll-snap-align:start;background:#1a1a1a;filter:grayscale(1);transition:transform .4s ease,border-color .3s" style-hover="transform:translateY(-6px)">
+          <div role="button" tabindex="0" onClick="{{ t.toggle }}" aria-expanded="{{ t.isOpen }}" aria-label="{{ t.name }}" style="flex:0 0 {{ pillW }};aspect-ratio:1/1.95;border-radius:999px;overflow:hidden;position:relative;border:{{ t.pillBorder }};cursor:pointer;scroll-snap-align:start;background:#1a1a1a;filter:grayscale(1);transition:transform .4s ease,border-color .3s" style-hover="transform:translateY(-6px)">
             <sc-if value="{{ t.noPhoto }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0"><image-slot id="{{ t.slotId }}" shape="rect" placeholder="{{ t.name }} photo"></image-slot></div></sc-if>
             <sc-if value="{{ t.hasPhoto }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#1a1a1a center/cover no-repeat;background-image:{{ t.bg }}"></div></sc-if>
             <span style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,0,0,.45),rgba(0,0,0,.1) 70%)"></span>
@@ -415,6 +452,7 @@ input,select,textarea{font-family:inherit}
       </div>
     </sc-if>
     <sc-if value="{{ instrEdit }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:clamp(48px,6vw,80px) 0 20px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.7">Edit instructors — changes show in the pills above</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px">
         <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="0">
           <div style="display:flex;flex-direction:column;gap:12px;border:1px solid #222;padding:16px">
@@ -435,11 +473,11 @@ input,select,textarea{font-family:inherit}
               </sc-if>
             </div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-              <button onClick="{{ t.feature }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #444;border-radius:999px;background:transparent;color:#f4f2ee;cursor:pointer">Feature</button>
               <button onClick="{{ t.remove }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #6b2b2b;border-radius:999px;background:transparent;color:#f0a0a0;cursor:pointer">Remove</button>
             </div>
           </div>
         </sc-for>
+        <button onClick="{{ addInstr }}" style="min-height:240px;border:2px dashed #444;border-radius:0;background:transparent;color:#a9a6a0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700" style-hover="border-color:#f4f2ee;color:#f4f2ee"><span style="font-size:32px;font-weight:300;line-height:1">+</span>Add instructor</button>
       </div>
     </sc-if>
     <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
@@ -514,7 +552,6 @@ input,select,textarea{font-family:inherit}
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <button onClick="{{ cd.book }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book {{ cd.name }}</button>
-        <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:1px solid #0a0a0a;border-radius:999px;background:transparent;color:#0a0a0a;cursor:pointer" style-hover="background:#0a0a0a;color:#f4f2ee">Book your class</button>
       </div>
     </div>
   </section>
@@ -599,7 +636,6 @@ input,select,textarea{font-family:inherit}
     <p style="margin:24px 0 0;font-size:17px;line-height:1.7;color:#a9a6a0;max-width:56ch">Choose the option that suits you. You'll pick your classes and pay securely on the next step.</p>
     <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:28px">
-        <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#0a0a0a;background:#f4f2ee;padding:6px 10px;border-radius:999px">Instructor mode</span>
         <button onClick="{{ addPrice }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:14px 20px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer">+ Add price</button>
         <span style="font-size:13px;color:#6f6c68">Changes save automatically.</span>
       </div>
@@ -663,13 +699,28 @@ input,select,textarea{font-family:inherit}
   <section id="terms" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:900px;margin:0 auto">
     <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Terms &amp; Conditions</p>
     <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,5.6vw,76px);line-height:1.02;text-wrap:balance">Before you <i>book</i></h1>
-    <div style="display:flex;flex-direction:column;margin-top:48px">
-      <sc-for list="{{ adultTerms }}" as="t" hint-placeholder-count="6">
-        <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid #222">
-          <span style="font-size:12px;letter-spacing:.2em;color:#6f6c68">{{ t.no }}</span>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:18px;text-transform:uppercase">{{ t.t }}</h3>
-            <p style="margin:0;font-size:15px;line-height:1.7;color:#a9a6a0;text-wrap:pretty">{{ t.d }}</p>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-top:48px">
+      <sc-for list="{{ termDocs }}" as="d" hint-placeholder-count="2">
+        <div style="border:1px solid #2a2a2a">
+          <button onClick="{{ d.toggle }}" aria-expanded="{{ d.exp }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(20px,3vw,28px);border:0;background:transparent;color:#f4f2ee;cursor:pointer;text-align:left;font-family:'Archivo',sans-serif">
+            <span style="display:flex;flex-direction:column;gap:6px"><span style="font-weight:600;font-stretch:115%;font-size:clamp(18px,2vw,22px);text-transform:uppercase;letter-spacing:.02em">{{ d.title }}</span><span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8d8a85">{{ d.sub }}</span></span>
+            <span style="font-size:20px;transition:transform .4s;transform:{{ d.rot }}">▾</span>
+          </button>
+          <div style="display:grid;grid-template-rows:{{ d.rows }};transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)">
+            <div style="overflow:hidden;min-height:0"><div style="padding:0 clamp(20px,3vw,28px) clamp(12px,2vw,20px)">
+            <sc-for list="{{ d.secs }}" as="s" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid #222">
+                <span style="font-size:12px;letter-spacing:.2em;font-weight:700;color:#6f6c68">{{ s.no }}</span>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:18px;text-transform:uppercase;color:#f4f2ee">{{ s.t }}</h3>
+                  <sc-for list="{{ s.blocks }}" as="b" hint-placeholder-count="1">
+                    <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:15px;line-height:1.7;color:#a9a6a0;text-wrap:pretty">{{ b.t }}</p></sc-if>
+                    <sc-if value="{{ b.ul }}" hint-placeholder-val="{{ true }}"><ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.65;color:#a9a6a0"><sc-for list="{{ b.items }}" as="li" hint-placeholder-count="2"><li>{{ li.t }}</li></sc-for></ul></sc-if>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+            </div></div>
           </div>
         </div>
       </sc-for>
@@ -712,9 +763,12 @@ input,select,textarea{font-family:inherit}
     <a href="#ktop" onClick="{{ goTop }}" style="display:block;width:{{ kLogoSize }};height:{{ kLogoSize }};flex-shrink:0"><img src="assets/logo-kids-square.png" alt="Jas' Studio Kids" style="width:100%;height:100%;display:block;object-fit:contain"></a>
     <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
     <nav style="display:flex;align-items:center;gap:clamp(14px,2.4vw,36px);flex-wrap:wrap;justify-content:flex-end">
+      <a href="#kabout" onClick="{{ goKAbout }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Our Story</a>
       <a href="#kcourses" onClick="{{ goKCourses }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Classes</a>
+      <a href="#kteachers" onClick="{{ goKInstructors }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Instructors</a>
       <a href="#kprices" onClick="{{ goKPrices }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Prices</a>
       <a href="#kterms" onClick="{{ goKTerms }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Terms &amp; Conditions</a>
+      <a href="#kcommunity" onClick="{{ goKCommunity }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Community</a>
       <a href="#kevents" onClick="{{ goKEvents }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Events</a>
       <a href="#kcontact" onClick="{{ goKContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Contact</a>
       <button onClick="{{ goKBook }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff;border:0;border-radius:999px;padding:11px 18px;cursor:pointer;white-space:nowrap;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2)" style-hover="filter:brightness(1.05)">Book Now</button>
@@ -730,15 +784,32 @@ input,select,textarea{font-family:inherit}
 
   <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeMobile }}" style="position:fixed;inset:0;z-index:45;background:#fff;padding:130px 24px 40px;overflow-y:auto;display:flex;flex-direction:column">
+      <a href="#kabout" onClick="{{ goKAbout }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Our Story</a>
       <a href="#kcourses" onClick="{{ goKCourses }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Classes</a>
+      <a href="#kteachers" onClick="{{ goKInstructors }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Instructors</a>
       <a href="#kprices" onClick="{{ goKPrices }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Prices</a>
       <a href="#kterms" onClick="{{ goKTerms }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Terms &amp; Conditions</a>
+      <a href="#kcommunity" onClick="{{ goKCommunity }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Community</a>
       <a href="#kevents" onClick="{{ goKEvents }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Events</a>
       <a href="#kcontact" onClick="{{ goKContact }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Contact</a>
       <button onClick="{{ goKBook }}" style="margin-top:28px;align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff;border:0;border-radius:999px;padding:16px 24px;cursor:pointer;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2)">Book Now</button>
     </div>
   </sc-if>
 
+
+  <sc-if value="{{ kidPopMounted }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;z-index:70;right:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,40px);left:{{ popLeft }};max-width:420px;margin-left:auto;opacity:{{ popOpacity }};transform:{{ popTransform }};transition:opacity .5s ease,transform .6s cubic-bezier(.2,1.3,.4,1);pointer-events:{{ popPointer }}">
+      <div style="padding:2px;border-radius:30px;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);box-shadow:0 24px 70px rgba(150,120,200,.35)">
+        <div style="background:#fff;border-radius:28px;color:#2b2838;padding:28px;display:flex;flex-direction:column;gap:16px;position:relative">
+          <button onClick="{{ closePop }}" aria-label="Close" style="position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:transparent;color:#2b2838;font-size:16px;cursor:pointer;border-radius:999px" style-hover="background:#f6f3fb">✕</button>
+          <p style="margin:0;font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Jas' Studio Kids</p>
+          <h3 style="margin:0;padding-right:40px;font-weight:700;font-stretch:115%;font-size:32px;line-height:1.05;text-transform:uppercase;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Book now</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5d5970">Choose a Kids Pole Fitness or Kids Aerial Hoop class from the timetable and reserve your child's spot.</p>
+          <button onClick="{{ kidPopBook }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:16px 28px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;cursor:pointer" style-hover="filter:brightness(1.05)">Book your class →</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
   <sc-if value="{{ isKidsHome }}" hint-placeholder-val="{{ false }}">
   <section id="ktop" onTouchStart="{{ touchStart }}" onTouchEnd="{{ touchEnd }}" style="position:relative;height:{{ heroH }};min-height:{{ heroMinH }};overflow:hidden;background:#f6f3fb">
     <sc-for list="{{ kidSlides }}" as="s" hint-placeholder-count="4">
@@ -749,11 +820,9 @@ input,select,textarea{font-family:inherit}
     </sc-for>
     <div style="position:absolute;left:0;right:0;top:0;height:30%;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);-webkit-mask-image:linear-gradient(#000 20%,transparent);mask-image:linear-gradient(#000 20%,transparent);background:linear-gradient(rgba(255,255,255,.8),rgba(255,255,255,0));pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;height:42%;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);-webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%);background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.94));pointer-events:none"></div>
+    <h1 style="position:absolute;left:50%;bottom:clamp(78px,10vh,110px);transform:translateX(-50%);margin:0;width:min(620px,80vw);pointer-events:none;filter:drop-shadow(0 4px 20px rgba(255,255,255,.8))"><img src="assets/logo-kids-wide-muted.png" alt="Jas' Studio Kids — Pole &amp; Aerial Arts" style="display:block;width:100%;height:auto"></h1>
     <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(32px,6vh,64px);display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;pointer-events:none">
-      <div style="max-width:760px">
-        <p style="margin:0 0 18px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">School Year 2 – 16 years · Pole &amp; Aerial</p>
-        <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6.4vw,92px);line-height:.98;text-transform:uppercase;letter-spacing:-.01em;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Climb. Spin.<br>Fly.</h1>
-      </div>
+      <span></span>
       <div style="display:{{ heroCtrlDisplay }};align-items:center;gap:18px;pointer-events:auto">
         <div style="display:flex;gap:8px">
           <sc-for list="{{ kidSlides }}" as="s" hint-placeholder-count="4">
@@ -768,8 +837,42 @@ input,select,textarea{font-family:inherit}
     </div>
   </section>
 
+<section id="kabout" style="padding:clamp(80px,12vw,160px) clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,4vw,56px) clamp(40px,6vw,96px);align-items:start;max-width:1440px;margin:0 auto">
+    <div style="grid-column:1/-1">
+      <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#7a6f9a">01 — Our Story</p>
+      <h2 style="margin:0;font-weight:700;font-stretch:112%;text-transform:uppercase;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Our Story</h2>
+    </div>
+    <div style="position:{{ storySticky }};top:120px">
+      <div style="position:relative;aspect-ratio:4/5;filter:none;overflow:hidden;background:#f6f3fb">
+        <sc-for list="{{ kidStorySlides }}" as="s" hint-placeholder-count="1">
+          <div style="position:absolute;inset:0;opacity:{{ s.opacity }};transition:opacity 1.2s ease;pointer-events:{{ s.pe }}">
+            <image-slot id="{{ s.id }}" shape="rect" placeholder="{{ s.ph }}"></image-slot>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:8px;margin-top:16px">
+          <sc-for list="{{ kidStorySlides }}" as="s" hint-placeholder-count="5">
+            <button onClick="{{ s.go }}" aria-label="Show story photo {{ s.n }}" style="width:{{ s.dotW }};height:2px;border:0;padding:0;cursor:pointer;background:{{ s.dotBg }};transition:all .4s"></button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:62ch">
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#5d5970;text-wrap:pretty">Jas’ Studio has been welcoming students since 2016, but in February 2026, an exciting new chapter began with the launch of Jas’ Studio Kids!</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#5d5970;text-wrap:pretty">After years of providing Pole Fitness and Aerial Arts for adults, it was time to open the doors to a younger generation.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#5d5970;text-wrap:pretty">Jas’ Studio Kids was created to give children their own space to discover the exciting world of pole fitness and aerial hoop in a fun, welcoming and supportive environment.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#5d5970;text-wrap:pretty">Our classes are designed to help children develop strength, coordination, flexibility and confidence, all while learning new skills, making friends and, most importantly, having fun!</p>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:4/5;margin:24px 0 0;border-radius:24px;overflow:hidden"><image-slot id="kids-about-2" shape="rect" placeholder="Kids class photo"></image-slot></div></sc-if>
+        <h3 style="margin:40px 0 0;font-weight:700;font-stretch:115%;font-size:clamp(20px,2vw,26px);line-height:1.2;text-transform:uppercase;letter-spacing:.02em;color:#2b2838">Little Beginnings, Big Possibilities</h3>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#5d5970;text-wrap:pretty">Although Jas’ Studio Kids is still in its early days, it shares the same values that have been at the heart of the studio since the beginning.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#5d5970;text-wrap:pretty">We believe every child deserves somewhere they can feel included, encouraged and proud of what they achieve.</p>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#5d5970;text-wrap:pretty">From their very first spin to mastering a new move, every little milestone is something worth celebrating.</p>
+    </div>
+  </section>
+
   <section id="kcourses" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto">
-    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Classes</p>
+    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">02 — Classes</p>
     <h2 style="margin:0 0 56px;font-weight:700;font-stretch:115%;font-size:clamp(32px,4vw,54px);line-height:1.05;text-transform:uppercase">Classes for young athletes</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
       <sc-for list="{{ kidCourses }}" as="c" hint-placeholder-count="2">
@@ -788,11 +891,55 @@ input,select,textarea{font-family:inherit}
     </div>
   </section>
 
+<section id="kcommunity" style="padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#7a6f9a">03 — Community</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;align-items:end;margin-bottom:56px">
+      <h2 style="margin:0;font-weight:700;font-stretch:112%;text-transform:uppercase;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Train together. Perform together.</h2>
+      <p style="margin:0;font-size:17px;line-height:1.7;color:#5d5970;max-width:48ch;text-wrap:pretty">Open training sessions, student showcases and workshops with guest instructors keep the studio connected beyond the weekly class.</p>
+    </div>
+    <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+        <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#0a0a0a;background:#b99cf0;padding:6px 10px;border-radius:999px">Instructor mode</span>
+        <sc-if value="{{ commCanAdd }}" hint-placeholder-val="{{ true }}">
+          <label style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:14px 20px;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;cursor:pointer">+ Add photos<input type="file" accept="image/*" multiple="multiple" onChange="{{ onCommAdd }}" style="display:none"></label>
+        </sc-if>
+        <span style="font-size:13px;color:#9a93b3">{{ commCount }} / 9 photos</span>
+      </div>
+    </sc-if>
+    <div ref="{{ commRef }}" onMouseDown="{{ commDown }}" onMouseMove="{{ commMove }}" onMouseUp="{{ commUp }}" onMouseLeave="{{ commUp }}" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:{{ commSnap }};scrollbar-width:none;cursor:{{ commCursor }};user-select:none;-webkit-user-select:none">
+      <sc-for list="{{ commList }}" as="c" hint-placeholder-count="3">
+        <div style="flex:0 0 {{ commItemW }};aspect-ratio:3/4;position:relative;scroll-snap-align:start;filter:none">
+          <sc-if value="{{ c.hasSrc }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="Community photo {{ c.n }}" style="position:absolute;inset:0;background:#f6f3fb center/cover no-repeat;background-image:{{ c.bg }};pointer-events:none"></div></sc-if>
+          <sc-if value="{{ c.isSlot }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0"><image-slot id="{{ c.slotId }}" shape="rect" placeholder="{{ c.ph }}"></image-slot></div></sc-if>
+          <sc-if value="{{ c.canEdit }}" hint-placeholder-val="{{ false }}"><button onClick="{{ c.remove }}" aria-label="Remove photo" style="position:absolute;top:8px;right:8px;width:36px;height:36px;border:0;border-radius:999px;background:rgba(255,255,255,.9);color:#2b2838;cursor:pointer;font-size:14px">✕</button></sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px">
+      <div style="display:flex;gap:8px">
+        <sc-for list="{{ commDots }}" as="d" hint-placeholder-count="1">
+          <button onClick="{{ d.go }}" aria-label="Go to photo group {{ d.n }}" style="width:{{ d.w }};height:2px;border:0;padding:0;cursor:pointer;background:{{ d.bg }};transition:all .4s"></button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:8px">
+          <button onClick="{{ commPrev }}" aria-label="Previous photos" style="width:48px;height:48px;border:1px solid #eee9f5;border-radius:999px;background:transparent;color:#2b2838;cursor:pointer;font-size:16px;opacity:{{ commPrevOp }}" style-hover="background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff">←</button>
+          <button onClick="{{ commNext }}" aria-label="Next photos" style="width:48px;height:48px;border:1px solid #eee9f5;border-radius:999px;background:transparent;color:#2b2838;cursor:pointer;font-size:16px;opacity:{{ commNextOp }}" style-hover="background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff">→</button>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:32px">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#2b2838;border:1px solid #eee9f5;padding:12px 18px;border-radius:999px" style-hover="background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;opacity:1">Instagram ↗</a>
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#2b2838;border:1px solid #eee9f5;padding:12px 18px;border-radius:999px" style-hover="background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;opacity:1">Facebook ↗</a>
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#2b2838;border:1px solid #eee9f5;padding:12px 18px;border-radius:999px" style-hover="background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;opacity:1">TikTok ↗</a>
+    </div>
+  </section>
+
   <section id="kbook" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);background:linear-gradient(120deg,#fde7f5,#efe7fd 50%,#e3f5fd)">
     <div style="max-width:1440px;margin:0 auto;background:#fff;border-radius:32px;padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:40px;box-shadow:0 20px 60px rgba(150,120,200,.15)">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
         <div>
-          <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Book Now</p>
+          <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">04 — Book Now</p>
           <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(30px,3.6vw,46px);line-height:1.05;text-transform:uppercase">Book your class</h2>
         </div>
         <p style="margin:0;font-size:16px;line-height:1.7;color:#5d5970;max-width:44ch">Pick a Kids Pole Fitness or Kids Aerial Hoop class from the timetable below to reserve a spot.</p>
@@ -866,6 +1013,154 @@ input,select,textarea{font-family:inherit}
       <button onClick="{{ goKBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:18px 36px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);color:#fff;cursor:pointer" style-hover="filter:brightness(1.05)">Book now</button>
     </div>
   </section>
+  </sc-if>
+
+
+
+  <sc-if value="{{ isKidInstructors }}" hint-placeholder-val="{{ false }}">
+  <section id="kteachers" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#7a6f9a">Instructors</p>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:56px">
+      <h2 style="margin:0;font-weight:700;font-stretch:112%;text-transform:uppercase;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Meet the team</h2>
+    </div>
+    <sc-for list="{{ featuredList }}" as="f" hint-placeholder-count="1">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding-bottom:clamp(56px,7vw,96px);margin-bottom:clamp(56px,7vw,96px);border-bottom:1px solid #eee9f5">
+        <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:14px">
+          <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#f6f3fb;filter:none">
+            <sc-for list="{{ f.slides }}" as="p" hint-placeholder-count="1">
+              <div style="position:absolute;inset:0;opacity:{{ p.opacity }};pointer-events:{{ p.pe }};transition:opacity 1.2s ease">
+                <sc-if value="{{ p.isImg }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ f.name }}" style="position:absolute;inset:0;background:#f6f3fb center/cover no-repeat;background-image:{{ p.bg }}"></div></sc-if>
+                <sc-if value="{{ p.isSlot }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ f.slotId }}" shape="rect" placeholder="{{ f.name }} photo"></image-slot></sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ f.multi }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ f.dots }}" as="d" hint-placeholder-count="0"><button onClick="{{ d.go }}" aria-label="Photo {{ d.n }}" style="width:{{ d.w }};height:2px;border:0;padding:0;cursor:pointer;background:{{ d.bg }};transition:all .4s"></button></sc-for>
+          </div></sc-if>
+        </div></sc-if>
+        <sc-if value="{{ f.edit }}" hint-placeholder-val="{{ false }}"><label style="display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/5;border:1px dashed #c9bfe3;background:#f6f3fb center/cover no-repeat;background-image:{{ f.bg }};cursor:pointer;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5d5970;filter:none" style-hover="border-color:#2b2838"><span style="background:rgba(255,255,255,.85);padding:10px 14px">{{ f.photoLabel }}</span><input type="file" accept="image/*" onChange="{{ f.onPhoto }}" style="display:none"></label></sc-if>
+        <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <p style="margin:0;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#7a6f9a">{{ f.title }}</p>
+            <h3 style="margin:0;font-weight:700;font-stretch:112%;text-transform:uppercase;font-size:clamp(56px,8vw,112px);line-height:.95">{{ f.name }}</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ f.roleList }}" as="r" hint-placeholder-count="2"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #eee9f5;padding:9px 14px;border-radius:999px">{{ r.label }}</span></sc-for>
+            </div>
+            <p style="margin:0;font-size:17px;line-height:1.75;color:#5d5970;max-width:48ch;text-wrap:pretty">{{ f.bio }}</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ f.edit }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#2b2838">Featured instructor</p>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a6f9a">Title<input type="text" value="{{ f.title }}" onChange="{{ f.onTitle }}" placeholder="e.g. Founder &amp; Head Instructor" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #eee9f5;background:#f6f3fb;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a6f9a">Name<input type="text" value="{{ f.name }}" onChange="{{ f.onName }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #eee9f5;background:#f6f3fb;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a6f9a">Roles (separate with commas)<input type="text" value="{{ f.roles }}" onChange="{{ f.onRoles }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #eee9f5;background:#f6f3fb;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a6f9a">About<textarea value="{{ f.bio }}" onChange="{{ f.onBio }}" rows="4" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #eee9f5;background:#f6f3fb;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none;resize:vertical"></textarea></label>
+            <p style="margin:6px 0 0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.75">Slideshow photos ({{ f.galCount }} / 10)</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <sc-for list="{{ f.galList }}" as="g" hint-placeholder-count="0">
+                <div style="position:relative;width:72px;height:90px">
+                  <div role="img" aria-label="Photo" style="width:100%;height:100%;background:#888 center/cover no-repeat;background-image:{{ g.bg }}"></div>
+                  <button onClick="{{ g.remove }}" aria-label="Remove photo" style="position:absolute;top:2px;right:2px;width:24px;height:24px;border:0;border-radius:999px;background:rgba(10,10,10,.8);color:#f4f2ee;cursor:pointer;font-size:11px">✕</button>
+                </div>
+              </sc-for>
+              <sc-if value="{{ f.galCanAdd10 }}" hint-placeholder-val="{{ true }}">
+                <label style="width:72px;height:90px;border:1px dashed currentColor;opacity:.6;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px">+<input type="file" accept="image/*" multiple="multiple" onChange="{{ f.onGal10 }}" style="display:none"></label>
+              </sc-if>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button onClick="{{ f.remove }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #f2b8d4;border-radius:999px;background:transparent;color:#c0397a;cursor:pointer">Remove instructor</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+    <sc-if value="{{ instrView }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px">
+        <button onClick="{{ pillPrev }}" aria-label="Scroll left" style="width:56px;height:44px;border:0;background:transparent;color:#2b2838;cursor:pointer;font-size:22px" style-hover="opacity:.6">⟵</button>
+        <p style="margin:0;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#5d5970">The team</p>
+        <button onClick="{{ pillNext }}" aria-label="Scroll right" style="width:56px;height:44px;border:0;background:transparent;color:#2b2838;cursor:pointer;font-size:22px" style-hover="opacity:.6">⟶</button>
+      </div>
+      <div ref="{{ pillRef }}" onMouseEnter="{{ pillPause }}" onMouseLeave="{{ pillResume }}" onTouchStart="{{ pillPause }}" style="display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px 0">
+        <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="5">
+          <div role="button" tabindex="0" onClick="{{ t.toggle }}" aria-expanded="{{ t.isOpen }}" aria-label="{{ t.name }}" style="flex:0 0 {{ pillW }};aspect-ratio:1/1.95;border-radius:999px;overflow:hidden;position:relative;border:{{ t.pillBorder }};cursor:pointer;scroll-snap-align:start;background:#f6f3fb;filter:none;transition:transform .4s ease,border-color .3s" style-hover="transform:translateY(-6px)">
+            <sc-if value="{{ t.noPhoto }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0"><image-slot id="{{ t.slotId }}" shape="rect" placeholder="{{ t.name }} photo"></image-slot></div></sc-if>
+            <sc-if value="{{ t.hasPhoto }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#f6f3fb center/cover no-repeat;background-image:{{ t.bg }}"></div></sc-if>
+            <span style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,0,0,.45),rgba(0,0,0,.1) 70%)"></span>
+            <span style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);pointer-events:none;text-align:center;font-family:'Archivo',sans-serif;font-weight:500;font-stretch:110%;font-size:clamp(18px,1.8vw,24px);letter-spacing:.16em;text-transform:uppercase;color:#fff">{{ t.name }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-rows:{{ instrRows }};transition:grid-template-rows .6s cubic-bezier(.2,.8,.2,1)">
+        <div style="overflow:hidden;min-height:0">
+          <div style="padding-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,4vw,64px);align-items:center;opacity:{{ instrPanelOpacity }};transition:opacity .5s ease .1s">
+            <div style="position:relative;aspect-ratio:4/5;border-radius:{{ panelRadius }};overflow:hidden;background:#f6f3fb;filter:none">
+              <sc-for list="{{ openPhotos }}" as="p" hint-placeholder-count="0">
+                <div role="img" aria-label="{{ openName }}" style="position:absolute;inset:0;background:#f6f3fb center/cover no-repeat;background-image:{{ p.bg }};opacity:{{ p.opacity }};transition:opacity 1.1s ease"></div>
+              </sc-for>
+              <sc-for list="{{ openSlots }}" as="p" hint-placeholder-count="0">
+                <div style="position:absolute;inset:0;opacity:{{ p.opacity }};pointer-events:{{ p.pe }};transition:opacity 1.1s ease"><image-slot id="{{ p.id }}" shape="rect" placeholder="{{ p.ph }}"></image-slot></div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <h3 style="margin:0;font-weight:700;font-stretch:112%;text-transform:uppercase;font-size:clamp(44px,6vw,88px);line-height:.95">{{ openName }}</h3>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ openRoles }}" as="r" hint-placeholder-count="1"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #eee9f5;padding:9px 14px;border-radius:999px">{{ r.label }}</span></sc-for>
+              </div>
+              <p style="margin:0;font-size:17px;line-height:1.75;color:#5d5970;max-width:52ch;white-space:pre-line;text-wrap:pretty">{{ openBio }}</p>
+              <sc-if value="{{ openMulti }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:8px">
+                  <sc-for list="{{ openDots }}" as="p" hint-placeholder-count="0">
+                    <button onClick="{{ p.go }}" aria-label="Photo {{ p.n }}" style="width:{{ p.dotW }};height:2px;border:0;padding:0;cursor:pointer;background:{{ p.dotBg }};transition:all .4s"></button>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <button onClick="{{ closeInstr }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #eee9f5;border-radius:999px;background:transparent;color:#2b2838;cursor:pointer">Close ✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ instrEdit }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:clamp(48px,6vw,80px) 0 20px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.7">Edit instructors — changes show in the pills above</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px">
+        <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="0">
+          <div style="display:flex;flex-direction:column;gap:12px;border:1px solid #eee9f5;padding:16px">
+            <label style="display:flex;align-items:center;justify-content:center;width:60%;align-self:center;aspect-ratio:1/1.95;border-radius:999px;border:1px dashed #c9bfe3;background:#f6f3fb center/cover no-repeat;background-image:{{ t.bg }};cursor:pointer;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#5d5970;filter:none;text-align:center" style-hover="border-color:#2b2838"><span style="background:rgba(255,255,255,.85);padding:8px 10px">{{ t.photoLabel }}</span><input type="file" accept="image/*" onChange="{{ t.onPhoto }}" style="display:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a6f9a">Name<input type="text" value="{{ t.name }}" onChange="{{ t.onName }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #eee9f5;background:#f6f3fb;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a6f9a">Roles (separate with commas)<input type="text" value="{{ t.roles }}" onChange="{{ t.onRoles }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #eee9f5;background:#f6f3fb;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a6f9a">Introduction<textarea value="{{ t.bio }}" onChange="{{ t.onBio }}" rows="4" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #eee9f5;background:#f6f3fb;color:#2b2838;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none;resize:vertical"></textarea></label>
+            <p style="margin:4px 0 0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a6f9a">Drop-down photos ({{ t.galCount }} / 3)</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <sc-for list="{{ t.galList }}" as="g" hint-placeholder-count="0">
+                <div style="position:relative;width:72px;height:90px">
+                  <div role="img" aria-label="Photo" style="width:100%;height:100%;background:#f6f3fb center/cover no-repeat;background-image:{{ g.bg }};filter:none"></div>
+                  <button onClick="{{ g.remove }}" aria-label="Remove photo" style="position:absolute;top:2px;right:2px;width:24px;height:24px;border:0;border-radius:999px;background:rgba(255,255,255,.9);color:#2b2838;cursor:pointer;font-size:11px">✕</button>
+                </div>
+              </sc-for>
+              <sc-if value="{{ t.galCanAdd }}" hint-placeholder-val="{{ true }}">
+                <label style="width:72px;height:90px;border:1px dashed #c9bfe3;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:#5d5970" style-hover="border-color:#2b2838">+<input type="file" accept="image/*" multiple="multiple" onChange="{{ t.onGal }}" style="display:none"></label>
+              </sc-if>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+              <button onClick="{{ t.remove }}" style="font-family:'Archivo',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:12px 16px;border:1px solid #f2b8d4;border-radius:999px;background:transparent;color:#c0397a;cursor:pointer">Remove</button>
+            </div>
+          </div>
+        </sc-for>
+        <button onClick="{{ addInstr }}" style="min-height:240px;border:2px dashed #c9bfe3;border-radius:24px;background:transparent;color:#7a6f9a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700" style-hover="border-color:#b99cf0;color:#2b2838"><span style="font-size:32px;font-weight:300;line-height:1">+</span>Add instructor</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:24px 0 0;font-size:13px;color:#9a93b3">Changes save automatically.</p>
+    </sc-if>
+  </section>
+  <section style="background:linear-gradient(120deg,#fde7f5,#efe7fd 50%,#e3f5fd);color:#2b2838;padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px)">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+      <h2 style="margin:0;font-weight:700;font-stretch:112%;text-transform:uppercase;font-size:clamp(30px,3.6vw,48px);line-height:1.05">Train with our team.</h2>
+      <button onClick="{{ goKBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;cursor:pointer" style-hover="filter:brightness(1.05)">Book Now</button>
+    </div>
+  </section>
+
   </sc-if>
 
 
@@ -987,7 +1282,7 @@ input,select,textarea{font-family:inherit}
     <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6vw,84px);line-height:.98;text-transform:uppercase;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Booking options</h1>
     <p style="margin:24px 0 0;font-size:17px;line-height:1.7;color:#5d5970;max-width:56ch">Choose the option that suits your family. You'll pick classes and pay securely on the next step.</p>
     <sc-if value="{{ isInstructor }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:28px 0 0"><span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#fff;background:#2b2838;padding:6px 10px;border-radius:999px">Instructor mode</span><button onClick="{{ addKPrice }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:14px 20px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;cursor:pointer">+ Add price</button><span style="font-size:13px;color:#9a93b3">Changes save automatically.</span></div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:28px 0 0"><button onClick="{{ addKPrice }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:14px 20px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2);color:#fff;cursor:pointer">+ Add price</button><span style="font-size:13px;color:#9a93b3">Changes save automatically.</span></div>
     </sc-if>
     <sc-for list="{{ kidPriceGroups }}" as="g" hint-placeholder-count="2">
       <div style="margin-top:clamp(40px,5vw,64px)">
@@ -1051,14 +1346,20 @@ input,select,textarea{font-family:inherit}
     <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Terms &amp; Conditions</p>
     <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6vw,84px);line-height:.98;text-transform:uppercase;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Before you book</h1>
     <div style="display:flex;flex-direction:column;margin-top:48px">
-      <sc-for list="{{ kidTerms }}" as="t" hint-placeholder-count="6">
-        <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid #eee9f5">
-          <span style="font-size:13px;font-weight:700;color:#b99cf0">{{ t.no }}</span>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <h3 style="margin:0;font-weight:700;font-stretch:112%;font-size:18px;text-transform:uppercase">{{ t.t }}</h3>
-            <p style="margin:0;font-size:15px;line-height:1.7;color:#5d5970;text-wrap:pretty">{{ t.d }}</p>
-          </div>
-        </div>
+      <p style="margin:0 0 8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#7a6f9a">Jas’ Studio Kids – Terms &amp; Conditions &amp; Booking Policies</p>
+      <sc-for list="{{ kidTermDocs }}" as="d" hint-placeholder-count="1">
+            <sc-for list="{{ d.secs }}" as="s" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid #eee9f5">
+                <span style="font-size:12px;letter-spacing:.2em;font-weight:700;color:#b99cf0">{{ s.no }}</span>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <h3 style="margin:0;font-weight:700;font-stretch:115%;font-size:18px;text-transform:uppercase;color:#2b2838">{{ s.t }}</h3>
+                  <sc-for list="{{ s.blocks }}" as="b" hint-placeholder-count="1">
+                    <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:15px;line-height:1.7;color:#5d5970;text-wrap:pretty">{{ b.t }}</p></sc-if>
+                    <sc-if value="{{ b.ul }}" hint-placeholder-val="{{ true }}"><ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.65;color:#5d5970"><sc-for list="{{ b.items }}" as="li" hint-placeholder-count="2"><li>{{ li.t }}</li></sc-for></ul></sc-if>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
       </sc-for>
     </div>
   </section>
@@ -1085,7 +1386,7 @@ input,select,textarea{font-family:inherit}
   </section>
 
   <section id="kcontact" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px) 48px;max-width:1440px;margin:0 auto">
-    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Contact</p>
+    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">05 — Contact</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px;padding-bottom:72px;border-bottom:1px solid #eee9f5">
       <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#9a93b3">Studio</p><p style="margin:0;font-size:18px;line-height:1.6">Unit 54-55, Shannon Way<br>Canvey Island<br>Essex<br>SS8 0PE<br>United Kingdom</p></div>
       <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#9a93b3">Email</p><p style="margin:0;font-size:18px"><a href="mailto:jasstudio01@outlook.com">jasstudio01@outlook.com</a></p></div>
@@ -1097,7 +1398,7 @@ input,select,textarea{font-family:inherit}
       </div></div>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:32px">
-      <img src="assets/logo-kids-wide.jpg" alt="Jas' Studio Kids" style="height:60px;width:auto;mix-blend-mode:multiply">
+      <img src="assets/logo-kids-wide-muted.png" alt="Jas' Studio Kids" style="height:60px;width:auto">
       <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap"><span style="font-size:12px;letter-spacing:.14em;color:#9a93b3">© 2026 Jas' Studio Kids</span><a href="#login" onClick="{{ loginClick }}" style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#9a93b3">{{ loginLabelLong }}</a></div>
     </div>
   </section>
@@ -1127,10 +1428,23 @@ input,select,textarea{font-family:inherit}
       </div>
     </div>
   </sc-if>
+<sc-if value="{{ showModeSwitch }}" hint-placeholder-val="{{ false }}">
+  <div role="group" aria-label="Instructor view" style="position:fixed;left:clamp(12px,2vw,24px);bottom:clamp(12px,2vw,24px);z-index:95;display:flex;align-items:center;gap:4px;padding:4px;border-radius:999px;background:#0a0a0a;border:1px solid #333;box-shadow:0 12px 40px rgba(0,0,0,.35);font-family:'Archivo',sans-serif">
+    <span style="padding:0 10px 0 12px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#8d8a85">Instructor</span>
+    <sc-if value="{{ editOn }}" hint-placeholder-val="{{ true }}">
+      <button onClick="{{ setEditMode }}" aria-pressed="true" style="min-height:40px;padding:0 16px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;font-family:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer">Edit</button>
+      <button onClick="{{ setPreviewMode }}" aria-pressed="false" style="min-height:40px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:#f4f2ee;font-family:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer">Preview</button>
+    </sc-if>
+    <sc-if value="{{ previewOn }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ setEditMode }}" aria-pressed="false" style="min-height:40px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:#f4f2ee;font-family:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer">Edit</button>
+      <button onClick="{{ setPreviewMode }}" aria-pressed="true" style="min-height:40px;padding:0 16px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;font-family:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer">Preview</button>
+    </sc-if>
+  </div>
+</sc-if>
 <sc-if value="{{ gateMounted }}" hint-placeholder-val="{{ false }}">
   <div style="position:fixed;inset:0;z-index:100;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;opacity:{{ gateOpacity }};transition:opacity .5s ease">
     <div style="width:min(860px,100%);display:flex;flex-direction:column;align-items:center;gap:32px;transform:{{ gateTransform }};transition:transform .7s cubic-bezier(.2,1.2,.4,1)">
-      <img src="assets/logo-square.png" alt="Jas' Studio" style="width:96px;height:96px;object-fit:contain">
+      <div style="width:min(360px,72vw)"><img src="assets/logo-script.svg" alt="Jas' Studio" style="display:block;width:100%;height:auto"><span style="display:block;margin-top:3.2%;text-align:center;font-family:'Montserrat',sans-serif;font-weight:300;font-size:calc(min(360px,72vw) * .036);letter-spacing:.42em;padding-left:.42em;color:#fff;white-space:nowrap">POLE &amp; AERIAL ARTS</span></div>
       <h2 style="margin:0;text-align:center;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.1;color:#f4f2ee">Who is training <i>today</i>?</h2>
       <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
         <button onClick="{{ pickAdult }}" style="font-family:'Archivo',sans-serif;text-align:left;cursor:pointer;background:#0a0a0a;color:#f4f2ee;border:1px solid #3a3a3a;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px;min-height:200px;justify-content:flex-end" style-hover="border-color:#f4f2ee">
@@ -1148,17 +1462,18 @@ input,select,textarea{font-family:inherit}
   </div>
 </sc-if>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Main&quot;,&quot;Kids&quot;],&quot;default&quot;:&quot;Main&quot;,&quot;tsType&quot;:&quot;'Main'|'Kids'&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;slideSeconds&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:2,&quot;max&quot;:15,&quot;default&quot;:5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Main&quot;,&quot;Kids&quot;],&quot;default&quot;:&quot;Main&quot;,&quot;tsType&quot;:&quot;'Main'|'Kids'&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;slideSeconds&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:2,&quot;max&quot;:15,&quot;default&quot;:5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;alwaysShowWelcome&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
 const KIDS_DETAILS = {"pole":{"intro":"A fun, safe introduction to pole for young athletes, where every spin and climb helps children feel strong and proud of what their bodies can do.","historyTitle":"Where pole comes from","history":["Long before pole was taught in studios, people in India practised Mallakhamb, gymnastic poses on a wooden pole, and Chinese acrobats performed amazing climbs and drops on tall poles in the circus.","Today pole is a sport with its own competitions, including categories for children and teens, where young athletes show strength, flexibility and creativity."],"benefits":[{"t":"Confidence","d":"Learning a new move and getting it right builds real pride and self-belief, week after week."},{"t":"Strength","d":"Climbing and holding on make arms, hands and tummy muscles stronger in a fun way."},{"t":"Coordination","d":"Spins and shapes teach children to control their bodies and move with balance."},{"t":"Focus & friendship","d":"Small groups help children listen, take turns, cheer each other on and make friends."}],"steps":[{"t":"Hello & warm-up","d":"A welcome circle, then games and moves to wake up the body."},{"t":"Strength games","d":"Fun challenges that build grip and core strength."},{"t":"Learn a new move","d":"Instructors teach one move step by step and spot every child."},{"t":"Show & cheer","d":"Children link their moves together and celebrate each other."},{"t":"Stretch & cool down","d":"Gentle stretching and a calm finish."}]},"hoop":{"intro":"Kids Hoop lets children swing, balance and make shapes in the air on a low hoop, building bravery and confidence one small step at a time.","historyTitle":"A circus favourite","history":["The aerial hoop, also called the lyra, is a metal ring that hangs from the ceiling. It started in the circus, where performers made beautiful shapes high in the air.","Now children can learn hoop in a safe studio, with the hoop hung low and instructors close by."],"benefits":[{"t":"Bravery","d":"Trying new shapes in the air, with an instructor close by, helps children feel brave and proud."},{"t":"Balance","d":"Sitting and standing in the hoop trains balance and body control."},{"t":"Flexibility","d":"Hoop shapes gently improve stretch in shoulders, back and legs."},{"t":"Creativity","d":"Children invent their own poses and short sequences to music."}],"steps":[{"t":"Hello & warm-up","d":"Games and stretches to get ready to fly."},{"t":"Strength games","d":"Hanging and holding challenges close to the floor."},{"t":"Learn a new shape","d":"A new hoop shape taught slowly, with an instructor spotting."},{"t":"Make a mini routine","d":"Linking shapes together to music."},{"t":"Stretch & cool down","d":"Calm stretching and a high-five goodbye."}]}};
 const COURSE_DETAILS = {"foundations":{"historyTitle":"Where pole began","history":["Pole training draws on two older traditions: Chinese pole, an acrobatic circus discipline, and Mallakhamb, an Indian practice of gymnastic holds on a wooden pole dating back centuries.","Modern pole dance grew out of travelling fair and cabaret performance in the 20th century, and from the 1990s onward developed into a fitness and sport discipline with its own competitions, grading systems and coaching standards."],"benefits":[{"t":"Grip strength","d":"Hands, forearms and wrists strengthen quickly from the first weeks of training."},{"t":"Core control","d":"Every spin and climb engages the deep abdominal and back muscles."},{"t":"Coordination","d":"Linking simple moves builds timing, balance and body awareness."},{"t":"Confidence","d":"Visible progress from week to week builds confidence in and out of the studio."}],"steps":[{"t":"Warm-up","d":"Joint mobility and a pulse-raising sequence to prepare wrists, shoulders, hips and spine."},{"t":"Conditioning","d":"Short grip and core drills that prepare the body for the pole."},{"t":"Technique","d":"One or two foundation moves broken down step by step, with spotting where needed."},{"t":"Combo","d":"Linking the new moves into a short sequence to music."},{"t":"Cool-down","d":"Stretching and mobility to finish."}]},"pole":{"historyTitle":"From circus to sport","history":["Pole training draws on two older traditions: Chinese pole, an acrobatic circus discipline, and Mallakhamb, an Indian practice of gymnastic holds on a wooden pole dating back centuries.","Modern pole dance grew out of travelling fair and cabaret performance in the 20th century, and from the 1990s onward developed into a fitness and sport discipline with its own competitions, grading systems and coaching standards."],"benefits":[{"t":"Upper-body strength","d":"Climbs, inverts and holds develop shoulders, back and arms."},{"t":"Core strength","d":"Inverted and aerial positions demand strong, controlled core engagement."},{"t":"Flexibility","d":"Shapes and lines build active flexibility through the hips, back and shoulders."},{"t":"Focus","d":"Learning complex combinations trains concentration and body awareness."}],"steps":[{"t":"Warm-up","d":"Joint mobility and a pulse-raising sequence to prepare wrists, shoulders, hips and spine."},{"t":"Conditioning","d":"Targeted strength work for inverts and holds."},{"t":"Technique","d":"New tricks and transitions taught progressively for each student's level."},{"t":"Combo","d":"Combining tricks into flowing sequences."},{"t":"Cool-down","d":"Flexibility and mobility work to finish."}]},"hoop":{"historyTitle":"A circus apparatus","history":["The aerial hoop, also called the lyra, is a steel ring suspended from the ceiling. It developed as a circus apparatus in the 20th century, used for both static and spinning aerial acts.","Today it is taught in aerial studios worldwide as an art form and a full-body workout, from low-hung beginner shapes to high, dynamic routines."],"benefits":[{"t":"Full-body strength","d":"Mounting and holding shapes works the arms, back, core and legs together."},{"t":"Flexibility","d":"Hoop lines reward open shoulders, hips and a mobile spine."},{"t":"Balance","d":"Sitting, standing and hanging in a moving hoop trains balance and proprioception."},{"t":"Grace","d":"Fluid transitions develop posture, control and artistry."}],"steps":[{"t":"Warm-up","d":"Joint mobility and a pulse-raising sequence to prepare wrists, shoulders, hips and spine."},{"t":"Conditioning","d":"Hanging, grip and core drills at low height."},{"t":"Technique","d":"Mounts, shapes and transitions on a low-hung hoop."},{"t":"Sequence","d":"Linking shapes into a short flow, adding spin when ready."},{"t":"Cool-down","d":"Stretching for shoulders, hips and back."}]},"heels":{"historyTitle":"Dance in heels","history":["Heels dance draws on cabaret, jazz, commercial dance and pole choreography, where dancing in high heels has long been part of performance.","In recent years heels classes have grown into their own style, focused on walks, floorwork and choreography that build strength, posture and confidence."],"benefits":[{"t":"Leg & ankle strength","d":"Balancing and moving in heels strengthens calves, ankles and feet."},{"t":"Posture","d":"Choreography trains alignment through the spine, hips and shoulders."},{"t":"Cardio","d":"Continuous movement to music raises heart rate and stamina."},{"t":"Self-expression","d":"Musicality and performance build confidence and stage presence."}],"steps":[{"t":"Warm-up","d":"Mobility for ankles, hips and spine, first without heels and then in them."},{"t":"Walks & basics","d":"Heel walks, turns and weight transfers for control and balance."},{"t":"Floorwork","d":"Safe transitions to and from the floor."},{"t":"Choreography","d":"Learning a routine section by section to music."},{"t":"Cool-down","d":"Stretching for calves, feet and hips."}]}};
 const LOGIN_HASH = '0a248f6620c2024ae73ac8cf65d5cfe64601b57c7cc4adc865723954c837696f';
 const ADULT_PRICES = [{"group":"Specials","name":"INTRO TO HEELS – NOVEMBER PASS","price":"£60.00","per":"one-time","summary":"This one-off pass covers the full four-week Intro to Heels choreography block, including our final filming session.","blocks":[{"k":"p","t":"Perfect for anyone wanting to try heels choreography without committing to a recurring monthly membership."},{"k":"h","t":"WHAT’S INCLUDED"},{"k":"p","t":"Four weekly Intro to Heels classes."},{"k":"p","t":"Warm-ups, heels conditioning, tricks and techniques."},{"k":"p","t":"A complete choreography routine built over four weeks."},{"k":"p","t":"A final filming session in Week 4."},{"k":"p","t":"One student per pole, with a maximum of six spaces."},{"k":"h","t":"FIRST-TIME CHOREO DISCOUNT"},{"k":"p","t":"New to our choreography classes? Use code FIRSTCHOREO10 to receive £10 off your first one-off Choreo Pass, bringing the price down to £50."},{"k":"p","t":"This discount is available once per student and can be used on any eligible choreography block."},{"k":"h","t":"HOW TO BOOK"},{"k":"p","t":"Once you’ve purchased your pass, you’ll need to book yourself into all four classes."},{"k":"h","t":"You can either:"},{"k":"p","t":"Book each of the four weekly classes individually."},{"k":"p","t":"Select Repeat Reservation when booking your first class, which will automatically reserve your space for the remaining weeks."},{"k":"h","t":"IMPORTANT BOOKING INFORMATION"},{"k":"p","t":"This pass covers the November block only."},{"k":"p","t":"One purchase per student."},{"k":"p","t":"Spaces are limited and allocated on a first come, first served basis."},{"k":"p","t":"Your space is only secured once you’ve booked your classes."},{"k":"p","t":"If you cannot attend a session, please notify us but do not remove yourself from your booking, as this could release your reserved space to another student."},{"k":"p","t":"Missed sessions are non-refundable and cannot be transferred to another block."},{"k":"p","t":"Open training is not included with one-off passes."},{"k":"p","t":"No automatic renewal."}]},{"group":"Specials","name":"INTRO TO HEELS – CHRISTMAS EDITION PASS","price":"£60.00","per":"one-time","summary":"Get into the festive spirit with our Intro to Heels Christmas Edition!","blocks":[{"k":"p","t":"Dates: Monday 30th November – 21st December 2026"},{"k":"p","t":"Time: 7:30–8:30pm"},{"k":"p","t":"Price: £60"},{"k":"p","t":"This one-off pass covers the full four-week Christmas-themed choreography block, including our final festive filming session."},{"k":"p","t":"Perfect for anyone wanting to try heels choreography without committing to a recurring monthly membership."},{"k":"h","t":"WHAT’S INCLUDED"},{"k":"p","t":"Four weekly Intro to Heels Christmas Edition classes."},{"k":"p","t":"Warm-ups, heels conditioning, tricks and techniques."},{"k":"p","t":"A complete festive choreography routine built over four weeks."},{"k":"p","t":"A Christmas-themed filming session in Week 4."},{"k":"p","t":"One student per pole, with a maximum of six spaces."},{"k":"h","t":"FIRST-TIME CHOREO DISCOUNT"},{"k":"p","t":"New to our choreography classes? Use code FIRSTCHOREO10 to receive £10 off your first one-off Choreo Pass, bringing the price down to £50."},{"k":"p","t":"This discount is available once per student and can be used on any eligible choreography block."},{"k":"h","t":"HOW TO BOOK"},{"k":"p","t":"Once you’ve purchased your pass, you’ll need to book yourself into all four classes."},{"k":"h","t":"You can either:"},{"k":"p","t":"Book each of the four weekly classes individually."},{"k":"p","t":"Select Repeat Reservation when booking your first class, which will automatically reserve your space for the remaining weeks."},{"k":"h","t":"IMPORTANT BOOKING INFORMATION"},{"k":"p","t":"This pass covers the Christmas Edition block only."},{"k":"p","t":"One purchase per student."},{"k":"p","t":"Spaces are limited and allocated on a first come, first served basis."},{"k":"p","t":"Your space is only secured once you’ve booked your classes."},{"k":"p","t":"If you cannot attend a session, please notify us but do not remove yourself from your booking, as this could release your reserved space to another student."},{"k":"p","t":"Missed sessions are non-refundable and cannot be transferred to another block."},{"k":"p","t":"Open training is not included with one-off passes."},{"k":"p","t":"No automatic renewal."}]},{"group":"Taster","name":"Taster","price":"£5","per":"one-time","summary":"This £5 Taster Session is a special introductory offer for new students only who would like to try pole or aerial hoop at Jas’ Studio Pole & Aerial Arts. It’s the perfect way to experience a class, meet the instructors and see if pole or aerial is right for you.","blocks":[{"k":"p","t":"This offer is available once per person and is intended for first-time students only."},{"k":"h","t":"Important Booking Terms:"},{"k":"ul","items":["Bookings must be made at least 24 hours before class start time","Sessions may be moved or cancelled up to 24 hours before the class","Any changes made within 24 hours will result in the credit being used","Credits are non-refundable and non-transferable once purchased","Credit is valid for 4 weeks from date of purchase"]},{"k":"h","t":"Bookings & App Use:"},{"k":"ul","items":["All bookings and changes must be made via the booking app","If the system does not allow a change, it is outside permitted booking timeframes","We are unable to manually override booking restrictions"]}]},{"group":"Pay As You Go","name":"Adult Drop-in Session","price":"£15","per":"one-time","summary":"Drop-In Sessions are ideal for students who want flexibility without committing to a membership. Each credit gives access to one coached pole or aerial class in a supportive, mixed-level environment.","blocks":[{"k":"p","t":"Suitable for all levels, with instructors offering progressions and options to match your ability."},{"k":"h","t":"Important Booking Terms:"},{"k":"ul","items":["Bookings must be made at least 24 hours before class start time","Sessions may be moved or cancelled up to 24 hours before the class","Any changes made within 24 hours will result in the credit being used","Credits are non-refundable and non-transferable once purchased","Credit is valid for 4 weeks from date of purchase"]},{"k":"h","t":"Bookings & App Use:"},{"k":"ul","items":["All bookings and changes must be made via the booking app","If the system does not allow a change, it is outside studio booking terms","We are unable to manually override booking restrictions."]}]},{"group":"Adult Monthly Memberships","name":"ADULT X1","price":"£50.00","per":"per month","summary":"Perfect for students who want to train once a week while enjoying the flexibility to mix and match between Pole Fitness and Aerial Hoop.","blocks":[{"k":"h","t":"What’s Included:"},{"k":"ul","items":["1 Pole Fitness or Aerial Hoop class per week","1 Open Training session per week","Freedom to mix and match between Pole Fitness and Aerial Hoop classes each week"]},{"k":"p","t":"Our classes cater to different abilities, allowing you to progress at your own pace."},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All classes and Open Training sessions must be booked in advance through TeamUp."},{"k":"h","t":"Pole Fitness & Aerial Hoop Classes:"},{"k":"ul","items":["Bookings must be made at least 24 hours before the class starts.","Cancellations or changes must be made more than 24 hours before the class starts.","Late bookings cannot be accepted once the 24-hour booking window has closed.","If you attend the same class each week, we recommend setting up a Repeat Reservation to secure your regular space.","Alternatively, you can book individual classes each week and mix and match between Pole Fitness and Aerial Hoop."]},{"k":"h","t":"Unable to Attend a Class?"},{"k":"p","t":"If you cannot attend a booked class and are within the 24-hour cancellation window, please message your class’s studio WhatsApp group chat."},{"k":"p","t":"Do not remove yourself from your booking within the 24-hour window."},{"k":"h","t":"Open Training:"},{"k":"ul","items":["Includes 1 Open Training session per week.","Open Training can be booked up until the session starts, subject to availability."]},{"k":"h","t":"Please Note:"},{"k":"p","t":"Pole Choreo classes, including Heels After Dark and Pole Flow, are not included in this membership. A separate Choreo or combined membership is required."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"CHOREO X1","price":"£50.00","per":"per month","summary":"Perfect for students who love dancing, learning routines and developing their confidence on the pole.","blocks":[{"k":"p","t":"Enjoy one Pole Choreo class per week, plus one Open Training session per week to practise your routines independently."},{"k":"h","t":"What’s Included:"},{"k":"p","t":"1 Pole Choreo class per week"},{"k":"p","t":"1 Open Training session per week"},{"k":"p","t":"Priority booking over one-off Choreo passes"},{"k":"p","t":"Flexibility to choose your Choreo style each month"},{"k":"h","t":"Available Choreo Classes:"},{"k":"p","t":"November 2026: Intro to Heels"},{"k":"p","t":"December 2026: Intro to Heels – Christmas Edition (starting 30 November)"},{"k":"p","t":"From January 2027: Heels After Dark or Pole Flow"},{"k":"p","t":"Each month focuses on learning and developing a routine, with the final session dedicated to bringing everything together and filming your performance."},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All Choreo classes must be booked in advance through TeamUp. Spaces are limited to six students, with one student per pole."},{"k":"p","t":"Students must book every session for their chosen Choreo block each month, not just the first class."},{"k":"p","t":"Repeat Reservation: Use this option to book your chosen weekly Choreo class automatically."},{"k":"p","t":"Individual Bookings: Alternatively, book each session separately for your chosen monthly block."},{"k":"p","t":"If you wish to switch between Heels After Dark and Pole Flow each month, you must manage your bookings accordingly. Remember to update or end any existing Repeat Reservations before changing styles."},{"k":"p","t":"Purchasing a membership does not automatically reserve your class spaces."},{"k":"h","t":"Open Training:"},{"k":"p","t":"Includes 1 Open Training session per week."},{"k":"p","t":"Open Training can be booked up until the session starts, subject to availability."},{"k":"h","t":"Please Note:"},{"k":"p","t":"This membership includes one Choreo style per month. Regular Pole Fitness and Aerial Hoop classes are not included. A combined membership is required to access these classes."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"ADULT X2","price":"£75.00","per":"per month","summary":"Perfect for students who want to train twice a week, with the flexibility to mix and match between Pole Fitness and Aerial Hoop.","blocks":[{"k":"h","t":"What’s Included:"},{"k":"ul","items":["2 Pole Fitness or Aerial Hoop classes per week","2 Open Training sessions per week","Freedom to mix and match between Pole Fitness and Aerial Hoop classes each week"]},{"k":"p","t":"Our classes cater to different abilities, allowing you to progress at your own pace."},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All classes and Open Training sessions must be booked in advance through TeamUp."},{"k":"h","t":"Pole Fitness & Aerial Hoop Classes:"},{"k":"ul","items":["Bookings must be made at least 24 hours before the class starts.","Cancellations or changes must be made more than 24 hours before the class starts.","Late bookings cannot be accepted once the 24-hour booking window has closed.","If you attend the same classes each week, we recommend setting up Repeat Reservations to secure your regular spaces.","Alternatively, you can book individual classes each week and mix and match between Pole Fitness and Aerial Hoop."]},{"k":"h","t":"Unable to Attend a Class?"},{"k":"p","t":"If you cannot attend a booked class and are within the 24-hour cancellation window, please message your class’s studio WhatsApp group chat."},{"k":"p","t":"Do not remove yourself from your booking within the 24-hour window."},{"k":"h","t":"Open Training:"},{"k":"ul","items":["Includes 2 Open Training sessions per week.","Open Training can be booked up until the session starts, subject to availability."]},{"k":"h","t":"Please Note:"},{"k":"p","t":"Pole Choreo classes, including Heels After Dark and Pole Flow, are not included in this membership. A separate Choreo or combined membership is required."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"CHOREO X2","price":"£75.00","per":"per month","summary":"Perfect for students who love dancing, learning routines and developing their confidence on the pole, with access to both Choreo styles each week.","blocks":[{"k":"h","t":"What’s Included:"},{"k":"ul","items":["2 Pole Choreo classes per week","2 Open Training sessions per week","Access to both Heels After Dark and Pole Flow each week","Priority booking over one-off Choreo passes"]},{"k":"h","t":"Available Choreo Classes:"},{"k":"h","t":"From January 2027:"},{"k":"ul","items":["Heels After Dark","Pole Flow"]},{"k":"p","t":"Each month focuses on learning and developing routines, with the final session dedicated to bringing everything together and filming your performances."},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All Choreo classes must be booked in advance through TeamUp. Spaces are limited to six students per class, with one student per pole."},{"k":"h","t":"Repeat Reservations:"},{"k":"p","t":"Students should set up a Repeat Reservation for both Heels After Dark and Pole Flow."},{"k":"p","t":"This will automatically book their spaces each week on an ongoing basis, so there’s no need to book each monthly block separately."},{"k":"p","t":"Purchasing a membership does not automatically reserve your class spaces. Repeat Reservations must be set up through TeamUp."},{"k":"h","t":"Open Training:"},{"k":"ul","items":["Includes 2 Open Training sessions per week.","Open Training can be booked up until the session starts, subject to availability."]},{"k":"h","t":"Please Note:"},{"k":"p","t":"This membership includes both Choreo styles each week. Regular Pole Fitness and Aerial Hoop classes are not included. A combined membership is required to access these classes."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"ADULT X1 + CHOREO X1","price":"£75.00","per":"per month","summary":"Perfect for students who want to combine Pole Fitness or Aerial Hoop training with Pole Choreo, enjoying the flexibility of both styles in one membership.","blocks":[{"k":"h","t":"What’s Included:"},{"k":"ul","items":["1 Pole Fitness or Aerial Hoop class per week","1 Pole Choreo class per week","2 Open Training sessions per week","Freedom to mix and match between Pole Fitness and Aerial Hoop each week","Flexibility to choose your Choreo style each month"]},{"k":"h","t":"Available Choreo Classes:"},{"k":"ul","items":["Heels After Dark","Pole Flow"]},{"k":"p","t":"Choose one Choreo style each month and enjoy learning and developing a routine, with the final session dedicated to bringing everything together and filming your performance."},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All classes and Open Training sessions must be booked in advance through TeamUp."},{"k":"h","t":"Pole Fitness & Aerial Hoop Classes:"},{"k":"ul","items":["Bookings must be made at least 24 hours before the class starts.","Cancellations or changes must be made more than 24 hours before the class starts.","Late bookings cannot be accepted once the 24-hour booking window has closed.","Set up a Repeat Reservation to secure your regular weekly class, or book individual classes each week to mix and match."]},{"k":"h","t":"Pole Choreo Classes:"},{"k":"ul","items":["Choose either Heels After Dark or Pole Flow for your monthly Choreo block.","You must book every session of your chosen monthly block, not just the first class.","Set up a Repeat Reservation for your chosen Choreo class, or book all sessions individually.","If switching Choreo styles between months, remember to update or end your existing Repeat Reservation before booking the other class.","Spaces are limited to six students per Choreo class, with one student per pole."]},{"k":"h","t":"Unable to Attend a Class?"},{"k":"p","t":"If you cannot attend a booked class and are within the 24-hour cancellation window, please message your class’s studio WhatsApp group chat."},{"k":"p","t":"Do not remove yourself from your booking within the 24-hour window."},{"k":"p","t":"This applies to all Pole Fitness, Aerial Hoop and Choreo classes."},{"k":"h","t":"Open Training:"},{"k":"ul","items":["Includes 2 Open Training sessions per week.","Open Training can be booked up until the session starts, subject to availability."]},{"k":"h","t":"Please Note:"},{"k":"p","t":"This membership includes one regular adult class and one Choreo class per week. Access to both weekly Choreo styles requires a membership that includes CHOREO X2."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"ADULT X3","price":"£95.00","per":"per month","summary":"Perfect for students who want to train three times a week, with the flexibility to mix and match between Pole Fitness and Aerial Hoop.","blocks":[{"k":"h","t":"What’s Included:"},{"k":"ul","items":["3 Pole Fitness or Aerial Hoop classes per week","3 Open Training sessions per week","Freedom to mix and match between Pole Fitness and Aerial Hoop classes each week"]},{"k":"p","t":"Our classes cater to different abilities, allowing you to progress at your own pace."},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All classes and Open Training sessions must be booked in advance through TeamUp."},{"k":"h","t":"Pole Fitness & Aerial Hoop Classes:"},{"k":"ul","items":["Bookings must be made at least 24 hours before the class starts.","Cancellations or changes must be made more than 24 hours before the class starts.","Late bookings cannot be accepted once the 24-hour booking window has closed.","If you attend the same classes each week, we recommend setting up Repeat Reservations to secure your regular spaces.","Alternatively, you can book individual classes each week and mix and match between Pole Fitness and Aerial Hoop."]},{"k":"h","t":"Unable to Attend a Class?"},{"k":"p","t":"If you cannot attend a booked class and are within the 24-hour cancellation window, please message your class’s studio WhatsApp group chat."},{"k":"p","t":"Do not remove yourself from your booking within the 24-hour window."},{"k":"h","t":"Open Training:"},{"k":"ul","items":["Includes 3 Open Training sessions per week.","Open Training can be booked up until the session starts, subject to availability."]},{"k":"h","t":"Please Note:"},{"k":"p","t":"Pole Choreo classes, including Heels After Dark and Pole Flow, are not included in this membership. A separate Choreo or combined membership is required."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"ADULT X2 + CHOREO X1","price":"£95.00","per":"per month","summary":"Perfect for students who want to combine regular Pole Fitness or Aerial Hoop training with Pole Choreo, enjoying three classes per week in one membership.","blocks":[{"k":"h","t":"What’s Included:"},{"k":"ul","items":["2 Pole Fitness or Aerial Hoop classes per week","1 Pole Choreo class per week","3 Open Training sessions per week","Freedom to mix and match between Pole Fitness and Aerial Hoop each week","Flexibility to choose your Choreo style each month"]},{"k":"h","t":"Available Choreo Classes:"},{"k":"ul","items":["Heels After Dark","Pole Flow"]},{"k":"p","t":"Choose one Choreo style each month and enjoy learning and developing a routine, with the final session dedicated to bringing everything together and filming your performance."},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All classes and Open Training sessions must be booked in advance through TeamUp."},{"k":"h","t":"Pole Fitness & Aerial Hoop Classes:"},{"k":"ul","items":["Bookings must be made at least 24 hours before the class starts.","Cancellations or changes must be made more than 24 hours before the class starts.","Late bookings cannot be accepted once the 24-hour booking window has closed.","Set up Repeat Reservations to secure your regular weekly classes, or book individual classes each week to mix and match."]},{"k":"h","t":"Pole Choreo Classes:"},{"k":"ul","items":["Choose either Heels After Dark or Pole Flow for your monthly Choreo block.","You must book every session of your chosen monthly block, not just the first class.","Set up a Repeat Reservation for your chosen Choreo class, or book all sessions individually.","If switching Choreo styles between months, remember to update or end your existing Repeat Reservation before booking the other class.","Spaces are limited to six students per Choreo class, with one student per pole."]},{"k":"h","t":"Unable to Attend a Class?"},{"k":"p","t":"If you cannot attend a booked class and are within the 24-hour cancellation window, please message your class’s studio WhatsApp group chat."},{"k":"p","t":"Do not remove yourself from your booking within the 24-hour window."},{"k":"p","t":"This applies to all Pole Fitness, Aerial Hoop and Choreo classes."},{"k":"h","t":"Open Training:"},{"k":"ul","items":["Includes 3 Open Training sessions per week.","Open Training can be booked up until the session starts, subject to availability."]},{"k":"h","t":"Please Note:"},{"k":"p","t":"This membership includes two regular adult classes and one Choreo class per week. Access to both weekly Choreo styles requires a membership that includes CHOREO X2."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"ADULT X4","price":"£115.00","per":"per month","summary":"Perfect for students who want to train four times a week, with the flexibility to mix and match between Pole Fitness and Aerial Hoop.","blocks":[{"k":"h","t":"What’s Included:"},{"k":"ul","items":["4 Pole Fitness or Aerial Hoop classes per week","4 Open Training sessions per week","Freedom to mix and match between Pole Fitness and Aerial Hoop classes each week"]},{"k":"p","t":"Our classes cater to different abilities, allowing you to progress at your own pace."},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All classes and Open Training sessions must be booked in advance through TeamUp."},{"k":"h","t":"Pole Fitness & Aerial Hoop Classes:"},{"k":"ul","items":["Bookings must be made at least 24 hours before the class starts.","Cancellations or changes must be made more than 24 hours before the class starts.","Late bookings cannot be accepted once the 24-hour booking window has closed.","If you attend the same classes each week, we recommend setting up Repeat Reservations to secure your regular spaces.","Alternatively, you can book individual classes each week and mix and match between Pole Fitness and Aerial Hoop."]},{"k":"h","t":"Unable to Attend a Class?"},{"k":"p","t":"If you cannot attend a booked class and are within the 24-hour cancellation window, please message your class’s studio WhatsApp group chat."},{"k":"p","t":"Do not remove yourself from your booking within the 24-hour window."},{"k":"h","t":"Open Training:"},{"k":"ul","items":["Includes 4 Open Training sessions per week.","Open Training can be booked up until the session starts, subject to availability."]},{"k":"h","t":"Please Note:"},{"k":"p","t":"Pole Choreo classes, including Heels After Dark and Pole Flow, are not included in this membership. A separate Choreo or combined membership is required."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"ADULT X3 + CHOREO X1","price":"£115.00","per":"per month","summary":"Perfect for students who want to train regularly in Pole Fitness or Aerial Hoop while enjoying one Pole Choreo class each week.","blocks":[{"k":"h","t":"What’s Included:"},{"k":"ul","items":["3 Pole Fitness or Aerial Hoop classes per week","1 Pole Choreo class per week","4 Open Training sessions per week","Freedom to mix and match between Pole Fitness and Aerial Hoop each week","Flexibility to choose your Choreo style each month"]},{"k":"h","t":"Available Choreo Classes:"},{"k":"ul","items":["Heels After Dark","Pole Flow"]},{"k":"p","t":"Choose one Choreo style each month, developing a routine with the final session dedicated to bringing everything together and filming your performance."},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All classes and Open Training sessions must be booked in advance through TeamUp."},{"k":"h","t":"Pole Fitness & Aerial Hoop Classes:"},{"k":"ul","items":["Bookings must be made at least 24 hours before the class starts.","Cancellations or changes must be made more than 24 hours before the class starts.","Late bookings cannot be accepted once the 24-hour booking window has closed.","Set up Repeat Reservations to secure your regular weekly classes, or book individual classes each week to mix and match."]},{"k":"h","t":"Pole Choreo Classes:"},{"k":"ul","items":["Choose either Heels After Dark or Pole Flow for your monthly Choreo block.","You must book every session of your chosen monthly block, not just the first class.","Set up a Repeat Reservation for your chosen Choreo class, or book all sessions individually.","If switching Choreo styles between months, remember to update or end your existing Repeat Reservation before booking the other class.","Spaces are limited to six students per Choreo class, with one student per pole."]},{"k":"h","t":"Unable to Attend a Class?"},{"k":"p","t":"If you cannot attend a booked class and are within the 24-hour cancellation window, please message your class’s studio WhatsApp group chat."},{"k":"p","t":"Do not remove yourself from your booking within the 24-hour window."},{"k":"p","t":"This applies to all Pole Fitness, Aerial Hoop and Choreo classes."},{"k":"h","t":"Open Training:"},{"k":"ul","items":["Includes 4 Open Training sessions per week.","Open Training can be booked up until the session starts, subject to availability."]},{"k":"h","t":"Please Note:"},{"k":"p","t":"This membership includes three regular adult classes and one Choreo class per week. Access to both weekly Choreo styles requires a membership that includes CHOREO X2."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"ADULT X2 + CHOREO X2","price":"£115.00","per":"per month","summary":"Perfect for students who want the best of both worlds, combining Pole Fitness or Aerial Hoop training with both Pole Choreo styles each week.","blocks":[{"k":"h","t":"What’s Included:"},{"k":"ul","items":["2 Pole Fitness or Aerial Hoop classes per week","2 Pole Choreo classes per week","4 Open Training sessions per week","Freedom to mix and match between Pole Fitness and Aerial Hoop each week","Access to both Heels After Dark and Pole Flow every week"]},{"k":"h","t":"Booking Information:"},{"k":"p","t":"All classes and Open Training sessions must be booked in advance through TeamUp."},{"k":"h","t":"Pole Fitness & Aerial Hoop Classes:"},{"k":"ul","items":["Bookings must be made at least 24 hours before the class starts.","Cancellations or changes must be made more than 24 hours before the class starts.","Late bookings cannot be accepted once the 24-hour booking window has closed.","Set up Repeat Reservations to secure your regular weekly classes, or book individual classes each week to mix and match."]},{"k":"h","t":"Pole Choreo Classes:"},{"k":"ul","items":["Includes both Heels After Dark and Pole Flow each week.","Students must set up a Repeat Reservation for both Choreo classes to secure their spaces on an ongoing basis.","Repeat Reservations will automatically book both classes each week, so there’s no need to book individual monthly blocks.","Spaces are limited to six students per Choreo class, with one student per pole."]},{"k":"h","t":"Unable to Attend a Class?"},{"k":"p","t":"If you cannot attend a booked class and are within the 24-hour cancellation window, please message your class’s studio WhatsApp group chat."},{"k":"p","t":"Do not remove yourself from your booking within the 24-hour window."},{"k":"p","t":"This applies to all Pole Fitness, Aerial Hoop and Choreo classes."},{"k":"h","t":"Open Training:"},{"k":"ul","items":["Includes 4 Open Training sessions per week.","Open Training can be booked up until the session starts, subject to availability."]},{"k":"h","t":"Please Note:"},{"k":"p","t":"This membership includes two regular adult classes and both weekly Choreo classes. Additional classes can be purchased separately where available."},{"k":"p","t":"For full details on bookings, cancellations, holidays, membership changes and studio policies, please refer to our Membership Terms & Conditions."}]},{"group":"Adult Monthly Memberships","name":"STUDIO PASS","price":"£125.00","per":"per month","summary":"Our ultimate all-inclusive membership, designed for students who want maximum flexibility and the freedom to train as often as they like.","blocks":[{"k":"p","t":"STUDIO PASS – UNLIMITED MONTHLY MEMBERSHIP"},{"k":"p","t":"Enjoy unlimited access to our Pole Fitness, Aerial Hoop and Choreography classes, including Heels After Dark and Pole Flow, plus unlimited Open Training."},{"k":"h","t":"What’s Included:"},{"k":"p","t":"Unlimited Pole Fitness classes"},{"k":"p","t":"Unlimited Aerial Hoop classes"},{"k":"p","t":"Unlimited Choreography classes"},{"k":"p","t":"Unlimited Open Training"},{"k":"p","t":"Flexibility to mix disciplines throughout the week"},{"k":"p","t":"Classes cater to different abilities, with instructors providing suitable options where appropriate. Please check individual class descriptions for any specific requirements."},{"k":"h","t":"Important Membership Terms:"},{"k":"p","t":"All classes must be booked in advance through the booking system and are subject to availability."},{"k":"p","t":"Regular class bookings may be changed or cancelled more than 24 hours before the scheduled start time."},{"k":"p","t":"If you cannot attend a booked class within the 24-hour cancellation window, please message the studio directly. Do not remove yourself from the booking."},{"k":"p","t":"Missed classes are non-refundable and cannot be transferred."},{"k":"p","t":"Choreography classes have limited spaces reserved for participating students. If you cannot attend, please notify the studio rather than removing yourself from the booking."},{"k":"p","t":"Special events, photoshoots, private lessons and studio hire are not included."},{"k":"h","t":"Holidays & Time Away:"},{"k":"p","t":"Studio Pass memberships do not include holiday credits or refunds for missed classes or periods away."},{"k":"h","t":"Membership Pauses:"},{"k":"p","t":"Membership pauses are granted solely at the studio’s discretion and must be agreed in advance."},{"k":"h","t":"Billing & Cancellation:"},{"k":"p","t":"Memberships are billed monthly on the 1st of each month."},{"k":"p","t":"A minimum of 30 days’ notice is required to cancel."},{"k":"p","t":"All cancellations must be submitted through the booking system."},{"k":"h","t":"Bookings & App Use:"},{"k":"p","t":"All class bookings must be made through the booking system."},{"k":"p","t":"Booking restrictions and cancellation deadlines apply."},{"k":"p","t":"If you cannot attend a class within 24 hours of its start time, please contact the studio directly rather than cancelling your booking."}]},{"group":"Private Lessons Pay As You Go","name":"1-2-1 PRIVATE LESSON","price":"£35.00","per":"one-time","summary":"1-2-1 Private Lesson – Pay As You Go","blocks":[{"k":"h","t":"This pack includes:"},{"k":"ul","items":["1 x private 1-to-1 lesson for 1 person","Session must be arranged directly with the studio","Valid for 4 weeks from date of purchase"]},{"k":"h","t":"Important Session Terms:"},{"k":"ul","items":["Valid for one person only","Session must be used within 4 weeks of purchase","Unused sessions after expiry are forfeited","Sessions are non-refundable once purchased"]},{"k":"h","t":"Booking & Cancellations:"},{"k":"ul","items":["24-hour booking and cancellation cut-off applies","Changes or cancellations within 24 hours will result in the session being lost","We cannot manually move or refund sessions within the cut-off"]},{"k":"h","t":"Illness, Injury & Emergencies:"},{"k":"ul","items":["Missed sessions are not refunded","In genuine extenuating circumstances, please contact the studio — all cases are assessed individually"]},{"k":"h","t":"Booking Process:"},{"k":"ul","items":["Time slots must be arranged directly with the studio","All confirmed sessions are final once booked"]}]},{"group":"Private Lessons Pay As You Go","name":"2-2-1 PRIVATE LESSON","price":"£20.00","per":"one-time","summary":"2-2-1 Private Lesson – Pay As You Go","blocks":[{"k":"h","t":"This pack includes:"},{"k":"ul","items":["1 x private 2-to-1 lesson for 2 people","Each person must purchase their own 2-2-1 Private Lesson","Session must be arranged directly with the studio","Valid for 4 weeks from date of purchase"]},{"k":"h","t":"Important Session Terms:"},{"k":"ul","items":["Valid for two people only","Each participant must have their own valid booking","Session must be used within 4 weeks of purchase","Unused sessions after expiry are forfeited","Sessions are non-refundable once purchased"]},{"k":"h","t":"Booking & Cancellations:"},{"k":"ul","items":["24-hour booking and cancellation cut-off applies","Changes or cancellations within 24 hours will result in the session being lost","We cannot manually move or refund sessions within the cut-off"]},{"k":"h","t":"Illness, Injury & Emergencies:"},{"k":"ul","items":["Missed sessions are not refunded","In genuine extenuating circumstances, please contact the studio — all cases are assessed individually"]},{"k":"h","t":"Booking Process:"},{"k":"ul","items":["Time slots must be arranged directly with the studio","All confirmed sessions are final once booked"]}]},{"group":"Private Lessons Pay As You Go","name":"GROUP PRIVATE LESSON","price":"£15.00","per":"one-time","summary":"Group Private Lesson – Pay As You Go","blocks":[{"k":"h","t":"This pack includes:"},{"k":"ul","items":["1 x private group lesson for 3 or more people","Each person must purchase their own Group Private Lesson","Session must be arranged directly with the studio","Valid for 4 weeks from date of purchase"]},{"k":"h","t":"Important Session Terms:"},{"k":"ul","items":["Valid for group private lessons only","Each participant must have their own valid booking","Session must be used within 4 weeks of purchase","Unused sessions after expiry are forfeited","Sessions are non-refundable once purchased"]},{"k":"h","t":"Booking & Cancellations:"},{"k":"ul","items":["24-hour booking and cancellation cut-off applies","Changes or cancellations within 24 hours will result in the session being lost","We cannot manually move or refund sessions within the cut-off"]},{"k":"h","t":"Illness, Injury & Emergencies:"},{"k":"ul","items":["Missed sessions are not refunded","In genuine extenuating circumstances, please contact the studio — all cases are assessed individually"]},{"k":"h","t":"Booking Process:"},{"k":"ul","items":["Time slots must be arranged directly with the studio","All confirmed sessions are final once booked"]}]},{"group":"Private Monthly Memberships","name":"PRIVATE 1 SESSION A WEEK MEMBERSHIP","price":"£125.00","per":"per month","summary":"1 Private Lesson Per Week – Monthly Membership","blocks":[{"k":"h","t":"This membership includes:"},{"k":"ul","items":["1 x private 1-to-1 lesson per week (for 1 person only)","Weekly time slot must be arranged directly with the studio","1 hour of Open Training per week (Members Only)","Additional group classes are £10 per class"]},{"k":"h","t":"Important Membership Terms:"},{"k":"ul","items":["Includes 1 private session per week","Weekly session must be used within the same week and cannot be carried over","Missed sessions are forfeited","Memberships and credits are non-refundable once purchased"]},{"k":"h","t":"Holidays & Time Away:"},{"k":"ul","items":["Memberships are not paused or credited for short holidays or missed weeks","If you are away for 2 weeks or more, sessions may be credited at the studio’s discretion"]},{"k":"h","t":"Pauses for Extenuating Circumstances:"},{"k":"ul","items":["Memberships may be paused in genuine extenuating circumstances (e.g. medical)","Supporting evidence may be required","All pauses are assessed case-by-case"]},{"k":"h","t":"Booking & Cancellations:"},{"k":"ul","items":["24 hour booking and cancellation policy applies","Changes within 24 hours will result in the session being lost","We are unable to manually override booking restrictions"]},{"k":"h","t":"Billing & Cancellation:"},{"k":"ul","items":["Memberships are billed monthly on the 1st of each month","A minimum of 30 days’ notice is required to cancel","All cancellations must be made via the booking system"]},{"k":"h","t":"Bookings & App Use:"},{"k":"ul","items":["All bookings and changes must be made via the booking app","If the app does not allow a change, it is outside permitted timeframes"]}]},{"group":"Private Monthly Memberships","name":"PRIVATE 2 SESSIONS A WEEK MEMBERSHIP","price":"£225.00","per":"per month","summary":"2 Private Lesson Per Week – Monthly Membership","blocks":[{"k":"h","t":"This membership includes:"},{"k":"ul","items":["2 x private 1-to-1 lesson per week (for 1 person only)","Weekly time slot must be arranged directly with the studio","2 hours of Open Training per week (Members Only)","Additional group classes are £10 per class"]},{"k":"h","t":"Important Membership Terms:"},{"k":"ul","items":["Includes 2 private session per week","Weekly session must be used within the same week and cannot be carried over","Missed sessions are forfeited","Memberships and credits are non-refundable once purchased"]},{"k":"h","t":"Holidays & Time Away:"},{"k":"ul","items":["Memberships are not paused or credited for short holidays or missed weeks","If you are away for 2 weeks or more, sessions may be credited at the studio’s discretion"]},{"k":"h","t":"Pauses for Extenuating Circumstances:"},{"k":"ul","items":["Memberships may be paused in genuine extenuating circumstances (e.g. medical)","Supporting evidence may be required","All pauses are assessed case-by-case"]},{"k":"h","t":"Booking & Cancellations:"},{"k":"ul","items":["24 hour booking and cancellation policy applies","Changes within 24 hours will result in the session being lost","We are unable to manually override booking restrictions"]},{"k":"h","t":"Billing & Cancellation:"},{"k":"ul","items":["Memberships are billed monthly on the 1st of each month","A minimum of 30 days’ notice is required to cancel","All cancellations must be made via the booking system"]},{"k":"h","t":"Bookings & App Use:"},{"k":"ul","items":["All bookings and changes must be made via the booking app","If the app does not allow a change, it is outside permitted timeframes"]}]},{"group":"Studio Hire","name":"STUDIO HIRE 1 HOUR","price":"£30.00","per":"one-time","summary":"Starts on the date of purchase","blocks":[{"k":"p","t":"Please contact for purchasing"}]},{"group":"Studio Hire","name":"STUDIO HIRE 2 HOURS","price":"£50.00","per":"one-time","summary":"Starts on the date of purchase","blocks":[{"k":"p","t":"PLEASE CONTACT BEFORE PURCHASING"}]}];
 const DEFAULT_PRICES = ADULT_PRICES.map((p, i) => ({ id: 'ap' + i, group: p.group, name: p.name, price: p.price, per: p.per, summary: p.summary, details: p.blocks.map(b => b.k === 'ul' ? b.items.map(x => '• ' + x).join('\n') : b.t).join('\n\n') }));
+const TERMS = {"adult":[{"t":"Memberships & Payments","blocks":[{"ul":true,"items":["Monthly memberships are billed on the 1st of each month.","Memberships operate on a rolling monthly basis.","Membership cancellations require 30 days’ notice.","Payments already collected are non-refundable, subject to statutory rights.","Members can choose different eligible classes each week, depending on their membership.","Purchasing a membership does not automatically reserve a class space. All sessions must be booked through TeamUp.","Recurring reservations can be arranged where available."]}]},{"t":"Class Bookings & Cancellations","blocks":[{"ul":true,"items":["All classes must be booked in advance through TeamUp.","A minimum of 24 hours’ notice is required to cancel a class and retain the eligible booking credit.","Within 24 hours of a class, members should not remove their booking themselves. Instead, they should notify the relevant class WhatsApp group.","Late cancellations and missed sessions do not qualify for replacement credits under the standard booking policy.","Booking availability is subject to class capacity."]}]},{"t":"Holidays & Membership Credits","blocks":[{"ul":true,"items":["Members should notify the studio before their holiday, providing their departure and return dates.","The first week of absence does not qualify for holiday credit.","For longer holidays, eligible members can receive Studio Credits for additional weeks, including their applicable Open Training allowance.","Studio Credits do not expire.","Where appropriate, a membership may be paused instead of credits being issued. A pause does not constitute a refund."]}]},{"t":"Illness, Injury & Operations","blocks":[{"ul":false,"t":"Long-term illness, injury or surgery can be considered individually. Depending on the circumstances, the studio may offer a membership pause or credits."}]},{"t":"Pole Choreo Memberships","blocks":[{"ul":true,"items":["Pole Choreo includes Pole Flow and Heels After Dark.","Members must book their individual sessions each month.","Missed Choreo sessions cannot be transferred, credited or refunded.","Holiday credits do not apply to Choreo sessions.","If unable to attend, members should notify the studio rather than remove their booking within 24 hours."]}]},{"t":"Open Training","blocks":[{"ul":false,"t":"Open Training is available to eligible members according to their membership allowance."},{"ul":false,"t":"Sessions must be booked in advance, are subject to availability and are intended for independent practice rather than instructor-led teaching."}]},{"t":"Membership Changes","blocks":[{"ul":false,"t":"Members wishing to upgrade, downgrade or cancel their membership should arrange the change through TeamUp or contact the studio for assistance."},{"ul":false,"t":"Cancellation of a membership requires 30 days’ notice."}]}],"kids":[{"t":"Memberships & Payments","blocks":[{"ul":true,"items":["Kids memberships are billed monthly on the 1st.","Each membership reserves a regular place in the child’s allocated class.","Membership cancellations require 30 days’ notice.","Payments already collected are non-refundable, subject to statutory rights."]}]},{"t":"Missed Classes & Absences","blocks":[{"ul":true,"items":["As places are reserved in small classes, missed sessions cannot be refunded, credited, transferred or carried over.","This includes absences due to holidays or short-term illness.","Parents should notify the studio if their child will be absent."]}]},{"t":"Holidays & Studio Closures","blocks":[{"ul":true,"items":["Kids memberships do not include holiday credits.","Membership pricing takes the studio’s planned Christmas closure into account.","Membership pauses may be considered in exceptional circumstances, with supporting medical evidence where applicable."]}]},{"t":"Pay As You Go Bookings","blocks":[{"ul":true,"items":["PAYG bookings require at least 24 hours’ notice to cancel or move an eligible session.","Bookings cancelled within 24 hours are not eligible for a refund or replacement credit under the standard policy."]}]},{"t":"Class Places","blocks":[{"ul":false,"t":"Classes have limited spaces to maintain a suitable teaching environment. A membership reserves the child’s regular class place, while PAYG bookings depend on availability."}]}],"ot":[{"t":"1. Eligibility & Bookings","blocks":[{"ul":true,"items":["Open Training is available to eligible Jas’ Studio adult members.","Sessions must be booked in advance through TeamUp.","Members must have sufficient experience to practise independently and safely.","All bookings are subject to availability and studio capacity."]}]},{"t":"2. Independent Training","blocks":[{"ul":true,"items":["Open Training is for independent practice and is not an instructor-led class.","Members are responsible for choosing exercises and movements appropriate to their own ability and experience.","Members must only practise skills they have been taught and can perform safely.","New or advanced moves should not be attempted without appropriate instruction or supervision.","Members must not teach or instruct other students during Open Training."]}]},{"t":"3. Equipment & Studio Safety","blocks":[{"ul":true,"items":["All equipment must be used correctly and for its intended purpose.","Suitable crash mats and safety equipment must be used where appropriate.","Equipment must be checked for visible damage before use, and any concerns reported immediately.","Members must not adjust, remove or alter aerial rigging, pole installations or other studio equipment without permission.","Members must respect other students’ training space and avoid creating hazards.","All equipment must be cleaned and returned to its designated place after use."]}]},{"t":"4. Health & Fitness","blocks":[{"ul":true,"items":["Members must be physically fit to participate and should not train while unwell or impaired.","Any injury, health condition or change affecting safe participation should be disclosed to the studio where relevant.","Members must stop training if they experience pain, dizziness or feel unsafe."]}]},{"t":"5. Cancellations & Attendance","blocks":[{"ul":true,"items":["Open Training sessions must be cancelled in accordance with the studio’s booking cancellation policy.","Late cancellations and non-attendance may result in the session being deducted from the member’s allowance.","Members must not exceed their allocated Open Training entitlement without purchasing an additional eligible session."]}]},{"t":"6. Respecting the Studio","blocks":[{"ul":true,"items":["Members must leave the studio clean, tidy and ready for the next session.","Studio equipment and facilities must be treated with care.","Unsafe behaviour, misuse of equipment or failure to follow studio rules may result in Open Training privileges being withdrawn."]}]},{"t":"7. Responsibility","blocks":[{"ul":false,"t":"Open Training involves physical activity and carries inherent risks. Members are expected to train responsibly, follow studio safety procedures and work within their capabilities."},{"ul":false,"t":"Nothing in these terms excludes or limits Jas’ Studio’s liability where it would be unlawful to do so."}]}]};
 const DEFAULT_INSTRUCTORS = [
   { id: 'jas', name: 'Jas', title: 'Founder & Head Instructor', roles: 'Advanced Pole Instructor, Hoop Instructor', bio: 'Jasmin founded Jas’ Studio in 2016 and leads the Advanced Pole and Aerial Hoop classes.', photo: '', featured: true },
   { id: 'faith', name: 'Faith', roles: 'Heels Instructor', photo: '' },
   { id: 'bekah', name: 'Bekah', roles: 'Heels Instructor', photo: '' },
-  { id: 'holly', name: 'Holly', roles: 'Beginner Pole Instructor', photo: '' },
+  { id: 'holly', name: 'Holly', roles: 'Beginner Pole Instructor', photo: 'assets/instructor-holly.jpg', photos: ['assets/instructor-holly-2.jpg', 'assets/instructor-holly-3.jpg', 'assets/instructor-holly-4.jpg'] },
   { id: 'rachael', name: 'Rachael', roles: 'Beginner Pole Instructor', photo: '' },
   { id: 'vix', name: 'Vix', roles: 'Advanced Pole Instructor', photo: '' }
 ];
@@ -1174,9 +1489,12 @@ class Component extends DCLogic {
     this.onResize = () => { const m = window.innerWidth < 1280; if (m !== this.state.mobile) this.setState({ mobile: m, mOpen: false }); };
     window.addEventListener('resize', this.onResize); this.onResize();
     this.startTimer();
+    this.startFeat();
+    this.startPillRoll();
     this.startStory();
     try { const ev = JSON.parse(localStorage.getItem('jas-events') || 'null'); if (Array.isArray(ev)) this.setState({ events: this.norm(ev) }); const kev = JSON.parse(localStorage.getItem('jas-kids-events') || 'null'); if (Array.isArray(kev)) this.setState({ kevents: this.norm(kev) }); const kpr = JSON.parse(localStorage.getItem('jas-kids-prices-v2') || 'null'); if (Array.isArray(kpr)) this.setState({ kprices: kpr }); const cm = JSON.parse(localStorage.getItem('jas-community') || 'null'); if (Array.isArray(cm)) this.setState({ community: cm }); const pr = JSON.parse(localStorage.getItem('jas-prices-v2') || 'null'); if (Array.isArray(pr)) this.setState({ prices: pr }); const ins = JSON.parse(localStorage.getItem('jas-instructors') || 'null'); if (Array.isArray(ins)) this.setState({ instructors: ins }); const gal = JSON.parse(localStorage.getItem('jas-gallery') || 'null'); if (Array.isArray(gal)) this.setState({ gallery: gal }); const kgal = JSON.parse(localStorage.getItem('jas-kids-gallery') || 'null'); if (Array.isArray(kgal)) this.setState({ kgallery: kgal }); if (sessionStorage.getItem('jas-instructor') === '1') this.setState({ instructor: true }); } catch (e) {}
     let gated = false; try { gated = sessionStorage.getItem('jas-gate') === '1'; } catch (e) {}
+    if (this.props.alwaysShowWelcome) gated = false;
     if (!gated) { this.setState({ gate: true }); requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ gateIn: true }))); }
     else this.schedulePop();
   }
@@ -1184,7 +1502,7 @@ class Component extends DCLogic {
     let seen = false; try { seen = sessionStorage.getItem('jas-trial-pop') === '1'; } catch (e) {}
     if (!seen) this.popT = setTimeout(() => { this.setState({ popMount: true }); requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ popIn: true }))); }, 3500);
   }
-  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearInterval(this.t); clearInterval(this.storyT); clearInterval(this.instrT); clearTimeout(this.popT); this.trialIO && this.trialIO.disconnect(); }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearInterval(this.t); clearInterval(this.storyT); clearInterval(this.instrT); clearInterval(this.featT); clearInterval(this.pillT); clearTimeout(this.popT); this.trialIO && this.trialIO.disconnect(); }
   startStory() {
     clearInterval(this.storyT);
     this.storyT = setInterval(() => { if (!this.state.mobile) this.setState(s => ({ storyIdx: ((s.storyIdx || 0) + 1) % 5 })); }, 4500);
@@ -1222,7 +1540,7 @@ class Component extends DCLogic {
     try { sessionStorage.setItem('jas-gate', '1'); } catch (e) {}
     this.setState({ page, gateIn: false }); window.scrollTo({ top: 0 });
     setTimeout(() => this.setState({ gate: false }), 500);
-    if (page === 'main') this.schedulePop();
+    this.schedulePop();
   };
   closePop = () => { this.setState({ popIn: false }); try { sessionStorage.setItem('jas-trial-pop', '1'); } catch (e) {} setTimeout(() => this.setState({ popMount: false }), 600); };
   trialRef = (el) => {
@@ -1308,13 +1626,19 @@ class Component extends DCLogic {
   commScroll = () => { const el = this._comm, p = this.commPage(); if (!el || !p) return; const i = Math.round(el.scrollLeft / p), max = el.scrollWidth - el.clientWidth - 2; const st = { commIdx: i, commAtEnd: el.scrollLeft >= max }; if (st.commIdx !== this.state.commIdx || st.commAtEnd !== this.state.commAtEnd) this.setState(st); };
   setComm = (fn) => this.setState(s => { const a = fn([...(s.community || [])]); try { localStorage.setItem('jas-community', JSON.stringify(a)); } catch (e) { alert('Storage is full. Remove some photos and try again.'); return {}; } return { community: a }; });
   pillRef = (el) => { this._pills = el; };
+  pillStep = (d) => { const el = this._pills; if (!el || !el.firstElementChild) return; const w = el.firstElementChild.getBoundingClientRect().width + 20; const max = el.scrollWidth - el.clientWidth - 2;
+    if (d > 0 && el.scrollLeft >= max) el.scrollTo({ left: 0, behavior: 'smooth' }); else if (d < 0 && el.scrollLeft <= 2) el.scrollTo({ left: max + 2, behavior: 'smooth' }); else el.scrollBy({ left: d * w, behavior: 'smooth' }); };
+  startPillRoll() { clearInterval(this.pillT); this.pillT = setInterval(() => { if (this._pillHold || this.state.openInstr || document.hidden) return; const el = this._pills; if (el && el.scrollWidth > el.clientWidth + 4) this.pillStep(1); }, 3500); }
+  startFeat() { clearInterval(this.featT); this.featT = setInterval(() => this.setState(s => ({ featIdx: (s.featIdx || 0) + 1 })), 4000); }
   startInstrRoll() { clearInterval(this.instrT); this.instrT = setInterval(() => { if (this.state.openInstr) this.setState(s => ({ instrPhoto: (s.instrPhoto || 0) + 1 })); }, 3500); }
   prices = () => this.state.prices || DEFAULT_PRICES;
   setPrices = (fn) => this.setState(s => { const a = fn([...(s.prices || DEFAULT_PRICES)]); try { localStorage.setItem('jas-prices-v2', JSON.stringify(a)); } catch (e) {} return { prices: a }; });
   parseDetails(t) { const out = []; (t || '').split('\n').map(l => l.trim()).filter(Boolean).forEach(l => {
     if (l.startsWith('•')) { const it = l.replace(/^•\s*/, ''); const last = out[out.length - 1]; if (last && last.k === 'ul') last.items.push(it); else out.push({ k: 'ul', items: [it] }); }
     else if ((/[:?]$/.test(l) && l.length < 60) || (l.length < 40 && /[A-Z]/.test(l) && l === l.toUpperCase() && !/^£/.test(l))) out.push({ k: 'h', t: l }); else out.push({ k: 'p', t: l }); }); return out; }
-  instrs = () => this.state.instructors || DEFAULT_INSTRUCTORS;
+  termSecs(k) { return TERMS[k].map((s, i) => ({ t: s.t, no: String(i + 1).padStart(2, '0'), blocks: s.blocks.map(b => ({ ul: !!b.ul, isP: !b.ul, t: b.t || '', items: (b.items || []).map(t => ({ t })) })) })); }
+  instrs = () => { const R = window.__resources || {}, map = { 'assets/instructor-holly.jpg': R.instrHolly, 'assets/instructor-holly-2.jpg': R.instrHolly2, 'assets/instructor-holly-3.jpg': R.instrHolly3, 'assets/instructor-holly-4.jpg': R.instrHolly4 }, fix = (s) => map[s] || s;
+    return (this.state.instructors || DEFAULT_INSTRUCTORS).map(x => ({ ...x, photo: fix(x.photo), photos: (x.photos || []).map(fix) })); };
   setInstrs = (fn) => this.setState(s => { const a = fn([...(s.instructors || DEFAULT_INSTRUCTORS)]); try { localStorage.setItem('jas-instructors', JSON.stringify(a)); } catch (e) { alert('Storage is full. Remove some photos and try again.'); return {}; } return { instructors: a }; });
   setIdx = (i) => { this.setState({ idx: (i + this.N) % this.N }); this.startTimer(); };
   switchTo = (page) => (e) => { e && e.preventDefault && e.preventDefault(); this.setState({ page, idx: 0, booked: false, menu: null, mOpen: false }); window.scrollTo({ top: 0 }); };
@@ -1322,7 +1646,9 @@ class Component extends DCLogic {
     const page = this.state.page ?? (this.props.startPage === 'Kids' ? 'kids' : 'main');
     const { idx, scrolled, course, kid, booked } = this.state;
     const mob = !!this.state.mobile;
-    const inst = !!this.state.instructor;
+    const kidSide = ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page);
+    const loggedIn = !!this.state.instructor;
+    const inst = loggedIn && !this.state.previewMode;
     const menu = this.state.menu;
     const close = () => this.setState({ menu: null });
     const nav = (p, id) => (e) => {
@@ -1346,7 +1672,7 @@ class Component extends DCLogic {
       { key: 'pole', name: 'Pole', level: 'All levels', desc: 'Spins, inverts, holds and combos built with progressive conditioning.' },
       { key: 'hoop', name: 'Aerial Hoop', level: 'All levels', desc: 'Mounts, shapes and rotations on the lyra, from static to spinning.' },
       { key: 'heels', name: 'Heels', level: 'All levels', desc: 'Walks, floorwork and choreography in heels, built on control, posture and confidence.' }
-    ].map((c, i) => ({ ...c, no: String(i + 1).padStart(2, '0'), open: () => this.openCourse(i) }));
+    ].map((c, i) => ({ ...c, no: String(i + 1).padStart(2, '0'), thumb: c.key === 'foundations' ? ((window.__resources && window.__resources.classFoundations) || 'assets/class-foundations.jpg') : '', open: () => this.openCourse(i) }));
     const D = COURSE_DETAILS;
     const ci = Math.min(this.state.detail ?? 0, courses.length - 1), cur = courses[ci];
     const cd = { ...cur, ...D[cur.key], steps: D[cur.key].steps.map((s, j) => ({ ...s, no: String(j + 1).padStart(2, '0') })),
@@ -1361,11 +1687,14 @@ class Component extends DCLogic {
     const trialOpts = ['Pole', 'Aerial Hoop', 'Heels'];
     const popOn = !!this.state.popIn, trialSeen = !!this.state.trialSeen;
     return {
+      showModeSwitch: loggedIn, editOn: !this.state.previewMode, previewOn: !!this.state.previewMode,
+      setEditMode: () => this.setState({ previewMode: false }), setPreviewMode: () => this.setState({ previewMode: true }),
       gateMounted: !!this.state.gate, gateOpacity: this.state.gateIn ? 1 : 0, gateTransform: this.state.gateIn ? 'none' : 'translateY(30px) scale(.96)',
       pickAdult: this.pickGate('main'), pickKids: this.pickGate('kids'),
       heroCtrlDisplay: mob ? 'none' : 'flex', heroH: mob ? 'calc(100vw * 16 / 9)' : '100vh', heroMinH: mob ? '0' : '620px', touchStart: this.touchStart, touchEnd: this.touchEnd,
       trialRef: this.trialRef, trialRevealOpacity: trialSeen ? 1 : 0, trialRevealTransform: trialSeen ? 'none' : 'translateY(48px) scale(.97)',
-      trialPopMounted: !!this.state.popMount && page === 'main',
+      trialPopMounted: !!this.state.popMount && page === 'main', kidPopMounted: !!this.state.popMount && page === 'kids',
+      kidPopBook: (e) => { this.closePop(); nav('kids', 'kbook')(e); },
       popOpacity: popOn ? 1 : 0, popTransform: popOn ? 'none' : 'translateY(40px) scale(.9)', popPointer: popOn ? 'auto' : 'none',
       popLeft: mob ? 'clamp(16px,3vw,40px)' : 'auto',
       closePop: this.closePop, popBook: (e) => { this.closePop(); nav('main', 'book')(e); },
@@ -1373,11 +1702,12 @@ class Component extends DCLogic {
       burgerIcon: this.state.mOpen ? '✕' : '☰',
       toggleMobile: () => this.setState(s => ({ mOpen: !s.mOpen })), closeMobile: () => this.setState({ mOpen: false }),
       logoSize: mob ? '56px' : '72px', kLogoSize: mob ? '60px' : '80px',
-      courseCols: mob ? '32px minmax(0,1fr)' : '56px minmax(0,1.4fr) minmax(0,2fr) auto auto',
+      classCardCols: mob ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))', classCardRatio: mob ? '4/5' : '4/3',
+      courseCols: mob ? '32px 96px minmax(0,1fr)' : '56px 120px minmax(0,1.4fr) minmax(0,2fr) auto auto', thumbW: mob ? '96px' : '120px', thumbRow: mob ? 'span 3' : 'auto',
       eventCols: mob ? 'minmax(0,1fr)' : '90px minmax(0,1.15fr) minmax(0,1fr)',
       stepCols: mob ? '32px minmax(0,1fr)' : '56px minmax(0,1fr) minmax(0,2fr)',
       kStepCols: mob ? '44px minmax(0,1fr)' : '52px minmax(0,1fr) minmax(0,2fr)',
-      col2: mob ? '2' : 'auto', rowGap: mob ? '12px 16px' : '24px', arrowDisplay: mob ? 'none' : 'inline',
+      col2: mob ? '2' : 'auto', ccol: mob ? '3' : 'auto', rowGap: mob ? '12px 16px' : '24px', arrowDisplay: mob ? 'none' : 'inline',
       coursesOpen: menu === 'courses',
       openCourses: () => this.setState({ menu: 'courses' }), closeMenu: close,
       goPole: this.openCourseBy('pole'), goHoop: this.openCourseBy('hoop'), goHeels: this.openCourseBy('heels'),
@@ -1389,13 +1719,13 @@ class Component extends DCLogic {
       isPrices: page === 'prices', isTerms: page === 'terms',
       mobileBook: (e) => { this.setState({ mOpen: false }); nav('main', 'book')(e); },
       isInstructor: inst,
-      loginLabel: inst ? 'Instructor ▾' : 'Login ▾', loginLabelLong: inst ? 'Instructor: Log out' : 'Instructor Login', loggedOut: !inst,
+      loginLabel: loggedIn ? 'Instructor ▾' : 'Login ▾', loginLabelLong: loggedIn ? 'Instructor: Log out' : 'Instructor Login', loggedOut: !loggedIn,
       loginMenuOpen: menu === 'login', openLoginMenu: () => this.setState({ menu: 'login' }),
       toggleLoginMenu: (e) => { e.preventDefault(); this.setState({ menu: menu === 'login' ? null : 'login' }); },
-      capOpen: !!this.state.capMsg, capText: this.state.capMsg || '', closeCap: () => this.setState({ capMsg: null }),
       openLoginModal: (e) => { e.preventDefault(); this.setState({ menu: null, mOpen: false, loginOpen: true, loginError: false }); },
-      logoutClick: (e) => { e.preventDefault(); try { sessionStorage.removeItem('jas-instructor'); } catch (x) {} this.setState({ instructor: false, menu: null, mOpen: false }); },
-      loginClick: (e) => { e.preventDefault(); this.setState({ mOpen: false }); if (inst) { try { sessionStorage.removeItem('jas-instructor'); } catch (x) {} this.setState({ instructor: false }); } else this.setState({ loginOpen: true, loginError: false }); },
+      logoutClick: (e) => { e.preventDefault(); try { sessionStorage.removeItem('jas-instructor'); } catch (x) {} this.setState({ instructor: false, previewMode: false, menu: null, mOpen: false }); },
+      loginClick: (e) => { e.preventDefault(); this.setState({ mOpen: false }); if (loggedIn) { try { sessionStorage.removeItem('jas-instructor'); } catch (x) {} this.setState({ instructor: false, previewMode: false }); } else this.setState({ loginOpen: true, loginError: false }); },
+      capOpen: !!this.state.capMsg, capText: this.state.capMsg || '', closeCap: () => this.setState({ capMsg: null }),
       loginOpen: !!this.state.loginOpen, closeLogin: () => this.setState({ loginOpen: false }), stop: (e) => e.stopPropagation(),
       loginEmail: this.state.loginEmail || '', loginPass: this.state.loginPass || '', loginError: !!this.state.loginError,
       onLoginEmail: (e) => this.setState({ loginEmail: e.target.value }), onLoginPass: (e) => this.setState({ loginPass: e.target.value }),
@@ -1411,9 +1741,13 @@ class Component extends DCLogic {
       ...this.buildEvents('events', '', inst, mob), ...this.buildEvents('kevents', 'k', inst, mob),
       eventGap: mob ? '20px' : 'clamp(28px,4vw,56px)', dateDir: mob ? 'row' : 'column', dateAlign: mob ? 'center' : 'flex-start', dayFont: mob ? '32px' : '56px',
       detailCols: mob ? 'minmax(0,1fr)' : '90px minmax(0,1fr)', spacerDisplay: mob ? 'none' : 'block',
+      kidStorySlides: [['kids-about-1', 'Kids class photo 1'], ['kids-about-2', 'Kids class photo 2'], ['kids-about-3', 'Kids class photo 3']].slice(0, mob ? 1 : 3).map(([id, ph], i) => {
+        const on = mob ? true : i === (this.state.storyIdx || 0) % 3;
+        return { id, ph, n: i + 1, opacity: on ? 1 : 0, pe: on ? 'auto' : 'none', dotW: on ? '28px' : '12px', dotBg: on ? '#b99cf0' : '#e2dbef', go: () => { this.setState({ storyIdx: i }); this.startStory(); } };
+      }),
       storySlides: (mob ? [['main-about', 'Jasmin or studio portrait']] : [['main-about', 'Jasmin or studio portrait'], ['story-1', 'Story photo 1'], ['story-2', 'Story photo 2'], ['story-3', 'Story photo 3'], ['story-4', 'Story photo 4']]).map(([id, ph], i) => {
         const on = mob ? true : i === (this.state.storyIdx || 0);
-        return { id, ph, n: i + 1, opacity: on ? 1 : 0, pe: on ? 'auto' : 'none', dotW: on ? '28px' : '12px', dotBg: on ? '#f4f2ee' : '#444', go: () => { this.setState({ storyIdx: i }); this.startStory(); } };
+        return { id, ph, n: i + 1, opacity: on ? 1 : 0, pe: on ? 'auto' : 'none', dotW: on ? '28px' : '12px', dotBg: on ? (kidSide ? '#b99cf0' : '#f4f2ee') : (kidSide ? '#e2dbef' : '#444'), go: () => { this.setState({ storyIdx: i }); this.startStory(); } };
       }), storySticky: mob ? 'static' : 'sticky',
       ...(() => {
         const up = this.state.community || [], useUp = up.length > 0;
@@ -1425,7 +1759,7 @@ class Component extends DCLogic {
           commItemW: mob ? '82%' : 'calc((100% - 32px) / 3)', commSnap: this.state.commDragging ? 'none' : 'x mandatory', commCursor: mob ? 'auto' : (this.state.commDragging ? 'grabbing' : 'grab'),
           commRef: this.commRef, commDown: this.commDown, commMove: this.commMove, commUp: this.commUp, commScroll: this.commScroll,
           commPrev: () => this.commStep(-1), commNext: () => this.commStep(1), commPrevOp: cur > 0 ? 1 : .3, commNextOp: this.state.commAtEnd ? .3 : 1,
-          commDots: Array.from({ length: pages }, (_, i) => ({ n: i + 1, w: i === cur ? '36px' : '14px', bg: i === cur ? '#f4f2ee' : '#444', go: () => { const el = this._comm; if (el) el.scrollTo({ left: i * this.commPage(), behavior: 'smooth' }); } })),
+          commDots: Array.from({ length: pages }, (_, i) => ({ n: i + 1, w: i === cur ? '36px' : '14px', bg: i === cur ? (kidSide ? '#b99cf0' : '#f4f2ee') : (kidSide ? '#e2dbef' : '#444'), go: () => { const el = this._comm; if (el) el.scrollTo({ left: i * this.commPage(), behavior: 'smooth' }); } })),
           onCommAdd: async (x) => { const files = [...(x.target.files || [])]; x.target.value = ''; const room = 9 - up.length; const urls = (await Promise.all(files.slice(0, room).map(f => this.readPhoto(f, 1200)))).filter(Boolean); this.setComm(a => [...a, ...urls].slice(0, 9)); } };
       })(),
       priceGridCols: mob ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))',
@@ -1440,6 +1774,8 @@ class Component extends DCLogic {
             toggle: () => this.setState(s => ({ openPrice: { ...(s.openPrice || {}), [k]: !open } })), toggleLabel: open ? 'Hide details' : 'View details', rot: open ? 'rotate(180deg)' : 'none', rows: open ? '1fr' : '0fr',
             blocks: this.parseDetails(p.details).map(b => ({ isH: b.k === 'h', isP: b.k === 'p', isUl: b.k === 'ul', t: b.t || '', items: (b.items || []).map(t => ({ t })) })) }; }) };
       }).filter(g => g.items.length || inst),
+      termDocs: [['adult', 'Adults – Terms & Conditions & Booking Policies', 'Memberships, bookings, holidays & choreo'], ['ot', 'Open Training – Terms & Conditions', 'Eligibility, safety & responsibility']].map(([k, title, sub]) => { const open = !!(this.state.openTerms || {})[k]; return { title, sub, exp: open ? 'true' : 'false', rot: open ? 'rotate(180deg)' : 'none', rows: open ? '1fr' : '0fr', toggle: () => this.setState(s => ({ openTerms: { ...(s.openTerms || {}), [k]: !open } })), secs: this.termSecs(k) }; }),
+      kidTermDocs: [{ secs: this.termSecs('kids') }],
       adultTerms: [
         { t: 'Bookings & payment', d: 'All classes must be booked and paid for in advance through our booking system.' },
         { t: 'Cancellations', d: 'Add your cancellation notice period and refund or credit policy here.' },
@@ -1472,35 +1808,42 @@ class Component extends DCLogic {
             remove: () => { if (confirm('Remove ' + (x.name || 'this instructor') + '?')) this.setInstrs(a => a.filter(y => y.id !== x.id)); },
             feature: () => this.setInstrs(a => a.map(y => ({ ...y, featured: y.id === x.id }))),
             unfeature: () => this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, featured: false } : y)),
-            isOpen: this.state.openInstr === x.id ? 'true' : 'false', pillBorder: this.state.openInstr === x.id ? '2px solid #f4f2ee' : '2px solid transparent',
+            isOpen: this.state.openInstr === x.id ? 'true' : 'false', pillBorder: this.state.openInstr === x.id ? (kidSide ? '2px solid #b99cf0' : '2px solid #f4f2ee') : '2px solid transparent',
             toggle: () => { const o = this.state.openInstr === x.id ? null : x.id; this.setState({ openInstr: o, lastInstr: o || this.state.lastInstr, instrPhoto: 0 }); this.startInstrRoll(); },
             galCount: (x.photos || []).length, galCanAdd: (x.photos || []).length < 3,
             galList: (x.photos || []).map((src, j) => ({ bg: 'url("' + src + '")', remove: () => this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photos: (y.photos || []).filter((_, k) => k !== j) } : y)) })),
             onGal: async (ev) => { const files = [...(ev.target.files || [])]; ev.target.value = ''; const have = (x.photos || []).length; const urls = (await Promise.all(files.slice(0, Math.max(0, 3 - have)).map(f => this.readPhoto(f, 1200)))).filter(Boolean); this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photos: [...(y.photos || []), ...urls].slice(0, 3) } : y)); } };
         };
-        const fe = list.find(x => x.featured);
+        const fe = list.find(x => x.id === 'jas') || list.find(x => x.featured);
         const sel = list.find(x => x.id === (this.state.openInstr || this.state.lastInstr)) || {};
         const selPhotos = (sel.photos && sel.photos.length) ? sel.photos : (sel.photo ? [sel.photo] : []);
         const pi = selPhotos.length ? (this.state.instrPhoto || 0) % selPhotos.length : 0;
-        return { featuredList: fe ? [mk(fe)] : [], teachers: list.filter(x => x !== fe).map(mk),
-          instrView: !inst, instrEdit: inst, instrRows: this.state.openInstr ? '1fr' : '0fr', instrPanelOpacity: this.state.openInstr ? 1 : 0,
+        const mkF = (x) => { const o = mk(x); const pics = [x.photo, ...(x.photos || [])].filter(Boolean).slice(0, 10); const n = pics.length; const fi = n ? (this.state.featIdx || 0) % n : 0;
+          o.slides = n ? pics.map((src, j) => ({ isImg: true, isSlot: false, bg: 'url("' + src + '")', opacity: j === fi ? 1 : 0, pe: j === fi ? 'auto' : 'none' })) : [{ isImg: false, isSlot: true, opacity: 1, pe: 'auto' }];
+          o.multi = n > 1; o.dots = pics.map((_, j) => ({ n: j + 1, w: j === fi ? '28px' : '12px', bg: j === fi ? (kidSide ? '#b99cf0' : '#f4f2ee') : (kidSide ? '#e2dbef' : '#444'), go: () => { this.setState({ featIdx: j }); this.startFeat(); } }));
+          o.galCanAdd10 = (x.photos || []).length < 9;
+          o.onGal10 = async (ev) => { const files = [...(ev.target.files || [])]; ev.target.value = ''; const have = (x.photos || []).length; const urls = (await Promise.all(files.slice(0, Math.max(0, 9 - have)).map(f => this.readPhoto(f, 1200)))).filter(Boolean); this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photos: [...(y.photos || []), ...urls].slice(0, 9) } : y)); };
+          o.galCount = [x.photo, ...(x.photos || [])].filter(Boolean).length; return o; };
+        return { featuredList: fe ? [mkF(fe)] : [], teachers: list.filter(x => x !== fe).map(mk),
+          instrView: true, instrEdit: inst, instrRows: this.state.openInstr ? '1fr' : '0fr', instrPanelOpacity: this.state.openInstr ? 1 : 0,
           panelRadius: mob ? '24px' : '240px 240px 24px 24px',
           openName: sel.name || '', openBio: sel.bio || '', openRoles: (sel.roles || '').split(',').map(r => r.trim()).filter(Boolean).map(label => ({ label })),
-          openPhotos: selPhotos.map((src, j) => ({ n: j + 1, bg: 'url("' + src + '")', opacity: j === pi ? 1 : 0, dotW: j === pi ? '28px' : '12px', dotBg: j === pi ? '#f4f2ee' : '#444', go: () => { this.setState({ instrPhoto: j }); this.startInstrRoll(); } })),
-          openSlots: selPhotos.length ? [] : [1, 2, 3].map(n => { const on = n - 1 === (this.state.instrPhoto || 0) % 3; return { id: 'instr-drop-' + (sel.id || 'x') + '-' + n, ph: (sel.name || 'Instructor') + ' photo ' + n, opacity: on ? 1 : 0, pe: on ? 'auto' : 'none', n, go: () => { this.setState({ instrPhoto: n - 1 }); this.startInstrRoll(); }, dotW: on ? '28px' : '12px', dotBg: on ? '#f4f2ee' : '#444' }; }),
+          openPhotos: selPhotos.map((src, j) => ({ n: j + 1, bg: 'url("' + src + '")', opacity: j === pi ? 1 : 0, dotW: j === pi ? '28px' : '12px', dotBg: j === pi ? (kidSide ? '#b99cf0' : '#f4f2ee') : (kidSide ? '#e2dbef' : '#444'), go: () => { this.setState({ instrPhoto: j }); this.startInstrRoll(); } })),
+          openSlots: selPhotos.length ? [] : [1, 2, 3].map(n => { const on = n - 1 === (this.state.instrPhoto || 0) % 3; return { id: 'instr-drop-' + (sel.id || 'x') + '-' + n, ph: (sel.name || 'Instructor') + ' photo ' + n, opacity: on ? 1 : 0, pe: on ? 'auto' : 'none', n, go: () => { this.setState({ instrPhoto: n - 1 }); this.startInstrRoll(); }, dotW: on ? '28px' : '12px', dotBg: on ? (kidSide ? '#b99cf0' : '#f4f2ee') : (kidSide ? '#e2dbef' : '#444') }; }),
           openMulti: selPhotos.length !== 1,
-          openDots: selPhotos.length ? selPhotos.map((src, j) => ({ n: j + 1, dotW: j === pi ? '28px' : '12px', dotBg: j === pi ? '#f4f2ee' : '#444', go: () => { this.setState({ instrPhoto: j }); this.startInstrRoll(); } })) : [1, 2, 3].map(n => { const on = n - 1 === (this.state.instrPhoto || 0) % 3; return { n, dotW: on ? '28px' : '12px', dotBg: on ? '#f4f2ee' : '#444', go: () => { this.setState({ instrPhoto: n - 1 }); this.startInstrRoll(); } }; }),
+          openDots: selPhotos.length ? selPhotos.map((src, j) => ({ n: j + 1, dotW: j === pi ? '28px' : '12px', dotBg: j === pi ? (kidSide ? '#b99cf0' : '#f4f2ee') : (kidSide ? '#e2dbef' : '#444'), go: () => { this.setState({ instrPhoto: j }); this.startInstrRoll(); } })) : [1, 2, 3].map(n => { const on = n - 1 === (this.state.instrPhoto || 0) % 3; return { n, dotW: on ? '28px' : '12px', dotBg: on ? (kidSide ? '#b99cf0' : '#f4f2ee') : (kidSide ? '#e2dbef' : '#444'), go: () => { this.setState({ instrPhoto: n - 1 }); this.startInstrRoll(); } }; }),
           closeInstr: () => this.setState({ openInstr: null }),
-          pillRef: this.pillRef, pillPrev: () => this._pills && this._pills.scrollBy({ left: -320, behavior: 'smooth' }), pillNext: () => this._pills && this._pills.scrollBy({ left: 320, behavior: 'smooth' }),
+          pillRef: this.pillRef, pillPrev: () => this.pillStep(-1), pillNext: () => this.pillStep(1),
+          pillW: mob ? 'calc((100% - 20px) / 2)' : 'calc((100% - 80px) / 5)', pillPause: () => { this._pillHold = true; }, pillResume: () => { this._pillHold = false; },
           addInstr: () => this.setInstrs(a => [...a, { id: 'i' + Date.now().toString(36), name: 'New instructor', roles: '', title: '', bio: '', photo: '', featured: false }]) };
       })(),
-      isMain: !['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidevents'].includes(page), isKids: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidevents'].includes(page), isKidPrices: page === 'kidprices', isKidTerms: page === 'kidterms', isKidsHome: page === 'kids', isKidCourse: page === 'kidcourse', kd,
+      isMain: !['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page), isKids: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page), isKidPrices: page === 'kidprices', isKidTerms: page === 'kidterms', isKidsHome: page === 'kids', isKidCourse: page === 'kidcourse', kd,
       navBgDark: (scrolled || page !== 'main') ? 'rgba(10,10,10,.92)' : 'transparent',
       navBgLight: scrolled ? 'rgba(255,255,255,.9)' : 'rgba(255,255,255,0)',
       slides: mkSlides, kidSlides: mkSlides,
       slideLabel: `0${idx + 1} / 0${this.N}`,
       prev: () => this.setIdx(idx - 1), next: () => this.setIdx(idx + 1),
-      goTop: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidevents'].includes(page) ? nav('kids') : nav('main'),
+      goTop: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page) ? nav('kids') : nav('main'),
       goKCourses: nav('kids', 'kcourses'), goKBook: nav('kids', 'kbook'), goKContact: this.go('kcontact'), goKPrices: nav('kidprices'), goKTerms: nav('kidterms'),
       priceCols: mob ? 'minmax(0,1fr)' : 'minmax(0,1fr) auto auto',
       kidPriceGroups: ['Pay As You Go', 'Kids Monthly Memberships'].map(label => {
@@ -1514,7 +1857,8 @@ class Component extends DCLogic {
             blocks: this.parseDetails(p.details).map(b => ({ isH: b.k === 'h', isP: b.k === 'p', isUl: b.k === 'ul', t: b.t || '', items: (b.items || []).map(t => ({ t })) })) }; }) };
       }).filter(g => g.items.length || inst),
       addKPrice: () => this.setKPrices(a => [...a, { id: 'kp' + Date.now().toString(36), group: 'Kids Monthly Memberships', name: 'New option', price: '£', per: 'per month', summary: '', details: '' }]),
-      isKidEvents: page === 'kidevents', mobileKBook: (e) => { this.setState({ mOpen: false }); nav('kids', 'kbook')(e); }, goKEvents: nav('kidevents'),
+      isKidEvents: page === 'kidevents', isKidAbout: page === 'kidabout', isKidInstructors: page === 'kidinstructors', isKidCommunity: page === 'kidcommunity',
+      goKAbout: nav('kids', 'kabout'), goKInstructors: nav('kidinstructors'), goKCommunity: nav('kids', 'kcommunity'), mobileKBook: (e) => { this.setState({ mOpen: false }); nav('kids', 'kbook')(e); }, goKEvents: nav('kidevents'),
       kidTerms: [
         { t: 'Age requirements', d: 'Classes are open to children from School Year 2 up to 16 years old.' },
         { t: 'Bookings & payment', d: 'All classes must be booked and paid for in advance through our booking system.' },
