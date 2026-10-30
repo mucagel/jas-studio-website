@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ext-resource-dependency" content="assets/hero-team-bw-3.jpg" data-resource-id="heroTeam">
+<template id="__bundler_thumbnail" data-bg-color="#0a0a0a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0a0a0a"/><text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="34" fill="#f4f2ee">JS</text></svg></template>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..800;1,62..125,300..800&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0a0a0a;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{opacity:.7}
+input,select,textarea{font-family:inherit}
+</style>
+</helmet>
+
+<sc-if value="{{ isMain }}" hint-placeholder-val="{{ true }}">
+<div style="background:#0a0a0a;color:#f4f2ee;min-height:100vh">
+
+  <header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(20px,4vw,56px);background:{{ navBgDark }};transition:background .4s">
+    <a href="#top" onClick="{{ goTop }}" style="display:block;width:72px;height:72px;flex-shrink:0"><img src="assets/logo-square.png" alt="Jas' Studio — Pole &amp; Aerial Arts" style="width:100%;height:100%;display:block;object-fit:contain"></a>
+    <nav style="display:flex;align-items:center;gap:clamp(14px,2.2vw,34px);flex-wrap:wrap;justify-content:flex-end">
+      <a href="#about" onClick="{{ goAbout }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">About us</a>
+      <div onMouseEnter="{{ openCourses }}" onMouseLeave="{{ closeMenu }}" style="position:relative;padding:8px 0">
+        <a href="#courses" onClick="{{ goCourses }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Courses ▾</a>
+        <sc-if value="{{ coursesOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:100%;left:-18px;padding-top:14px;min-width:220px"><div style="background:#0a0a0a;border:1px solid #262626;padding:8px;display:flex;flex-direction:column"><a href="#course-pole" onClick="{{ goPole }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Pole</a><a href="#course-hoop" onClick="{{ goHoop }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Aerial Hoop</a><a href="#course-heels" onClick="{{ goHeels }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">Heels</a><a href="#courses" onClick="{{ goCourses }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap" style-hover="background:#1a1a1a;opacity:1">All courses</a></div></div></sc-if>
+      </div>
+      <a href="#events" onClick="{{ goEvents }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Events</a>
+      <a href="#teachers" onClick="{{ goTeachers }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Coaches</a>
+      <a href="#community" onClick="{{ goCommunity }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Community</a>
+      <a href="#book" onClick="{{ goBook }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Book Now</a>
+      <a href="#contact" onClick="{{ goContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Contact</a>
+      <button onClick="{{ toKids }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#0a0a0a;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;background:linear-gradient(90deg,#f7a8dc,#c9aef3,#9fd6f6)" style-hover="filter:brightness(1.06)">Jas' Studio Kids</button>
+    </nav>
+  </header>
+
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <section id="top" style="position:relative;height:100vh;min-height:620px;overflow:hidden;background:#111">
+    <sc-for list="{{ slides }}" as="s" hint-placeholder-count="4">
+      <div style="position:absolute;inset:0;opacity:{{ s.opacity }};transition:opacity 1.4s ease;filter:grayscale(1)">
+        <image-slot id="main-hero-{{ s.n }}" src="{{ s.src }}" shape="rect" placeholder="Hero photo {{ s.n }} — drop a black &amp; white image"></image-slot>
+      </div>
+    </sc-for>
+    <div style="position:absolute;left:0;right:0;top:0;height:22%;background:linear-gradient(rgba(10,10,10,.55),rgba(10,10,10,0));pointer-events:none"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:38%;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);-webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%);pointer-events:none"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(rgba(10,10,10,0),rgba(10,10,10,.55) 45%,rgba(10,10,10,.9) 78%,#0a0a0a);pointer-events:none"></div>
+    <h1 style="position:absolute;left:50%;bottom:clamp(78px,10vh,110px);transform:translateX(-50%);margin:0;width:min(540px,70vw);pointer-events:none;filter:drop-shadow(0 6px 30px rgba(0,0,0,.55))"><img src="assets/logo-vector.svg" alt="Jas' Studio — Pole &amp; Aerial Arts" style="display:block;width:100%;height:auto"></h1>
+    <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(28px,5vh,48px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;pointer-events:none">
+      <span></span>
+      <div style="display:flex;align-items:center;gap:18px;pointer-events:auto">
+        <span style="font-size:12px;letter-spacing:.2em;font-variant-numeric:tabular-nums;color:#bdbab4">{{ slideLabel }}</span>
+        <div style="display:flex;gap:8px">
+          <sc-for list="{{ slides }}" as="s" hint-placeholder-count="4">
+            <button onClick="{{ s.go }}" aria-label="Show photo {{ s.n }}" style="width:{{ s.dotW }};height:2px;border:0;padding:0;cursor:pointer;background:{{ s.dotBg }};transition:all .4s"></button>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:6px">
+          <button onClick="{{ prev }}" aria-label="Previous" style="width:44px;height:44px;border:1px solid rgba(244,242,238,.35);background:transparent;color:#f4f2ee;border-radius:999px;cursor:pointer;font-size:16px" style-hover="background:#f4f2ee;color:#0a0a0a">←</button>
+          <button onClick="{{ next }}" aria-label="Next" style="width:44px;height:44px;border:1px solid rgba(244,242,238,.35);background:transparent;color:#f4f2ee;border-radius:999px;cursor:pointer;font-size:16px" style-hover="background:#f4f2ee;color:#0a0a0a">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="padding:clamp(80px,12vw,160px) clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);align-items:center;max-width:1440px;margin:0 auto">
+    <div>
+      <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">01 — About us</p>
+      <h2 style="margin:0 0 32px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">A quiet room for <i>loud</i> progress.</h2>
+      <p style="margin:0 0 20px;font-size:17px;line-height:1.7;color:#c9c6c0;max-width:52ch;text-wrap:pretty">Jas' Studio is a pole and aerial arts studio built around technique, conditioning and artistry. Small classes, attentive coaching and a calm, focused space let every student train at their own pace.</p>
+      <p style="margin:0;font-size:17px;line-height:1.7;color:#c9c6c0;max-width:52ch;text-wrap:pretty">Whether it's your first spin or your next competition routine, we coach the fundamentals first and build from there.</p>
+    </div>
+    <div style="aspect-ratio:4/5;filter:grayscale(1)">
+      <image-slot id="main-about" shape="rect" placeholder="Studio or coach portrait"></image-slot>
+    </div>
+  </section>
+
+
+  <section id="trial" style="padding:0 clamp(20px,4vw,56px) clamp(80px,10vw,140px)">
+    <div style="max-width:1440px;margin:0 auto;border:1px solid #2a2a2a;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px">
+      <div>
+        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">02 — Trial class</p>
+        <h2 style="margin:0 0 20px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.05">Book a <i>trial</i> class</h2>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#a9a6a0;max-width:44ch">New to the studio? Pick a discipline and we'll find the right first class for you.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;justify-content:center;align-items:flex-start">
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#a9a6a0">Choose any class marked as a free trial on the timetable.</p>
+        <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer" style-hover="background:#fff">Book your trial →</button>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ showCourses }}" hint-placeholder-val="{{ true }}">
+  <section id="courses" style="padding:{{ coursesPad }};border-top:{{ coursesBorder }};max-width:1440px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:56px">
+      <div>
+        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Courses</p>
+        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05">Disciplines</h2>
+      </div>
+      <a href="#book" onClick="{{ goBook }}" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #f4f2ee;padding-bottom:6px">Book a class →</a>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ courses }}" as="c" hint-placeholder-count="5">
+        <div id="course-{{ c.key }}" onClick="{{ c.open }}" style="display:grid;grid-template-columns:56px minmax(0,1.4fr) minmax(0,2fr) auto auto;gap:24px;align-items:baseline;padding:30px 0;border-top:1px solid #222;cursor:pointer" style-hover="background:#111">
+          <span style="font-size:12px;letter-spacing:.2em;color:#6f6c68;font-variant-numeric:tabular-nums">{{ c.no }}</span>
+          <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;letter-spacing:.02em">{{ c.name }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#a9a6a0;text-wrap:pretty">{{ c.desc }}</p>
+          <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#f4f2ee;border:1px solid #333;padding:7px 12px;border-radius:999px;white-space:nowrap">{{ c.level }}</span>
+          <span style="font-size:18px;color:#f4f2ee">→</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  </sc-if>
+
+  <sc-if value="{{ isEvents }}" hint-placeholder-val="{{ false }}">
+  <section id="events" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Events</p>
+    <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance;margin-bottom:56px">Workshops &amp; <i>showcases</i></h2>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1.4fr) minmax(0,2fr) auto;gap:24px;align-items:baseline;padding:30px 0;border-top:1px solid #222">
+          <span style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#a9a6a0">{{ e.date }}</span>
+          <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;letter-spacing:.02em">{{ e.name }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#a9a6a0">{{ e.desc }}</p>
+          <a href="#book" onClick="{{ goBook }}" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #333;padding:9px 14px;border-radius:999px;white-space:nowrap">Book</a>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  </sc-if>
+
+  <sc-if value="{{ isCoaches }}" hint-placeholder-val="{{ false }}">
+  <section id="teachers" style="padding:clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px);max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">Coaches</p>
+    <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance;margin-bottom:56px">Meet the team</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
+      <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="aspect-ratio:3/4;filter:grayscale(1)"><image-slot id="main-teacher-{{ t.n }}" shape="rect" placeholder="Coach photo"></image-slot></div>
+          <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:20px;text-transform:uppercase">{{ t.name }}</h3>
+          <p style="margin:0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8d8a85">{{ t.role }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  </sc-if>
+
+  <sc-if value="{{ isCourseDetail }}" hint-placeholder-val="{{ false }}">
+  <section style="position:relative;height:72vh;min-height:520px;overflow:hidden;background:#111">
+    <div style="position:absolute;inset:0;filter:grayscale(1)"><image-slot id="course-hero-{{ cd.key }}" shape="rect" placeholder="{{ cd.name }} photo"></image-slot></div>
+    <div style="position:absolute;left:0;right:0;top:0;height:22%;background:linear-gradient(rgba(10,10,10,.55),rgba(10,10,10,0));pointer-events:none"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(rgba(10,10,10,0),rgba(10,10,10,.6) 45%,#0a0a0a);pointer-events:none"></div>
+    <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(32px,6vh,64px);display:flex;flex-direction:column;gap:20px;pointer-events:none">
+      <a href="#courses" onClick="{{ goCourses }}" style="pointer-events:auto;align-self:flex-start;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#bdbab4">← All courses</a>
+      <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(44px,8vw,120px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em">{{ cd.name }}</h1>
+      <span style="align-self:flex-start;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(244,242,238,.4);padding:7px 12px;border-radius:999px">{{ cd.level }}</span>
+    </div>
+  </section>
+
+  <section style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);border-top:1px solid #222;max-width:1440px;margin:0 auto;border-top:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,96px)">
+    <div>
+      <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">01 — History</p>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">{{ cd.historyTitle }}</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <sc-for list="{{ cd.history }}" as="p" hint-placeholder-count="2">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#c9c6c0;max-width:60ch;text-wrap:pretty">{{ p }}</p>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);border-top:1px solid #222;max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">02 — Health benefits</p>
+    <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance;margin-bottom:56px">What it builds</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:1px;background:#222;border:1px solid #222;max-width:1100px">
+      <sc-for list="{{ cd.benefits }}" as="b" hint-placeholder-count="4">
+        <div style="background:#0a0a0a;padding:32px;display:flex;flex-direction:column;gap:14px">
+          <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:20px;text-transform:uppercase">{{ b.t }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:#a9a6a0;text-wrap:pretty">{{ b.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);border-top:1px solid #222;max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">03 — How we start a class</p>
+    <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance;margin-bottom:56px">Inside a session</h2>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ cd.steps }}" as="s" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,2fr);gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid #222">
+          <span style="font-size:12px;letter-spacing:.2em;color:#6f6c68">{{ s.no }}</span>
+          <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:clamp(18px,2vw,24px);text-transform:uppercase">{{ s.t }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:#a9a6a0;text-wrap:pretty">{{ s.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="background:#f4f2ee;color:#0a0a0a;padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px)">
+    <div style="max-width:1440px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap">
+      <div>
+        <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#6f6c68">04 — Book now</p>
+        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Ready for {{ cd.name }}?</h2>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button onClick="{{ cd.book }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book {{ cd.name }}</button>
+        <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:1px solid #0a0a0a;border-radius:999px;background:transparent;color:#0a0a0a;cursor:pointer" style-hover="background:#0a0a0a;color:#f4f2ee">Book a trial</button>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <section id="community" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);border-top:1px solid #222;max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">03 — Community</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;align-items:end;margin-bottom:56px">
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Train together. <i>Perform</i> together.</h2>
+      <p style="margin:0;font-size:17px;line-height:1.7;color:#c9c6c0;max-width:48ch;text-wrap:pretty">Open training sessions, student showcases and workshops with guest coaches keep the studio connected beyond the weekly class.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;filter:grayscale(1)">
+      <div style="aspect-ratio:3/4"><image-slot id="main-comm-1" shape="rect" placeholder="Showcase"></image-slot></div>
+      <div style="aspect-ratio:3/4"><image-slot id="main-comm-2" shape="rect" placeholder="Open training"></image-slot></div>
+      <div style="aspect-ratio:3/4"><image-slot id="main-comm-3" shape="rect" placeholder="Workshop"></image-slot></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:32px">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#f4f2ee;border:1px solid #444;padding:12px 18px;border-radius:999px" style-hover="background:#f4f2ee;color:#0a0a0a;opacity:1">Instagram ↗</a>
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#f4f2ee;border:1px solid #444;padding:12px 18px;border-radius:999px" style-hover="background:#f4f2ee;color:#0a0a0a;opacity:1">Facebook ↗</a>
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#f4f2ee;border:1px solid #444;padding:12px 18px;border-radius:999px" style-hover="background:#f4f2ee;color:#0a0a0a;opacity:1">TikTok ↗</a>
+    </div>
+  </section>
+
+  <section id="book" style="background:#f4f2ee;color:#0a0a0a;padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px)">
+    <div style="max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+        <div>
+          <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#6f6c68">04 — Book Now</p>
+          <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05">Reserve your spot.</h2>
+        </div>
+        <p style="margin:0;font-size:17px;line-height:1.7;color:#4a4845;max-width:44ch">Pick a class from the timetable below to book or start your free trial.</p>
+      </div>
+      <div ref="{{ teamupRef }}" style="background:#fff;min-height:640px;padding:clamp(12px,2vw,24px)"></div>
+    </div>
+  </section>
+
+  </sc-if>
+
+  <section id="contact" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px) 48px;max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">05 — Contact</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px;padding-bottom:80px;border-bottom:1px solid #222">
+      <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6f6c68">Studio</p><p style="margin:0;font-size:18px;line-height:1.6">Unit 54-55, Shannon Way<br>Canvey Island<br>Essex<br>SS8 0PE<br>United Kingdom</p></div>
+      <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6f6c68">Email</p><p style="margin:0;font-size:18px"><a href="mailto:jasstudio01@outlook.com">jasstudio01@outlook.com</a></p></div>
+      <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6f6c68">Phone</p><p style="margin:0;font-size:18px"><a href="tel:+447768966860">+44 7768 966860</a></p></div>
+      <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6f6c68">Follow</p><div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#f4f2ee;border:1px solid #444;padding:12px 18px;border-radius:999px" style-hover="background:#f4f2ee;color:#0a0a0a;opacity:1">Instagram ↗</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#f4f2ee;border:1px solid #444;padding:12px 18px;border-radius:999px" style-hover="background:#f4f2ee;color:#0a0a0a;opacity:1">Facebook ↗</a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#f4f2ee;border:1px solid #444;padding:12px 18px;border-radius:999px" style-hover="background:#f4f2ee;color:#0a0a0a;opacity:1">TikTok ↗</a>
+      </div></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:32px">
+      <img src="assets/logo-wide.jpg" alt="Jas' Studio" style="height:56px;width:auto;mix-blend-mode:screen">
+      <span style="font-size:12px;letter-spacing:.14em;color:#6f6c68">© 2026 Jas' Studio — Pole &amp; Aerial Arts</span>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isKids }}" hint-placeholder-val="{{ false }}">
+<div style="background:#ffffff;color:#2b2838;min-height:100vh">
+
+  <header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(20px,4vw,56px);background:{{ navBgLight }};backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background .4s">
+    <a href="#ktop" onClick="{{ goTop }}" style="display:block;width:80px;height:80px;flex-shrink:0"><img src="assets/logo-kids-square.png" alt="Jas' Studio Kids" style="width:100%;height:100%;display:block;object-fit:contain"></a>
+    <nav style="display:flex;align-items:center;gap:clamp(14px,2.4vw,36px);flex-wrap:wrap;justify-content:flex-end">
+      <a href="#kcourses" onClick="{{ goKCourses }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Courses</a>
+      <a href="#kbook" onClick="{{ goKBook }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Book Now</a>
+      <a href="#kcontact" onClick="{{ goKContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Contact</a>
+      <button onClick="{{ toMain }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#fff;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;background:#0a0a0a" style-hover="background:#333">Jas' Studio</button>
+    </nav>
+  </header>
+
+  <sc-if value="{{ isKidsHome }}" hint-placeholder-val="{{ false }}">
+  <section id="ktop" style="position:relative;height:100vh;min-height:620px;overflow:hidden;background:#f6f3fb">
+    <sc-for list="{{ kidSlides }}" as="s" hint-placeholder-count="4">
+      <div style="position:absolute;inset:0;opacity:{{ s.opacity }};transition:opacity 1.4s ease">
+        <image-slot id="kids-hero-{{ s.n }}" shape="rect" placeholder="Kids hero photo {{ s.n }}"></image-slot>
+      </div>
+    </sc-for>
+    <div style="position:absolute;left:0;right:0;top:0;height:30%;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);-webkit-mask-image:linear-gradient(#000 20%,transparent);mask-image:linear-gradient(#000 20%,transparent);background:linear-gradient(rgba(255,255,255,.8),rgba(255,255,255,0));pointer-events:none"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:42%;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);-webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%);background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.94));pointer-events:none"></div>
+    <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(32px,6vh,64px);display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;pointer-events:none">
+      <div style="max-width:760px">
+        <p style="margin:0 0 18px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Ages 5–15 · Pole &amp; Aerial</p>
+        <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6.4vw,92px);line-height:.98;text-transform:uppercase;letter-spacing:-.01em;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Climb. Spin.<br>Fly.</h1>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;pointer-events:auto">
+        <div style="display:flex;gap:8px">
+          <sc-for list="{{ kidSlides }}" as="s" hint-placeholder-count="4">
+            <button onClick="{{ s.go }}" aria-label="Show photo {{ s.n }}" style="width:{{ s.dotW }};height:8px;border:0;padding:0;border-radius:99px;cursor:pointer;background:{{ s.kdotBg }};transition:all .4s"></button>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:6px">
+          <button onClick="{{ prev }}" aria-label="Previous" style="width:44px;height:44px;border:0;background:#fff;color:#2b2838;border-radius:999px;cursor:pointer;font-size:16px;box-shadow:0 2px 12px rgba(120,100,170,.18)">←</button>
+          <button onClick="{{ next }}" aria-label="Next" style="width:44px;height:44px;border:0;background:#fff;color:#2b2838;border-radius:999px;cursor:pointer;font-size:16px;box-shadow:0 2px 12px rgba(120,100,170,.18)">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kcourses" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Courses</p>
+    <h2 style="margin:0 0 56px;font-weight:700;font-stretch:115%;font-size:clamp(32px,4vw,54px);line-height:1.05;text-transform:uppercase">Classes for young athletes</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
+      <sc-for list="{{ kidCourses }}" as="c" hint-placeholder-count="2">
+        <div onClick="{{ c.open }}" style="padding:2px;border-radius:24px;background:{{ c.grad }};cursor:pointer" style-hover="transform:translateY(-3px)">
+          <div style="background:#fff;border-radius:22px;padding:32px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;gap:16px">
+            <span style="align-self:flex-start;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#fff;padding:7px 12px;border-radius:999px;background:{{ c.grad }}">{{ c.age }}</span>
+            <h3 style="margin:0;font-weight:700;font-stretch:112%;font-size:26px;text-transform:uppercase">{{ c.name }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.65;color:#5d5970;text-wrap:pretty">{{ c.desc }}</p>
+            <div style="margin:auto 0 0;padding-top:16px;border-top:1px solid #eee9f5;display:flex;justify-content:space-between;align-items:center;gap:12px">
+              <span style="font-size:13px;color:#7a6f9a;font-weight:500">{{ c.meta }}</span>
+              <span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff;padding:10px 16px;border-radius:999px;background:{{ c.grad }}">Learn more →</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="kbook" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);background:linear-gradient(120deg,#fde7f5,#efe7fd 50%,#e3f5fd)">
+    <div style="max-width:1440px;margin:0 auto;background:#fff;border-radius:32px;padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:40px;box-shadow:0 20px 60px rgba(150,120,200,.15)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+        <div>
+          <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Book Now</p>
+          <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(30px,3.6vw,46px);line-height:1.05;text-transform:uppercase">Book a trial class</h2>
+        </div>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#5d5970;max-width:44ch">Pick a Kids Pole or Kids Hoop class from the timetable below to book or start a free trial.</p>
+      </div>
+      <div ref="{{ teamupRef }}" style="min-height:640px"></div>
+    </div>
+  </section>
+
+  </sc-if>
+
+  <sc-if value="{{ isKidCourse }}" hint-placeholder-val="{{ false }}">
+  <section style="padding:clamp(130px,12vw,170px) clamp(20px,4vw,56px) 0;max-width:1440px;margin:0 auto">
+    <a href="#kcourses" onClick="{{ goKCourses }}" style="display:inline-block;margin-bottom:28px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#7a6f9a">← All kids courses</a>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span style="align-self:flex-start;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#fff;padding:7px 12px;border-radius:999px;background:{{ kd.grad }}">{{ kd.meta }}</span>
+        <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(44px,7vw,100px);line-height:.95;text-transform:uppercase;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">{{ kd.name }}</h1>
+        <p style="margin:0;font-size:18px;line-height:1.7;color:#5d5970;max-width:46ch;text-wrap:pretty">{{ kd.intro }}</p>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:28px;overflow:hidden"><image-slot id="kids-course-{{ kd.key }}" shape="rounded" radius="28" placeholder="{{ kd.name }} photo"></image-slot></div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(32px,5vw,72px)">
+    <div>
+      <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">01 — History</p>
+      <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(30px,4vw,54px);line-height:1.05;text-transform:uppercase;text-wrap:balance">{{ kd.historyTitle }}</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <sc-for list="{{ kd.history }}" as="p" hint-placeholder-count="2">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#5d5970;max-width:60ch;text-wrap:pretty">{{ p }}</p>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">02 — Health benefits</p>
+    <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(30px,4vw,54px);line-height:1.05;text-transform:uppercase;text-wrap:balance;margin-bottom:48px">Stronger, braver, happier</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:20px;max-width:1100px">
+      <sc-for list="{{ kd.benefits }}" as="b" hint-placeholder-count="4">
+        <div style="padding:2px;border-radius:24px;background:{{ b.grad }}">
+          <div style="background:#fff;border-radius:22px;padding:28px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;gap:12px">
+            <h3 style="margin:0;font-weight:700;font-stretch:112%;font-size:20px;text-transform:uppercase">{{ b.t }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.65;color:#5d5970;text-wrap:pretty">{{ b.d }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">03 — How we start a class</p>
+    <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(30px,4vw,54px);line-height:1.05;text-transform:uppercase;text-wrap:balance;margin-bottom:48px">Inside a class</h2>
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:1100px">
+      <sc-for list="{{ kd.steps }}" as="s" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,2fr);gap:20px;align-items:center;padding:20px 24px;border-radius:20px;background:#f8f5fd">
+          <span style="width:44px;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;background:{{ kd.grad }}">{{ s.no }}</span>
+          <h3 style="margin:0;font-weight:700;font-stretch:112%;font-size:clamp(17px,1.8vw,22px);text-transform:uppercase">{{ s.t }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5d5970;text-wrap:pretty">{{ s.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);background:linear-gradient(120deg,#fde7f5,#efe7fd 50%,#e3f5fd)">
+    <div style="max-width:1100px;margin:0 auto;background:#fff;border-radius:32px;padding:clamp(32px,5vw,64px);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;box-shadow:0 20px 60px rgba(150,120,200,.15)">
+      <div>
+        <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">04 — Book now</p>
+        <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(30px,4vw,54px);line-height:1.05;text-transform:uppercase;text-wrap:balance">Ready to try {{ kd.name }}?</h2>
+      </div>
+      <button onClick="{{ goKBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:18px 36px;border:0;border-radius:999px;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);color:#fff;cursor:pointer" style-hover="filter:brightness(1.05)">Book now</button>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="kcontact" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px) 48px;max-width:1440px;margin:0 auto">
+    <p style="margin:0 0 20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Contact</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px;padding-bottom:72px;border-bottom:1px solid #eee9f5">
+      <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#9a93b3">Studio</p><p style="margin:0;font-size:18px;line-height:1.6">Unit 54-55, Shannon Way<br>Canvey Island<br>Essex<br>SS8 0PE<br>United Kingdom</p></div>
+      <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#9a93b3">Email</p><p style="margin:0;font-size:18px"><a href="mailto:jasstudio01@outlook.com">jasstudio01@outlook.com</a></p></div>
+      <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#9a93b3">Phone</p><p style="margin:0;font-size:18px"><a href="tel:+447768966860">+44 7768 966860</a></p></div>
+      <div><p style="margin:0 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#9a93b3">Follow</p><div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,#f6a6da,#c9aef3)" style-hover="filter:brightness(1.05);opacity:1">Instagram ↗</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,#c9aef3,#9fd6f6)" style-hover="filter:brightness(1.05);opacity:1">Facebook ↗</a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,#9fd6f6,#8ee6ee)" style-hover="filter:brightness(1.05);opacity:1">TikTok ↗</a>
+      </div></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:32px">
+      <img src="assets/logo-kids-wide.jpg" alt="Jas' Studio Kids" style="height:60px;width:auto;mix-blend-mode:multiply">
+      <span style="font-size:12px;letter-spacing:.14em;color:#9a93b3">© 2026 Jas' Studio Kids</span>
+    </div>
+  </section>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Main&quot;,&quot;Kids&quot;],&quot;default&quot;:&quot;Main&quot;,&quot;tsType&quot;:&quot;'Main'|'Kids'&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;slideSeconds&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:2,&quot;max&quot;:15,&quot;default&quot;:5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+const KIDS_DETAILS = {"pole":{"intro":"A fun, safe introduction to pole for young athletes, where every spin and climb helps children feel strong and proud of what their bodies can do.","historyTitle":"Where pole comes from","history":["Long before pole was taught in studios, people in India practised Mallakhamb, gymnastic poses on a wooden pole, and Chinese acrobats performed amazing climbs and drops on tall poles in the circus.","Today pole is a sport with its own competitions, including categories for children and teens, where young athletes show strength, flexibility and creativity."],"benefits":[{"t":"Confidence","d":"Learning a new move and getting it right builds real pride and self-belief, week after week."},{"t":"Strength","d":"Climbing and holding on make arms, hands and tummy muscles stronger in a fun way."},{"t":"Coordination","d":"Spins and shapes teach children to control their bodies and move with balance."},{"t":"Focus & friendship","d":"Small groups help children listen, take turns, cheer each other on and make friends."}],"steps":[{"t":"Hello & warm-up","d":"A welcome circle, then games and moves to wake up the body."},{"t":"Strength games","d":"Fun challenges that build grip and core strength."},{"t":"Learn a new move","d":"Coaches teach one move step by step and spot every child."},{"t":"Show & cheer","d":"Children link their moves together and celebrate each other."},{"t":"Stretch & cool down","d":"Gentle stretching and a calm finish."}]},"hoop":{"intro":"Kids Hoop lets children swing, balance and make shapes in the air on a low hoop, building bravery and confidence one small step at a time.","historyTitle":"A circus favourite","history":["The aerial hoop, also called the lyra, is a metal ring that hangs from the ceiling. It started in the circus, where performers made beautiful shapes high in the air.","Now children can learn hoop in a safe studio, with the hoop hung low and coaches close by."],"benefits":[{"t":"Bravery","d":"Trying new shapes in the air, with a coach close by, helps children feel brave and proud."},{"t":"Balance","d":"Sitting and standing in the hoop trains balance and body control."},{"t":"Flexibility","d":"Hoop shapes gently improve stretch in shoulders, back and legs."},{"t":"Creativity","d":"Children invent their own poses and short sequences to music."}],"steps":[{"t":"Hello & warm-up","d":"Games and stretches to get ready to fly."},{"t":"Strength games","d":"Hanging and holding challenges close to the floor."},{"t":"Learn a new shape","d":"A new hoop shape taught slowly, with a coach spotting."},{"t":"Make a mini routine","d":"Linking shapes together to music."},{"t":"Stretch & cool down","d":"Calm stretching and a high-five goodbye."}]}};
+const COURSE_DETAILS = {"foundations":{"historyTitle":"Where pole began","history":["Pole training draws on two older traditions: Chinese pole, an acrobatic circus discipline, and Mallakhamb, an Indian practice of gymnastic holds on a wooden pole dating back centuries.","Modern pole dance grew out of travelling fair and cabaret performance in the 20th century, and from the 1990s onward developed into a fitness and sport discipline with its own competitions, grading systems and coaching standards."],"benefits":[{"t":"Grip strength","d":"Hands, forearms and wrists strengthen quickly from the first weeks of training."},{"t":"Core control","d":"Every spin and climb engages the deep abdominal and back muscles."},{"t":"Coordination","d":"Linking simple moves builds timing, balance and body awareness."},{"t":"Confidence","d":"Visible progress from week to week builds confidence in and out of the studio."}],"steps":[{"t":"Warm-up","d":"Joint mobility and a pulse-raising sequence to prepare wrists, shoulders, hips and spine."},{"t":"Conditioning","d":"Short grip and core drills that prepare the body for the pole."},{"t":"Technique","d":"One or two foundation moves broken down step by step, with spotting where needed."},{"t":"Combo","d":"Linking the new moves into a short sequence to music."},{"t":"Cool-down","d":"Stretching and mobility to finish."}]},"pole":{"historyTitle":"From circus to sport","history":["Pole training draws on two older traditions: Chinese pole, an acrobatic circus discipline, and Mallakhamb, an Indian practice of gymnastic holds on a wooden pole dating back centuries.","Modern pole dance grew out of travelling fair and cabaret performance in the 20th century, and from the 1990s onward developed into a fitness and sport discipline with its own competitions, grading systems and coaching standards."],"benefits":[{"t":"Upper-body strength","d":"Climbs, inverts and holds develop shoulders, back and arms."},{"t":"Core strength","d":"Inverted and aerial positions demand strong, controlled core engagement."},{"t":"Flexibility","d":"Shapes and lines build active flexibility through the hips, back and shoulders."},{"t":"Focus","d":"Learning complex combinations trains concentration and body awareness."}],"steps":[{"t":"Warm-up","d":"Joint mobility and a pulse-raising sequence to prepare wrists, shoulders, hips and spine."},{"t":"Conditioning","d":"Targeted strength work for inverts and holds."},{"t":"Technique","d":"New tricks and transitions taught progressively for each student's level."},{"t":"Combo","d":"Combining tricks into flowing sequences."},{"t":"Cool-down","d":"Flexibility and mobility work to finish."}]},"hoop":{"historyTitle":"A circus apparatus","history":["The aerial hoop, also called the lyra, is a steel ring suspended from the ceiling. It developed as a circus apparatus in the 20th century, used for both static and spinning aerial acts.","Today it is taught in aerial studios worldwide as an art form and a full-body workout, from low-hung beginner shapes to high, dynamic routines."],"benefits":[{"t":"Full-body strength","d":"Mounting and holding shapes works the arms, back, core and legs together."},{"t":"Flexibility","d":"Hoop lines reward open shoulders, hips and a mobile spine."},{"t":"Balance","d":"Sitting, standing and hanging in a moving hoop trains balance and proprioception."},{"t":"Grace","d":"Fluid transitions develop posture, control and artistry."}],"steps":[{"t":"Warm-up","d":"Joint mobility and a pulse-raising sequence to prepare wrists, shoulders, hips and spine."},{"t":"Conditioning","d":"Hanging, grip and core drills at low height."},{"t":"Technique","d":"Mounts, shapes and transitions on a low-hung hoop."},{"t":"Sequence","d":"Linking shapes into a short flow, adding spin when ready."},{"t":"Cool-down","d":"Stretching for shoulders, hips and back."}]},"heels":{"historyTitle":"Dance in heels","history":["Heels dance draws on cabaret, jazz, commercial dance and pole choreography, where dancing in high heels has long been part of performance.","In recent years heels classes have grown into their own style, focused on walks, floorwork and choreography that build strength, posture and confidence."],"benefits":[{"t":"Leg & ankle strength","d":"Balancing and moving in heels strengthens calves, ankles and feet."},{"t":"Posture","d":"Choreography trains alignment through the spine, hips and shoulders."},{"t":"Cardio","d":"Continuous movement to music raises heart rate and stamina."},{"t":"Self-expression","d":"Musicality and performance build confidence and stage presence."}],"steps":[{"t":"Warm-up","d":"Mobility for ankles, hips and spine, first without heels and then in them."},{"t":"Walks & basics","d":"Heel walks, turns and weight transfers for control and balance."},{"t":"Floorwork","d":"Safe transitions to and from the floor."},{"t":"Choreography","d":"Learning a routine section by section to music."},{"t":"Cool-down","d":"Stretching for calves, feet and hips."}]}};
+class Component extends DCLogic {
+  state = { page: null, idx: 0, scrolled: false, course: 0, kid: 0, booked: false };
+  N = 4;
+  componentDidMount() {
+    this.onScroll = () => { const s = window.scrollY > 60; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('scroll', this.onScroll);
+    this.startTimer();
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); clearInterval(this.t); }
+  startTimer() {
+    clearInterval(this.t);
+    if (this.props.autoplay === false) return;
+    this.t = setInterval(() => this.setState(s => ({ idx: (s.idx + 1) % this.N })), (this.props.slideSeconds ?? 5) * 1000);
+  }
+  componentDidUpdate(p) { if (p.slideSeconds !== this.props.slideSeconds || p.autoplay !== this.props.autoplay) this.startTimer(); }
+  go = (id) => (e) => { e && e.preventDefault(); this.lastNav = Date.now(); const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); };
+  openCourse = (i) => { this.setState({ page: 'course', detail: i, menu: null }); window.scrollTo({ top: 0 }); };
+  openCourseBy = (key) => (e) => { e && e.preventDefault(); const order = ['foundations', 'pole', 'hoop', 'heels']; this.openCourse(order.indexOf(key)); };
+  teamupRef = (el) => {
+    if (!el || el.dataset.tu) return; el.dataset.tu = '1';
+    const io = new IntersectionObserver((ents) => { if (ents.some(e => e.isIntersecting)) { io.disconnect(); this.injectTeamup(el); } }, { rootMargin: '400px 0px' });
+    io.observe(el);
+  };
+  injectTeamup = (el) => {
+    const saved = window.scrollY; let user = false;
+    const mark = () => { user = true; };
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(t => window.addEventListener(t, mark, { once: true, passive: true }));
+    const guard = () => { if (Date.now() - (this.lastNav || 0) < 2000) return; if (!user && Math.abs(window.scrollY - saved) > 200) window.scrollTo(0, saved); };
+    window.addEventListener('scroll', guard);
+    setTimeout(() => window.removeEventListener('scroll', guard), 4000);
+    document.querySelectorAll('#teamup-widget-container').forEach(n => n.remove());
+    const s = document.createElement('script');
+    s.src = 'https://teamupstatic.com/teamup.js?_=' + Date.now();
+    el.appendChild(s);
+    const cfg = document.createElement('script');
+    cfg.text = 'teamup.calendar({provider_id:8619433,type:"main",width:"100%",specific_pages:[],view:"schedule.month",venue_ids:"~all",free_trial_membership:"233061",disable_venue_selector:false,version:3});';
+    s.onload = () => el.appendChild(cfg);
+  };
+  setIdx = (i) => { this.setState({ idx: (i + this.N) % this.N }); this.startTimer(); };
+  switchTo = (page) => (e) => { e && e.preventDefault(); this.setState({ page, idx: 0, booked: false }); window.scrollTo({ top: 0 }); };
+  renderVals() {
+    const page = this.state.page ?? (this.props.startPage === 'Kids' ? 'kids' : 'main');
+    const { idx, scrolled, course, kid, booked } = this.state;
+    const mkSlides = Array.from({ length: this.N }, (_, i) => ({
+      n: i + 1, src: i === 0 ? ((window.__resources && window.__resources.heroTeam) || 'assets/hero-team-bw-3.jpg') : '', opacity: i === idx ? 1 : 0, go: () => this.setIdx(i),
+      dotW: i === idx ? '36px' : '14px',
+      dotBg: i === idx ? '#f4f2ee' : 'rgba(244,242,238,.35)',
+      kdotBg: i === idx ? 'linear-gradient(90deg,#f08ad0,#7fd3f2)' : '#d9d2ea'
+    }));
+    const courses = [
+      { key: 'foundations', name: 'Pole Foundations', level: 'Beginner', desc: 'Grip, spins, climbs and safe body positioning. The starting point for every student.' },
+      { key: 'pole', name: 'Pole', level: 'All levels', desc: 'Spins, inverts, holds and combos built with progressive conditioning.' },
+      { key: 'hoop', name: 'Aerial Hoop', level: 'All levels', desc: 'Mounts, shapes and rotations on the lyra, from static to spinning.' },
+      { key: 'heels', name: 'Heels', level: 'All levels', desc: 'Walks, floorwork and choreography in heels, built on control, posture and confidence.' }
+    ].map((c, i) => ({ ...c, key: c.key || 'c' + i, no: String(i + 1).padStart(2, '0'), open: () => this.openCourse(i) }));
+    const D = COURSE_DETAILS;
+    const ci = this.state.detail ?? 0, cur = courses[ci];
+    const cd = { ...cur, ...D[cur.key], steps: D[cur.key].steps.map((s, j) => ({ ...s, no: String(j + 1).padStart(2, '0') })),
+      book: () => { this.setState({ course: ci, booked: false }); nav('main', 'book')(); } };
+    const grads = ['linear-gradient(135deg,#f6a6da,#c9aef3)', 'linear-gradient(135deg,#c9aef3,#9fd6f6)', 'linear-gradient(135deg,#9fd6f6,#8ee6ee)'];
+    const kidCourses = [
+      { name: 'Kids Pole', age: 'Pole', desc: 'Spins, climbs and holds taught with safe technique, body awareness and confidence.', meta: 'Ages 5–15' },
+      { name: 'Kids Hoop', age: 'Aerial Hoop', desc: 'Mounts, shapes and spins on the hoop, building strength, balance and flexibility.', meta: 'Ages 5–15' }
+    ].map((c, i) => ({ ...c, key: ['pole', 'hoop'][i], grad: grads[i], open: () => { this.setState({ page: 'kidcourse', kdetail: i }); window.scrollTo({ top: 0 }); } }));
+    const kc = kidCourses[this.state.kdetail || 0], KD = KIDS_DETAILS[kc.key];
+    const kd = { ...kc, ...KD, steps: KD.steps.map((s, j) => ({ ...s, no: j + 1 })), benefits: KD.benefits.map((b, j) => ({ ...b, grad: grads[j % 3] })) };
+    const menu = this.state.menu;
+    const sub = this.state.page || 'main';
+    const nav = (p, id) => (e) => { e && e.preventDefault(); const same = page === p; this.setState({ page: p, menu: null });
+      setTimeout(() => { if (id) this.go(id)(); else window.scrollTo({ top: 0, behavior: same ? 'smooth' : 'auto' }); }, same ? 0 : 60); };
+    const trialOpts = ['Pole', 'Aerial Hoop', 'Heels'];
+    const close = () => this.setState({ menu: null });
+    const goClose = (id) => (e) => { this.go(id)(e); close(); };
+    return {
+      coursesOpen: menu === 'courses',
+      openCourses: () => this.setState({ menu: 'courses' }), closeMenu: close,
+      goPole: this.openCourseBy('pole'), goHoop: this.openCourseBy('hoop'), goHeels: this.openCourseBy('heels'),
+      isCourseDetail: page === 'course', cd, goTrial: nav('main', 'trial'),
+      showCourses: page === 'main' || page === 'courses',
+      coursesPad: page === 'courses' ? 'clamp(150px,14vw,200px) clamp(20px,4vw,56px) clamp(80px,10vw,140px)' : 'clamp(80px,10vw,140px) clamp(20px,4vw,56px)',
+      coursesBorder: page === 'courses' ? '0' : '1px solid #222',
+      goCourses: nav('courses'), goEvents: nav('events'), goTeachers: nav('coaches'),
+      goAbout: nav('main', 'about'), goCommunity: nav('main', 'community'), goBook: nav('main', 'book'), goContact: this.go('contact'),
+      isHome: page === 'main', isCourses: page === 'courses', isEvents: page === 'events', isCoaches: page === 'coaches',
+      trialChips: trialOpts.map((n, i) => ({ name: n, pick: () => this.setState({ trial: i }), bg: i === (this.state.trial || 0) ? '#f4f2ee' : 'transparent', fg: i === (this.state.trial || 0) ? '#0a0a0a' : '#f4f2ee' })),
+      pickedTrial: trialOpts[this.state.trial || 0], trialIdle: !this.state.trialSent, trialDone: !!this.state.trialSent,
+      trialSubmit: () => this.setState({ trialSent: true }), trialReset: () => this.setState({ trialSent: false }),
+      events: [
+        { date: 'Date TBC', name: 'Event name', desc: 'Short description of the workshop or showcase.' },
+        { date: 'Date TBC', name: 'Event name', desc: 'Short description of the workshop or showcase.' },
+        { date: 'Date TBC', name: 'Event name', desc: 'Short description of the workshop or showcase.' }
+      ],
+      teachers: [1, 2, 3, 4].map(n => ({ n, name: 'Coach name', role: 'Pole · Aerial Hoop' })),
+      isMain: page !== 'kids' && page !== 'kidcourse', isKids: page === 'kids' || page === 'kidcourse', isKidsHome: page === 'kids', isKidCourse: page === 'kidcourse', kd,
+      navBgDark: (scrolled || page !== 'main') ? 'rgba(10,10,10,.92)' : 'transparent',
+      navBgLight: scrolled ? 'rgba(255,255,255,.9)' : 'rgba(255,255,255,0)',
+      slides: mkSlides, kidSlides: mkSlides,
+      slideLabel: `0${idx + 1} / 0${this.N}`,
+      prev: () => this.setIdx(idx - 1), next: () => this.setIdx(idx + 1),
+      goTop: (page === 'kids' || page === 'kidcourse') ? nav('kids') : nav('main'),
+      goKCourses: nav('kids', 'kcourses'), goKBook: nav('kids', 'kbook'), goKContact: this.go('kcontact'),
+      toKids: this.switchTo('kids'), toMain: this.switchTo('main'),
+      courses, kidCourses,
+      courseChips: courses.map((c, i) => ({ name: c.name, pick: () => this.setState({ course: i }), bg: i === course ? '#0a0a0a' : 'transparent', fg: i === course ? '#f4f2ee' : '#0a0a0a' })),
+      kidChips: kidCourses.map((c, i) => ({ name: c.name, pick: () => this.setState({ kid: i }), kbg: i === kid ? c.grad : '#fff', kfg: i === kid ? '#fff' : '#2b2838' })),
+      pickedCourse: courses[course].name, pickedKid: kidCourses[kid].name,
+      booked, notBooked: !booked, teamupRef: this.teamupRef,
+      submit: () => this.setState({ booked: true }), reset: () => this.setState({ booked: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
