@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="ext-resource-dependency" content="assets/hero-team-bw-3.jpg" data-resource-id="heroTeam">
+<meta name="ext-resource-dependency" content="assets/hero-team-mobile.jpg" data-resource-id="heroTeamM">
 <template id="__bundler_thumbnail" data-bg-color="#0a0a0a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0a0a0a"/><text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="34" fill="#f4f2ee">JS</text></svg></template>
 <script src="./support.js"></script>
 </head>
@@ -11,7 +12,7 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..800;1,62..125,300..800&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Archivo:ital,wdth,wght@0,62..125,300..800;1,62..125,300..800&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
 <style>
 html{scroll-behavior:smooth}
@@ -62,21 +63,33 @@ input,select,textarea{font-family:inherit}
   </sc-if>
 
 
+
+  <sc-if value="{{ trialPopMounted }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;z-index:70;right:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,40px);left:{{ popLeft }};max-width:420px;margin-left:auto;opacity:{{ popOpacity }};transform:{{ popTransform }};transition:opacity .5s ease,transform .6s cubic-bezier(.2,1.3,.4,1);pointer-events:{{ popPointer }}">
+      <div style="background:#f4f2ee;color:#0a0a0a;padding:28px;box-shadow:0 24px 70px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:16px;position:relative">
+        <button onClick="{{ closePop }}" aria-label="Close" style="position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:transparent;color:#0a0a0a;font-size:16px;cursor:pointer;border-radius:999px" style-hover="background:#e2dfd9">✕</button>
+        <p style="margin:0;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#6f6c68">New to the studio?</p>
+        <h3 style="margin:0;padding-right:40px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:34px;line-height:1.05">Book a <i>trial</i> class</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#4a4845">Choose any class marked as a free trial on the timetable.</p>
+        <button onClick="{{ popBook }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:16px 28px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book your trial →</button>
+      </div>
+    </div>
+  </sc-if>
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-  <section id="top" style="position:relative;height:100vh;min-height:620px;overflow:hidden;background:#111">
+  <section id="top" onTouchStart="{{ touchStart }}" onTouchEnd="{{ touchEnd }}" style="position:relative;height:{{ heroH }};min-height:{{ heroMinH }};overflow:hidden;background:#111">
     <sc-for list="{{ slides }}" as="s" hint-placeholder-count="4">
       <div style="position:absolute;inset:0;opacity:{{ s.opacity }};transition:opacity 1.4s ease;filter:grayscale(1)">
-        <image-slot id="main-hero-{{ s.n }}" src="{{ s.src }}" shape="rect" placeholder="Hero photo {{ s.n }} — drop a black &amp; white image"></image-slot>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><image-slot id="main-hero-{{ s.n }}" src="{{ s.src }}" shape="rect" placeholder="Desktop hero {{ s.n }} — landscape 2560 × 1440"></image-slot></sc-if>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><image-slot id="main-hero-m-{{ s.n }}" src="{{ s.srcM }}" shape="rect" placeholder="Mobile hero {{ s.n }} — portrait 1080 × 1920"></image-slot></sc-if>
       </div>
     </sc-for>
     <div style="position:absolute;left:0;right:0;top:0;height:22%;background:linear-gradient(rgba(10,10,10,.55),rgba(10,10,10,0));pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;height:38%;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);-webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(rgba(10,10,10,0),rgba(10,10,10,.55) 45%,rgba(10,10,10,.9) 78%,#0a0a0a);pointer-events:none"></div>
-    <h1 style="position:absolute;left:50%;bottom:clamp(78px,10vh,110px);transform:translateX(-50%);margin:0;width:min(540px,70vw);pointer-events:none;filter:drop-shadow(0 6px 30px rgba(0,0,0,.55))"><img src="assets/logo-vector.svg" alt="Jas' Studio — Pole &amp; Aerial Arts" style="display:block;width:100%;height:auto"></h1>
+    <h1 style="position:absolute;left:50%;bottom:clamp(78px,10vh,110px);transform:translateX(-50%);margin:0;width:min(540px,70vw);pointer-events:none;filter:drop-shadow(0 6px 30px rgba(0,0,0,.55))"><img src="assets/logo-script.svg" alt="Jas' Studio" style="display:block;width:100%;height:auto"><span style="display:block;margin-top:3.2%;text-align:center;font-family:'Montserrat',sans-serif;font-weight:300;font-size:calc(min(540px,70vw) * .036);letter-spacing:.42em;padding-left:.42em;color:#fff;white-space:nowrap">POLE &amp; AERIAL ARTS</span></h1>
     <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(28px,5vh,48px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;pointer-events:none">
       <span></span>
-      <div style="display:flex;align-items:center;gap:18px;pointer-events:auto">
-        <span style="font-size:12px;letter-spacing:.2em;font-variant-numeric:tabular-nums;color:#bdbab4">{{ slideLabel }}</span>
+      <div style="display:{{ heroCtrlDisplay }};align-items:center;gap:18px;pointer-events:auto">
         <div style="display:flex;gap:8px">
           <sc-for list="{{ slides }}" as="s" hint-placeholder-count="4">
             <button onClick="{{ s.go }}" aria-label="Show photo {{ s.n }}" style="width:{{ s.dotW }};height:2px;border:0;padding:0;cursor:pointer;background:{{ s.dotBg }};transition:all .4s"></button>
@@ -104,15 +117,15 @@ input,select,textarea{font-family:inherit}
 
 
   <section id="trial" style="padding:0 clamp(20px,4vw,56px) clamp(80px,10vw,140px)">
-    <div style="max-width:1440px;margin:0 auto;border:1px solid #2a2a2a;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px">
+    <div ref="{{ trialRef }}" style="max-width:1440px;margin:0 auto;background:#f4f2ee;color:#0a0a0a;opacity:{{ trialRevealOpacity }};transform:{{ trialRevealTransform }};transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1);padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px">
       <div>
         <p style="margin:0 0 28px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">02 — Trial class</p>
         <h2 style="margin:0 0 20px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.05">Book a <i>trial</i> class</h2>
-        <p style="margin:0;font-size:16px;line-height:1.7;color:#a9a6a0;max-width:44ch">New to the studio? Pick a discipline and we'll find the right first class for you.</p>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#4a4845;max-width:44ch">New to the studio? Pick a discipline and we'll find the right first class for you.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:20px;justify-content:center;align-items:flex-start">
-        <p style="margin:0;font-size:16px;line-height:1.7;color:#a9a6a0">Choose any class marked as a free trial on the timetable.</p>
-        <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer" style-hover="background:#fff">Book your trial →</button>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:#4a4845">Choose any class marked as a free trial on the timetable.</p>
+        <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:18px 36px;border:0;border-radius:999px;background:#0a0a0a;color:#f4f2ee;cursor:pointer" style-hover="background:#333">Book your trial →</button>
       </div>
     </div>
   </section>
@@ -324,10 +337,11 @@ input,select,textarea{font-family:inherit}
   </sc-if>
 
   <sc-if value="{{ isKidsHome }}" hint-placeholder-val="{{ false }}">
-  <section id="ktop" style="position:relative;height:100vh;min-height:620px;overflow:hidden;background:#f6f3fb">
+  <section id="ktop" onTouchStart="{{ touchStart }}" onTouchEnd="{{ touchEnd }}" style="position:relative;height:{{ heroH }};min-height:{{ heroMinH }};overflow:hidden;background:#f6f3fb">
     <sc-for list="{{ kidSlides }}" as="s" hint-placeholder-count="4">
       <div style="position:absolute;inset:0;opacity:{{ s.opacity }};transition:opacity 1.4s ease">
-        <image-slot id="kids-hero-{{ s.n }}" shape="rect" placeholder="Kids hero photo {{ s.n }}"></image-slot>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><image-slot id="kids-hero-{{ s.n }}" shape="rect" placeholder="Desktop kids hero {{ s.n }} — landscape 2560 × 1440"></image-slot></sc-if>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><image-slot id="kids-hero-m-{{ s.n }}" shape="rect" placeholder="Mobile kids hero {{ s.n }} — portrait 1080 × 1920"></image-slot></sc-if>
       </div>
     </sc-for>
     <div style="position:absolute;left:0;right:0;top:0;height:30%;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);-webkit-mask-image:linear-gradient(#000 20%,transparent);mask-image:linear-gradient(#000 20%,transparent);background:linear-gradient(rgba(255,255,255,.8),rgba(255,255,255,0));pointer-events:none"></div>
@@ -337,7 +351,7 @@ input,select,textarea{font-family:inherit}
         <p style="margin:0 0 18px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Ages 5–15 · Pole &amp; Aerial</p>
         <h1 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(40px,6.4vw,92px);line-height:.98;text-transform:uppercase;letter-spacing:-.01em;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Climb. Spin.<br>Fly.</h1>
       </div>
-      <div style="display:flex;align-items:center;gap:18px;pointer-events:auto">
+      <div style="display:{{ heroCtrlDisplay }};align-items:center;gap:18px;pointer-events:auto">
         <div style="display:flex;gap:8px">
           <sc-for list="{{ kidSlides }}" as="s" hint-placeholder-count="4">
             <button onClick="{{ s.go }}" aria-label="Show photo {{ s.n }}" style="width:{{ s.dotW }};height:8px;border:0;padding:0;border-radius:99px;cursor:pointer;background:{{ s.kdotBg }};transition:all .4s"></button>
@@ -483,8 +497,10 @@ class Component extends DCLogic {
     this.onResize = () => { const m = window.innerWidth < 900; if (m !== this.state.mobile) this.setState({ mobile: m, mOpen: false }); };
     window.addEventListener('resize', this.onResize); this.onResize();
     this.startTimer();
+    let seen = false; try { seen = sessionStorage.getItem('jas-trial-pop') === '1'; } catch (e) {}
+    if (!seen) this.popT = setTimeout(() => { this.setState({ popMount: true }); requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ popIn: true }))); }, 3500);
   }
-  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearInterval(this.t); }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearInterval(this.t); clearTimeout(this.popT); this.trialIO && this.trialIO.disconnect(); }
   startTimer() {
     clearInterval(this.t);
     if (this.props.autoplay === false) return;
@@ -514,13 +530,22 @@ class Component extends DCLogic {
     cfg.text = 'teamup.calendar({provider_id:8619433,type:"main",width:"100%",specific_pages:[],view:"schedule.month",venue_ids:"~all",free_trial_membership:"233061",disable_venue_selector:false,version:3});';
     s.onload = () => el.appendChild(cfg);
   };
+  closePop = () => { this.setState({ popIn: false }); try { sessionStorage.setItem('jas-trial-pop', '1'); } catch (e) {} setTimeout(() => this.setState({ popMount: false }), 600); };
+  trialRef = (el) => {
+    if (!el || el === this._trialEl) return; this._trialEl = el;
+    this.trialIO && this.trialIO.disconnect();
+    this.trialIO = new IntersectionObserver((es) => { if (es.some(e => e.isIntersecting)) { this.setState({ trialSeen: true }); this.trialIO.disconnect(); } }, { threshold: 0.25 });
+    this.trialIO.observe(el);
+  };
+  touchStart = (e) => { this._tx = e.touches[0].clientX; };
+  touchEnd = (e) => { if (this._tx == null) return; const dx = e.changedTouches[0].clientX - this._tx; this._tx = null; if (Math.abs(dx) > 40) this.setIdx(this.state.idx + (dx < 0 ? 1 : -1)); };
   setIdx = (i) => { this.setState({ idx: (i + this.N) % this.N }); this.startTimer(); };
   switchTo = (page) => (e) => { e && e.preventDefault(); this.setState({ page, idx: 0, booked: false }); window.scrollTo({ top: 0 }); };
   renderVals() {
     const page = this.state.page ?? (this.props.startPage === 'Kids' ? 'kids' : 'main');
     const { idx, scrolled, course, kid, booked } = this.state;
     const mkSlides = Array.from({ length: this.N }, (_, i) => ({
-      n: i + 1, src: i === 0 ? ((window.__resources && window.__resources.heroTeam) || 'assets/hero-team-bw-3.jpg') : '', opacity: i === idx ? 1 : 0, go: () => this.setIdx(i),
+      n: i + 1, src: i === 0 ? ((window.__resources && window.__resources.heroTeam) || 'assets/hero-team-bw-3.jpg') : '', srcM: i === 0 ? ((window.__resources && window.__resources.heroTeamM) || 'assets/hero-team-mobile.jpg') : '', opacity: i === idx ? 1 : 0, go: () => this.setIdx(i),
       dotW: i === idx ? '36px' : '14px',
       dotBg: i === idx ? '#f4f2ee' : 'rgba(244,242,238,.35)',
       kdotBg: i === idx ? 'linear-gradient(90deg,#f08ad0,#7fd3f2)' : '#d9d2ea'
@@ -550,7 +575,14 @@ class Component extends DCLogic {
     const close = () => this.setState({ menu: null });
     const goClose = (id) => (e) => { this.go(id)(e); close(); };
     const mob = !!this.state.mobile;
+    const popOn = !!this.state.popIn, trialSeen = !!this.state.trialSeen;
     return {
+      heroCtrlDisplay: mob ? 'none' : 'flex', heroH: mob ? 'calc(100vw * 16 / 9)' : '100vh', heroMinH: mob ? '0' : '620px', touchStart: this.touchStart, touchEnd: this.touchEnd,
+      trialRef: this.trialRef, trialRevealOpacity: trialSeen ? 1 : 0, trialRevealTransform: trialSeen ? 'none' : 'translateY(48px) scale(.97)',
+      trialPopMounted: !!this.state.popMount && page === 'main',
+      popOpacity: popOn ? 1 : 0, popTransform: popOn ? 'none' : 'translateY(40px) scale(.9)', popPointer: popOn ? 'auto' : 'none',
+      popLeft: mob ? 'clamp(16px,3vw,40px)' : 'auto',
+      closePop: this.closePop, popBook: (e) => { this.closePop(); nav('main', 'book')(e); },
       isMobile: mob, isDesktop: !mob, mobileOpen: mob && !!this.state.mOpen,
       burgerIcon: this.state.mOpen ? '✕' : '☰',
       toggleMobile: () => this.setState(s => ({ mOpen: !s.mOpen })), closeMobile: () => this.setState({ mOpen: false }),
