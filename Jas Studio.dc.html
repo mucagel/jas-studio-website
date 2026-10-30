@@ -26,7 +26,8 @@ input,select,textarea{font-family:inherit}
 <div style="background:#0a0a0a;color:#f4f2ee;min-height:100vh">
 
   <header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(20px,4vw,56px);background:{{ navBgDark }};transition:background .4s">
-    <a href="#top" onClick="{{ goTop }}" style="display:block;width:72px;height:72px;flex-shrink:0"><img src="assets/logo-square.png" alt="Jas' Studio — Pole &amp; Aerial Arts" style="width:100%;height:100%;display:block;object-fit:contain"></a>
+    <a href="#top" onClick="{{ goTop }}" style="display:block;width:{{ logoSize }};height:{{ logoSize }};flex-shrink:0"><img src="assets/logo-square.png" alt="Jas' Studio — Pole &amp; Aerial Arts" style="width:100%;height:100%;display:block;object-fit:contain"></a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
     <nav style="display:flex;align-items:center;gap:clamp(14px,2.2vw,34px);flex-wrap:wrap;justify-content:flex-end">
       <a href="#about" onClick="{{ goAbout }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">About us</a>
       <div onMouseEnter="{{ openCourses }}" onMouseLeave="{{ closeMenu }}" style="position:relative;padding:8px 0">
@@ -40,7 +41,25 @@ input,select,textarea{font-family:inherit}
       <a href="#contact" onClick="{{ goContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500">Contact</a>
       <button onClick="{{ toKids }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#0a0a0a;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;background:linear-gradient(90deg,#f7a8dc,#c9aef3,#9fd6f6)" style-hover="filter:brightness(1.06)">Jas' Studio Kids</button>
     </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMobile }}" aria-label="Menu" style="width:48px;height:48px;border-radius:999px;border:1px solid rgba(244,242,238,.4);background:transparent;color:#f4f2ee;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif">{{ burgerIcon }}</button>
+    </sc-if>
   </header>
+
+  <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMobile }}" style="position:fixed;inset:0;z-index:45;background:#0a0a0a;padding:120px 24px 40px;overflow-y:auto;display:flex;flex-direction:column">
+      <a href="#about" onClick="{{ goAbout }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">About us</a>
+      <a href="#courses" onClick="{{ goCourses }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Courses</a>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;padding:0 0 8px"><a href="#course-pole" onClick="{{ goPole }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:10px 0;color:#a9a6a0">Pole</a><a href="#course-hoop" onClick="{{ goHoop }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:10px 0;color:#a9a6a0">Aerial Hoop</a><a href="#course-heels" onClick="{{ goHeels }}" style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:10px 0;color:#a9a6a0">Heels</a></div>
+      <a href="#events" onClick="{{ goEvents }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Events</a>
+      <a href="#teachers" onClick="{{ goTeachers }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Coaches</a>
+      <a href="#community" onClick="{{ goCommunity }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Community</a>
+      <a href="#book" onClick="{{ goBook }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Book Now</a>
+      <a href="#contact" onClick="{{ goContact }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#f4f2ee">Contact</a>
+      <button onClick="{{ toKids }}" style="margin-top:28px;align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#0a0a0a;border:0;border-radius:999px;padding:16px 24px;cursor:pointer;background:linear-gradient(90deg,#f7a8dc,#c9aef3,#9fd6f6)">Jas' Studio Kids</button>
+    </div>
+  </sc-if>
 
 
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
@@ -110,12 +129,12 @@ input,select,textarea{font-family:inherit}
     </div>
     <div style="display:flex;flex-direction:column">
       <sc-for list="{{ courses }}" as="c" hint-placeholder-count="5">
-        <div id="course-{{ c.key }}" onClick="{{ c.open }}" style="display:grid;grid-template-columns:56px minmax(0,1.4fr) minmax(0,2fr) auto auto;gap:24px;align-items:baseline;padding:30px 0;border-top:1px solid #222;cursor:pointer" style-hover="background:#111">
+        <div id="course-{{ c.key }}" onClick="{{ c.open }}" style="display:grid;grid-template-columns:{{ courseCols }};gap:{{ rowGap }};align-items:baseline;padding:30px 0;border-top:1px solid #222;cursor:pointer" style-hover="background:#111">
           <span style="font-size:12px;letter-spacing:.2em;color:#6f6c68;font-variant-numeric:tabular-nums">{{ c.no }}</span>
           <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;letter-spacing:.02em">{{ c.name }}</h3>
-          <p style="margin:0;font-size:15px;line-height:1.6;color:#a9a6a0;text-wrap:pretty">{{ c.desc }}</p>
-          <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#f4f2ee;border:1px solid #333;padding:7px 12px;border-radius:999px;white-space:nowrap">{{ c.level }}</span>
-          <span style="font-size:18px;color:#f4f2ee">→</span>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#a9a6a0;text-wrap:pretty;grid-column:{{ col2 }}">{{ c.desc }}</p>
+          <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#f4f2ee;border:1px solid #333;padding:7px 12px;border-radius:999px;white-space:nowrap;justify-self:start;grid-column:{{ col2 }}">{{ c.level }}</span>
+          <span style="font-size:18px;color:#f4f2ee;display:{{ arrowDisplay }}">→</span>
         </div>
       </sc-for>
     </div>
@@ -129,11 +148,11 @@ input,select,textarea{font-family:inherit}
     <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance;margin-bottom:56px">Workshops &amp; <i>showcases</i></h2>
     <div style="display:flex;flex-direction:column">
       <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
-        <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1.4fr) minmax(0,2fr) auto;gap:24px;align-items:baseline;padding:30px 0;border-top:1px solid #222">
+        <div style="display:grid;grid-template-columns:{{ eventCols }};gap:{{ rowGap }};align-items:baseline;padding:30px 0;border-top:1px solid #222">
           <span style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#a9a6a0">{{ e.date }}</span>
           <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;letter-spacing:.02em">{{ e.name }}</h3>
           <p style="margin:0;font-size:15px;line-height:1.6;color:#a9a6a0">{{ e.desc }}</p>
-          <a href="#book" onClick="{{ goBook }}" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #333;padding:9px 14px;border-radius:999px;white-space:nowrap">Book</a>
+          <a href="#book" onClick="{{ goBook }}" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #333;padding:12px 18px;border-radius:999px;white-space:nowrap;justify-self:start">Book</a>
         </div>
       </sc-for>
     </div>
@@ -200,10 +219,10 @@ input,select,textarea{font-family:inherit}
     <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance;margin-bottom:56px">Inside a session</h2>
     <div style="display:flex;flex-direction:column">
       <sc-for list="{{ cd.steps }}" as="s" hint-placeholder-count="5">
-        <div style="display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,2fr);gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid #222">
+        <div style="display:grid;grid-template-columns:{{ stepCols }};gap:{{ rowGap }};align-items:baseline;padding:28px 0;border-top:1px solid #222">
           <span style="font-size:12px;letter-spacing:.2em;color:#6f6c68">{{ s.no }}</span>
           <h3 style="margin:0;font-weight:600;font-stretch:115%;font-size:clamp(18px,2vw,24px);text-transform:uppercase">{{ s.t }}</h3>
-          <p style="margin:0;font-size:15px;line-height:1.65;color:#a9a6a0;text-wrap:pretty">{{ s.d }}</p>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:#a9a6a0;text-wrap:pretty;grid-column:{{ col2 }}">{{ s.d }}</p>
         </div>
       </sc-for>
     </div>
@@ -281,14 +300,28 @@ input,select,textarea{font-family:inherit}
 <div style="background:#ffffff;color:#2b2838;min-height:100vh">
 
   <header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(20px,4vw,56px);background:{{ navBgLight }};backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background .4s">
-    <a href="#ktop" onClick="{{ goTop }}" style="display:block;width:80px;height:80px;flex-shrink:0"><img src="assets/logo-kids-square.png" alt="Jas' Studio Kids" style="width:100%;height:100%;display:block;object-fit:contain"></a>
+    <a href="#ktop" onClick="{{ goTop }}" style="display:block;width:{{ kLogoSize }};height:{{ kLogoSize }};flex-shrink:0"><img src="assets/logo-kids-square.png" alt="Jas' Studio Kids" style="width:100%;height:100%;display:block;object-fit:contain"></a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
     <nav style="display:flex;align-items:center;gap:clamp(14px,2.4vw,36px);flex-wrap:wrap;justify-content:flex-end">
       <a href="#kcourses" onClick="{{ goKCourses }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Courses</a>
       <a href="#kbook" onClick="{{ goKBook }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Book Now</a>
       <a href="#kcontact" onClick="{{ goKContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Contact</a>
       <button onClick="{{ toMain }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#fff;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;background:#0a0a0a" style-hover="background:#333">Jas' Studio</button>
     </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMobile }}" aria-label="Menu" style="width:48px;height:48px;border-radius:999px;border:1px solid #e2dbef;background:transparent;color:#2b2838;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif">{{ burgerIcon }}</button>
+    </sc-if>
   </header>
+
+  <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMobile }}" style="position:fixed;inset:0;z-index:45;background:#fff;padding:130px 24px 40px;overflow-y:auto;display:flex;flex-direction:column">
+      <a href="#kcourses" onClick="{{ goKCourses }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Courses</a>
+      <a href="#kbook" onClick="{{ goKBook }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Book Now</a>
+      <a href="#kcontact" onClick="{{ goKContact }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Contact</a>
+      <button onClick="{{ toMain }}" style="margin-top:28px;align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#fff;border:0;border-radius:999px;padding:16px 24px;cursor:pointer;background:#0a0a0a">Jas' Studio</button>
+    </div>
+  </sc-if>
 
   <sc-if value="{{ isKidsHome }}" hint-placeholder-val="{{ false }}">
   <section id="ktop" style="position:relative;height:100vh;min-height:620px;overflow:hidden;background:#f6f3fb">
@@ -398,10 +431,10 @@ input,select,textarea{font-family:inherit}
     <h2 style="margin:0;font-weight:700;font-stretch:115%;font-size:clamp(30px,4vw,54px);line-height:1.05;text-transform:uppercase;text-wrap:balance;margin-bottom:48px">Inside a class</h2>
     <div style="display:flex;flex-direction:column;gap:12px;max-width:1100px">
       <sc-for list="{{ kd.steps }}" as="s" hint-placeholder-count="5">
-        <div style="display:grid;grid-template-columns:52px minmax(0,1fr) minmax(0,2fr);gap:20px;align-items:center;padding:20px 24px;border-radius:20px;background:#f8f5fd">
+        <div style="display:grid;grid-template-columns:{{ kStepCols }};gap:{{ rowGap }};align-items:center;padding:20px 24px;border-radius:20px;background:#f8f5fd">
           <span style="width:44px;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;background:{{ kd.grad }}">{{ s.no }}</span>
           <h3 style="margin:0;font-weight:700;font-stretch:112%;font-size:clamp(17px,1.8vw,22px);text-transform:uppercase">{{ s.t }}</h3>
-          <p style="margin:0;font-size:15px;line-height:1.6;color:#5d5970;text-wrap:pretty">{{ s.d }}</p>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5d5970;text-wrap:pretty;grid-column:{{ col2 }}">{{ s.d }}</p>
         </div>
       </sc-for>
     </div>
@@ -447,9 +480,11 @@ class Component extends DCLogic {
   componentDidMount() {
     this.onScroll = () => { const s = window.scrollY > 60; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
     window.addEventListener('scroll', this.onScroll);
+    this.onResize = () => { const m = window.innerWidth < 900; if (m !== this.state.mobile) this.setState({ mobile: m, mOpen: false }); };
+    window.addEventListener('resize', this.onResize); this.onResize();
     this.startTimer();
   }
-  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); clearInterval(this.t); }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearInterval(this.t); }
   startTimer() {
     clearInterval(this.t);
     if (this.props.autoplay === false) return;
@@ -514,7 +549,17 @@ class Component extends DCLogic {
     const trialOpts = ['Pole', 'Aerial Hoop', 'Heels'];
     const close = () => this.setState({ menu: null });
     const goClose = (id) => (e) => { this.go(id)(e); close(); };
+    const mob = !!this.state.mobile;
     return {
+      isMobile: mob, isDesktop: !mob, mobileOpen: mob && !!this.state.mOpen,
+      burgerIcon: this.state.mOpen ? '✕' : '☰',
+      toggleMobile: () => this.setState(s => ({ mOpen: !s.mOpen })), closeMobile: () => this.setState({ mOpen: false }),
+      logoSize: mob ? '56px' : '72px', kLogoSize: mob ? '60px' : '80px',
+      courseCols: mob ? '32px minmax(0,1fr)' : '56px minmax(0,1.4fr) minmax(0,2fr) auto auto',
+      eventCols: mob ? 'minmax(0,1fr)' : 'minmax(110px,160px) minmax(0,1.4fr) minmax(0,2fr) auto',
+      stepCols: mob ? '32px minmax(0,1fr)' : '56px minmax(0,1fr) minmax(0,2fr)',
+      kStepCols: mob ? '44px minmax(0,1fr)' : '52px minmax(0,1fr) minmax(0,2fr)',
+      col2: mob ? '2' : 'auto', rowGap: mob ? '12px 16px' : '24px', arrowDisplay: mob ? 'none' : 'inline',
       coursesOpen: menu === 'courses',
       openCourses: () => this.setState({ menu: 'courses' }), closeMenu: close,
       goPole: this.openCourseBy('pole'), goHoop: this.openCourseBy('hoop'), goHeels: this.openCourseBy('heels'),
