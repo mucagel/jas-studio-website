@@ -651,6 +651,15 @@ input,select,textarea{font-family:inherit}
   </section>
   </sc-if>
 
+  <sc-if value="{{ capOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeCap }}" style="position:fixed;inset:0;z-index:95;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:24px">
+      <div onClick="{{ stop }}" style="max-width:420px;width:100%;background:#0a0a0a;border:1px solid #333;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#f4f2ee">{{ capText }}</p>
+        <button onClick="{{ closeCap }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:14px 26px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer">OK</button>
+      </div>
+    </div>
+  </sc-if>
+
   <sc-if value="{{ loginOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeLogin }}" style="position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px">
       <div onClick="{{ stop }}" style="width:min(440px,100%);background:#0a0a0a;border:1px solid #2a2a2a;padding:clamp(28px,5vw,44px);display:flex;flex-direction:column;gap:22px;color:#f4f2ee">
@@ -1077,6 +1086,7 @@ class Component extends DCLogic {
   touchStart = (e) => { this._tx = e.touches[0].clientX; };
   touchEnd = (e) => { if (this._tx == null) return; const dx = e.changedTouches[0].clientX - this._tx; this._tx = null; if (Math.abs(dx) > 40) this.setIdx(this.state.idx + (dx < 0 ? 1 : -1)); };
   saveEvents = (a) => { try { localStorage.setItem('jas-events', JSON.stringify(a)); } catch (e) { alert('Storage is full. Remove some photos and try again.'); } };
+  showCap = (msg) => this.setState({ capMsg: msg });
   norm = (a) => a.map((x, i) => ({ time: '', location: '', details: '', hero: '', photos: [], ...x, id: x.id || ('m' + i + '_' + Date.now().toString(36)) }));
   evs = () => this.state.events || DEFAULT_EVENTS;
   setEvents = (fn) => this.setState(s => { const a = fn(this.norm([...(s.events || DEFAULT_EVENTS)])); this.saveEvents(a); return { events: a }; });
@@ -1114,7 +1124,7 @@ class Component extends DCLogic {
       onGalName: (x) => { const v = x.target.value; this.setState(s => ({ [dk]: { ...(s[dk] || {}), name: v } })); },
       onGalCat: (x) => { const v = x.target.value; this.setState(s => ({ [dk]: { ...(s[dk] || {}), cat: v } })); },
       postGal: () => { const dd = this.state[dk] || {}; if (!dd.src || !(dd.name || '').trim()) return this.setState({ [ek]: true });
-        this.setGal(key, store, a => [{ id: 'g' + Date.now().toString(36), src: dd.src, name: dd.name.trim(), cat: dd.cat || defCat }, ...a]); this.setState({ [dk]: {}, [ek]: false }); }
+        const full = (this.state[key] || []).length >= 100; this.setGal(key, store, a => [{ id: 'g' + Date.now().toString(36), src: dd.src, name: dd.name.trim(), cat: dd.cat || defCat }, ...a].slice(0, 100)); this.setState({ [dk]: {}, [ek]: false }); if (full) this.showCap('You reached the maximum cap of 100 pictures. The oldest picture was removed.'); }
     };
     if (!p) return o;
     const r = {}; for (const k in o) r[p + k] = o[k]; return r;
@@ -1203,6 +1213,7 @@ class Component extends DCLogic {
       isInstructor: inst,
       loginLabel: inst ? 'Instructor ✓' : 'Login', loginLabelLong: inst ? 'Instructor: manage events' : 'Instructor Login',
       loginClick: (e) => { e.preventDefault(); this.setState({ mOpen: false }); if (inst) nav('events')(); else this.setState({ loginOpen: true, loginError: false }); },
+      capOpen: !!this.state.capMsg, capText: this.state.capMsg || '', closeCap: () => this.setState({ capMsg: null }),
       loginOpen: !!this.state.loginOpen, closeLogin: () => this.setState({ loginOpen: false }), stop: (e) => e.stopPropagation(),
       loginEmail: this.state.loginEmail || '', loginPass: this.state.loginPass || '', loginError: !!this.state.loginError,
       onLoginEmail: (e) => this.setState({ loginEmail: e.target.value }), onLoginPass: (e) => this.setState({ loginPass: e.target.value }),
@@ -1215,7 +1226,7 @@ class Component extends DCLogic {
         this.setState({ instructor: true, loginOpen: false, loginPass: '', loginError: false }); nav('events')();
       },
       logout: () => { try { sessionStorage.removeItem('jas-instructor'); } catch (e) {} this.setState({ instructor: false }); },
-      addEvent: () => this.setState({ evPage: 1 }) || this.setEvents(a => [{ id: 'n' + Date.now().toString(36), date: '', time: '', location: 'Unit 54-55, Shannon Way, Canvey Island', name: 'New event', desc: '', details: '', hero: '', photos: [] }, ...a]),
+      addEvent: () => { const full = this.evs().length >= 10; this.setState({ evPage: 1 }); this.setEvents(a => [{ id: 'n' + Date.now().toString(36), date: '', time: '', location: 'Unit 54-55, Shannon Way, Canvey Island', name: 'New event', desc: '', details: '', hero: '', photos: [] }, ...a].slice(0, 10)); if (full) this.showCap('You reached the maximum cap of 10 events. The oldest event was removed.'); },
       noEvents: this.evs().length === 0,
       eventGap: mob ? '20px' : 'clamp(28px,4vw,56px)', dateDir: mob ? 'row' : 'column', dateAlign: mob ? 'center' : 'flex-start', dayFont: mob ? '32px' : '56px',
       detailCols: mob ? 'minmax(0,1fr)' : '90px minmax(0,1fr)', spacerDisplay: mob ? 'none' : 'block',
