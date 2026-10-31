@@ -1739,7 +1739,7 @@ class Component extends DCLogic {
     const mkSlides = Array.from({ length: this.N }, (_, i) => ({
       n: i + 1,
       src: i === 0 ? ((window.__resources && window.__resources.heroTeam) || 'assets/hero-team-bw-3.jpg') : i === 3 ? 'assets/hero-4.jpg' : '',
-      srcM: i === 0 ? ((window.__resources && window.__resources.heroTeamM) || 'assets/hero-team-mobile.jpg') : i === 3 ? 'assets/hero-4-mobile.jpg' : '',
+      srcM: i === 0 ? ((window.__resources && window.__resources.heroTeamM) || 'assets/hero-team-mobile.jpg') : i === 1 ? 'assets/hero-2-mobile.jpg' : i === 3 ? 'assets/hero-4-mobile.jpg' : '',
       opacity: i === idx ? 1 : 0, go: () => this.setIdx(i),
       dotW: i === idx ? '36px' : '14px',
       dotBg: i === idx ? '#f4f2ee' : 'rgba(244,242,238,.35)',
