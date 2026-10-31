@@ -33,6 +33,8 @@ body{margin:0;background:#0a0a0a;font-family:'Archivo',sans-serif;-webkit-font-s
 a{color:inherit;text-decoration:none}
 a:hover{opacity:.7}
 input,select,textarea{font-family:inherit}
+/* Visitors never see empty photo frames or their editing captions; instructors still do. */
+html:not([data-instructor]) image-slot:not([data-filled]){visibility:hidden}
 </style>
 </helmet>
 
@@ -1649,6 +1651,7 @@ class Component extends DCLogic {
     const kidSide = ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page);
     const loggedIn = !!this.state.instructor;
     const inst = loggedIn && !this.state.previewMode;
+    document.documentElement.toggleAttribute('data-instructor', inst);
     const menu = this.state.menu;
     const close = () => this.setState({ menu: null });
     const nav = (p, id) => (e) => {
