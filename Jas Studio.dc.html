@@ -35,6 +35,8 @@ input,select,textarea{font-family:inherit}
 html:not([data-instructor]) image-slot:not([data-filled]){visibility:hidden}
 /* On phones, a frame that holds only an empty slot is removed, so no blank gap is left. */
 html[data-mobile]:not([data-instructor]) div:has(> image-slot:not([data-filled])){display:none}
+/* Photo frames block touch scrolling (touch-action:none inside the component), so visitors pass through them. */
+html:not([data-instructor]) image-slot{pointer-events:none}
 </style>
 </helmet>
 <sc-if value="{{ isMain }}" hint-placeholder-val="{{ true }}">
