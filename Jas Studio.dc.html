@@ -200,11 +200,11 @@ html:not([data-instructor]) image-slot{pointer-events:none}
     </div>
     <div style="display:grid;grid-template-columns:{{ classCardCols }};gap:clamp(16px,2vw,24px)">
       <sc-for list="{{ courses }}" as="c" hint-placeholder-count="4">
-        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><article id="course-{{ c.key }}" onClick="{{ c.open }}" style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#111;cursor:pointer" style-hover="transform:translateY(-4px)">
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><article id="course-{{ c.key }}" onClick="{{ c.open }}" style="position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/5;overflow:hidden;background:#111;cursor:pointer" style-hover="transform:translateY(-4px)">
           <div style="position:absolute;inset:0"><image-slot id="class-thumb-{{ c.key }}" src="{{ c.thumb }}" shape="rect" placeholder="{{ c.name }} photo"></image-slot></div>
           <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,0) 30%,rgba(10,10,10,.25) 50%,rgba(10,10,10,.92) 100%)"></div>
           <span style="position:absolute;top:16px;left:16px;font-size:8px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#0a0a0a;background:#f4f2ee;padding:6px 10px;border-radius:999px;pointer-events:none">{{ c.level }}</span>
-          <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:10px;pointer-events:none">
+          <div style="position:relative;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:10px;pointer-events:none">
             <span style="font-size:11px;letter-spacing:.24em;color:#bdbab4;font-variant-numeric:tabular-nums">{{ c.no }}</span>
             <h3 style="margin:0;font-weight:700;font-stretch:118%;font-size:clamp(26px,3vw,40px);line-height:1;text-transform:uppercase;letter-spacing:.01em;color:#fff">{{ c.name }}</h3>
             <p style="margin:0;font-size:15px;line-height:1.55;color:#d6d3cd;max-width:44ch;text-wrap:pretty">{{ c.desc }}</p>
