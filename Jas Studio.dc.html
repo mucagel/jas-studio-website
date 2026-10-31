@@ -35,6 +35,8 @@ a:hover{opacity:.7}
 input,select,textarea{font-family:inherit}
 /* Visitors never see empty photo frames or their editing captions; instructors still do. */
 html:not([data-instructor]) image-slot:not([data-filled]){visibility:hidden}
+/* On phones, a frame that holds only an empty slot is removed, so no blank gap is left. */
+html[data-mobile]:not([data-instructor]) div:has(> image-slot:not([data-filled])){display:none}
 </style>
 </helmet>
 
@@ -1652,6 +1654,7 @@ class Component extends DCLogic {
     const loggedIn = !!this.state.instructor;
     const inst = loggedIn && !this.state.previewMode;
     document.documentElement.toggleAttribute('data-instructor', inst);
+    document.documentElement.toggleAttribute('data-mobile', mob);
     const menu = this.state.menu;
     const close = () => this.setState({ menu: null });
     const nav = (p, id) => (e) => {
