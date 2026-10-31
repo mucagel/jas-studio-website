@@ -37,6 +37,8 @@ html:not([data-instructor]) image-slot:not([data-filled]){visibility:hidden}
 html[data-mobile]:not([data-instructor]) div:has(> image-slot:not([data-filled])){display:none}
 /* Photo frames block touch scrolling (touch-action:none inside the component), so visitors pass through them. */
 html:not([data-instructor]) image-slot{pointer-events:none}
+/* Below 1280px the class cards are one column; set in CSS too, so older iPhones that miss the script update still stack them. */
+@media (max-width:1279px){#class-grid{grid-template-columns:minmax(0,1fr)!important}}
 </style>
 </helmet>
 <sc-if value="{{ isMain }}" hint-placeholder-val="{{ true }}">
@@ -198,7 +200,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
       </div>
       <a href="#book" onClick="{{ goBook }}" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #f4f2ee;padding-bottom:6px">Book a class →</a>
     </div>
-    <div style="display:grid;grid-template-columns:{{ classCardCols }};gap:clamp(16px,2vw,24px)">
+    <div id="class-grid" style="display:grid;grid-template-columns:{{ classCardCols }};gap:clamp(16px,2vw,24px)">
       <sc-for list="{{ courses }}" as="c" hint-placeholder-count="4">
         <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><article id="course-{{ c.key }}" onClick="{{ c.open }}" style="position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/5;overflow:hidden;background:#111;cursor:pointer" style-hover="transform:translateY(-4px)">
           <div style="position:absolute;inset:0"><image-slot id="class-thumb-{{ c.key }}" src="{{ c.thumb }}" shape="rect" placeholder="{{ c.name }} photo"></image-slot></div>
