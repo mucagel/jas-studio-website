@@ -22,6 +22,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&amp;family=Archivo:ital,wdth,wght@0,62..125,300..800;1,62..125,300..800&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&amp;display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
 <script>
+// A frame's own data-filled marker gets stripped by the page's re-renders, so the
+// frames that really hold a photo carry data-shown instead; the hiding rules use it.
+(function () {
+  function mark(el) { var img = el._img; el.toggleAttribute('data-shown', !!(img && img.getAttribute('src') && img.style.display !== 'none')); }
+  function markAll() { document.querySelectorAll('image-slot').forEach(mark); }
+  new MutationObserver(function (ms) {
+    for (var i = 0; i < ms.length; i++) {
+      var m = ms[i];
+      if (m.type === 'childList') { markAll(); return; }
+      if (m.target.localName === 'image-slot' && m.attributeName !== 'data-shown') mark(m.target);
+    }
+  }).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['src', 'data-filled'] });
+})();
 // Picture spaces are plain photos on the live page, so a click must not open the file picker.
 ['click', 'dblclick'].forEach(function (type) {
   document.addEventListener(type, function (e) {
@@ -36,9 +49,9 @@ a{color:inherit;text-decoration:none}
 a:hover{opacity:.7}
 input,select,textarea{font-family:inherit}
 /* Visitors never see empty photo frames or their editing captions; instructors still do. */
-html:not([data-instructor]) image-slot:not([data-filled]){visibility:hidden}
+html:not([data-instructor]) image-slot:not([data-shown]){visibility:hidden}
 /* On phones, a frame that holds only an empty slot is removed, so no blank gap is left. */
-html[data-mobile]:not([data-instructor]) div:has(> image-slot:not([data-filled])){display:none}
+html[data-mobile]:not([data-instructor]) div:has(> image-slot:not([data-shown])){display:none}
 /* Photo frames block touch scrolling (touch-action:none inside the component), so visitors pass through them. */
 html:not([data-instructor]) image-slot{pointer-events:none}
 /* Below 1280px the class cards are one column; set in CSS too, so older iPhones that miss the script update still stack them. */
@@ -1727,8 +1740,8 @@ class Component extends DCLogic {
     };
     const mkSlides = Array.from({ length: this.N }, (_, i) => ({
       n: i + 1,
-      src: i === 0 ? ((window.__resources && window.__resources.heroTeam) || 'assets/hero-team-bw-3.jpg') : '',
-      srcM: i === 0 ? ((window.__resources && window.__resources.heroTeamM) || 'assets/hero-team-mobile.jpg') : '',
+      src: i === 0 ? ((window.__resources && window.__resources.heroTeam) || 'assets/hero-team-bw-3.jpg') : i === 3 ? 'assets/hero-4.jpg' : '',
+      srcM: i === 0 ? ((window.__resources && window.__resources.heroTeamM) || 'assets/hero-team-mobile.jpg') : i === 3 ? 'assets/hero-4-mobile.jpg' : '',
       opacity: i === idx ? 1 : 0, go: () => this.setIdx(i),
       dotW: i === idx ? '36px' : '14px',
       dotBg: i === idx ? '#f4f2ee' : 'rgba(244,242,238,.35)',
