@@ -1446,17 +1446,17 @@ html[data-mobile]:not([data-instructor]) div:has(> image-slot:not([data-filled])
   </div>
 </sc-if>
 <sc-if value="{{ gateMounted }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;inset:0;z-index:100;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;opacity:{{ gateOpacity }};transition:opacity .5s ease">
+  <div style="position:fixed;inset:0;z-index:100;pointer-events:none;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;opacity:{{ gateOpacity }};transition:opacity .5s ease">
     <div style="width:min(860px,100%);display:flex;flex-direction:column;align-items:center;gap:32px;transform:{{ gateTransform }};transition:transform .7s cubic-bezier(.2,1.2,.4,1)">
       <div style="width:min(360px,72vw)"><img src="assets/logo-script.svg" alt="Jas' Studio" style="display:block;width:100%;height:auto"><span style="display:block;margin-top:3.2%;text-align:center;font-family:'Montserrat',sans-serif;font-weight:300;font-size:calc(min(360px,72vw) * .036);letter-spacing:.42em;padding-left:.42em;color:#fff;white-space:nowrap">POLE &amp; AERIAL ARTS</span></div>
       <h2 style="margin:0;text-align:center;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.1;color:#f4f2ee">Who is training <i>today</i>?</h2>
       <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
-        <button onClick="{{ pickAdult }}" style="font-family:'Archivo',sans-serif;text-align:left;cursor:pointer;background:#0a0a0a;color:#f4f2ee;border:1px solid #3a3a3a;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px;min-height:200px;justify-content:flex-end" style-hover="border-color:#f4f2ee">
+        <button onClick="{{ pickAdult }}" style="font-family:'Archivo',sans-serif;text-align:left;cursor:pointer;pointer-events:auto;background:#0a0a0a;color:#f4f2ee;border:1px solid #3a3a3a;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px;min-height:200px;justify-content:flex-end" style-hover="border-color:#f4f2ee">
           <span style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#8d8a85">Jas' Studio</span>
           <span style="font-weight:700;font-stretch:118%;font-size:clamp(28px,3.4vw,40px);text-transform:uppercase;line-height:1">Adult Class</span>
           <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">Enter →</span>
         </button>
-        <button onClick="{{ pickKids }}" style="font-family:'Archivo',sans-serif;text-align:left;cursor:pointer;background:linear-gradient(135deg,#fde7f5,#efe7fd 50%,#e3f5fd);color:#2b2838;border:0;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px;min-height:200px;justify-content:flex-end" style-hover="filter:brightness(1.03)">
+        <button onClick="{{ pickKids }}" style="font-family:'Archivo',sans-serif;text-align:left;cursor:pointer;pointer-events:auto;background:linear-gradient(135deg,#fde7f5,#efe7fd 50%,#e3f5fd);color:#2b2838;border:0;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px;min-height:200px;justify-content:flex-end" style-hover="filter:brightness(1.03)">
           <span style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:#7a6f9a">Jas' Studio Kids</span>
           <span style="font-weight:700;font-stretch:118%;font-size:clamp(28px,3.4vw,40px);text-transform:uppercase;line-height:1;background:linear-gradient(90deg,#f08ad0,#b99cf0 45%,#7fd3f2);-webkit-background-clip:text;background-clip:text;color:transparent">Kids Class</span>
           <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600">Enter →</span>
