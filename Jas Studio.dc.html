@@ -1514,7 +1514,7 @@ const GALLERY = []; // categories: Hoop, Pole, Heels
 const KIDS_GALLERY = []; // categories: Pole Fitness, Aerial Hoop
 const DEFAULT_INSTRUCTORS = [
   { id: 'jas', name: 'Jas', title: 'Founder & Head Instructor', roles: 'Advanced Pole Instructor, Hoop Instructor', bio: 'Jasmin founded Jas’ Studio in 2016 and leads the Advanced Pole and Aerial Hoop classes.', photo: '', featured: true },
-  { id: 'faith', name: 'Faith', roles: 'Heels Instructor', photo: '' },
+  { id: 'faith', name: 'Faith', roles: 'Heels Instructor', photo: 'assets/instructor-faith.jpg', photos: ['assets/instructor-faith-2.jpg', 'assets/instructor-faith-3.jpg'] },
   { id: 'bekah', name: 'Bekah', roles: 'Heels Instructor', photo: '' },
   { id: 'holly', name: 'Holly', roles: 'Beginner Pole Instructor', photo: 'assets/instructor-holly.jpg', photos: ['assets/instructor-holly-2.jpg', 'assets/instructor-holly-3.jpg', 'assets/instructor-holly-4.jpg'] },
   { id: 'rachael', name: 'Rachael', roles: 'Beginner Pole Instructor', photo: '' },
@@ -1750,7 +1750,7 @@ class Component extends DCLogic {
       { key: 'pole', name: 'Pole', level: 'All levels', desc: 'Spins, inverts, holds and combos built with progressive conditioning.' },
       { key: 'hoop', name: 'Aerial Hoop', level: 'All levels', desc: 'Mounts, shapes and rotations on the lyra, from static to spinning.' },
       { key: 'heels', name: 'Heels', level: 'All levels', desc: 'Walks, floorwork and choreography in heels, built on control, posture and confidence.' }
-    ].map((c, i) => ({ ...c, no: String(i + 1).padStart(2, '0'), thumb: c.key === 'foundations' ? ((window.__resources && window.__resources.classFoundations) || 'assets/class-foundations.jpg') : '', open: () => this.openCourse(i) }));
+    ].map((c, i) => ({ ...c, no: String(i + 1).padStart(2, '0'), thumb: c.key === 'foundations' ? ((window.__resources && window.__resources.classFoundations) || 'assets/class-foundations.jpg') : c.key === 'heels' ? 'assets/class-heels.jpg' : '', open: () => this.openCourse(i) }));
     const D = COURSE_DETAILS;
     const ci = Math.min(this.state.detail ?? 0, courses.length - 1), cur = courses[ci];
     const cd = { ...cur, ...D[cur.key], steps: D[cur.key].steps.map((s, j) => ({ ...s, no: String(j + 1).padStart(2, '0') })),
