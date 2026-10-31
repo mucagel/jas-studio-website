@@ -1,0 +1,19 @@
+rules_version = '2';
+// Everyone can read the site's saved lists and photos. Only instructors whose
+// email is listed in config/admins (edited in the Firebase console) can save.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isInstructor() {
+      return request.auth != null
+        && request.auth.token.email.lower() in get(/databases/$(database)/documents/config/admins).data.emails;
+    }
+    match /site/{key} {
+      allow read: if true;
+      allow write: if isInstructor() && request.resource.data.json is string;
+    }
+    match /photos/{id} {
+      allow read: if true;
+      allow create, update: if isInstructor() && request.resource.data.d is string;
+    }
+  }
+}
