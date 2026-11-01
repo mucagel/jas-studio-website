@@ -35,6 +35,28 @@
     }
   }).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['src', 'data-filled'] });
 })();
+// Featured bios scroll on their own: they drift down slowly, pause while a visitor is scrolling
+// them by hand, and go back to the top once they reach the end.
+(function () {
+  var lastTouch = {}, IDLE = 4000, SPEED = 1, PAUSE = 2500, wait = new WeakMap();
+  ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      var el = e.target.closest && e.target.closest('.feat-bio');
+      if (el) lastTouch.t = Date.now();
+    }, { passive: true, capture: true });
+  });
+  setInterval(function () {
+    document.querySelectorAll('.feat-bio').forEach(function (el) {
+      if (!el.offsetParent || el.scrollHeight <= el.clientHeight + 1) return;
+      if (Date.now() - (lastTouch.t || 0) < IDLE) return;
+      if (wait.has(el) && Date.now() < wait.get(el)) return;
+      if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) {
+        wait.set(el, Date.now() + PAUSE); el.scrollTop = 0; return;
+      }
+      el.scrollTop += SPEED;
+    });
+  }, 50);
+})();
 // Picture spaces are plain photos on the live page, so a click must not open the file picker.
 ['click', 'dblclick'].forEach(function (type) {
   document.addEventListener(type, function (e) {
@@ -44,7 +66,7 @@
 </script>
 <style>
 /* Featured instructor (desktop): the text ends level with the photo and the bio scrolls inside that height. */
-@media (min-width:900px){.feat-grid{align-items:stretch!important}.feat-text{height:0;min-height:100%}.feat-bio{flex:1 1 auto;min-height:0;overflow-y:auto;padding-right:12px}}
+@media (min-width:900px){.feat-grid{align-items:stretch!important}.feat-text{height:0;min-height:100%}.feat-bio{flex:1 1 auto;min-height:0;overflow-y:auto;padding-right:12px;scrollbar-width:none}.feat-bio::-webkit-scrollbar{display:none}}
 html{scroll-behavior:smooth}
 body{margin:0;background:#0a0a0a;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
