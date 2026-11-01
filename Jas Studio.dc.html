@@ -43,6 +43,8 @@
 });
 </script>
 <style>
+/* Featured instructor (desktop): the text ends level with the photo and the bio scrolls inside that height. */
+@media (min-width:900px){.feat-grid{align-items:stretch!important}.feat-text{height:0;min-height:100%}.feat-bio{flex:1 1 auto;min-height:0;overflow-y:auto;padding-right:12px}}
 html{scroll-behavior:smooth}
 body{margin:0;background:#0a0a0a;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -364,7 +366,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
       <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Meet the team</h2>
     </div>
     <sc-for list="{{ featuredList }}" as="f" hint-placeholder-count="1">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding-bottom:clamp(56px,7vw,96px);margin-bottom:clamp(56px,7vw,96px);border-bottom:1px solid #222">
+      <div class="feat-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding-bottom:clamp(56px,7vw,96px);margin-bottom:clamp(56px,7vw,96px);border-bottom:1px solid #222">
         <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:14px">
           <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#111">
             <sc-for list="{{ f.slides }}" as="p" hint-placeholder-count="1">
@@ -380,13 +382,13 @@ html:not([data-instructor]) image-slot{pointer-events:none}
         </div></sc-if>
         <sc-if value="{{ f.edit }}" hint-placeholder-val="{{ false }}"><label style="display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/5;border:1px dashed #555;background:#111 center/cover no-repeat;background-image:{{ f.bg }};cursor:pointer;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a6a0" style-hover="border-color:#f4f2ee"><span style="background:rgba(10,10,10,.75);padding:10px 14px">{{ f.photoLabel }}</span><input type="file" accept="image/*" onChange="{{ f.onPhoto }}" style="display:none"></label></sc-if>
         <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;flex-direction:column;gap:20px">
+          <div class="feat-text" style="display:flex;flex-direction:column;gap:20px">
             <p style="margin:0;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#8d8a85">{{ f.title }}</p>
             <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(56px,8vw,112px);line-height:.95">{{ f.name }}</h3>
             <div style="display:flex;flex-wrap:wrap;gap:8px">
               <sc-for list="{{ f.roleList }}" as="r" hint-placeholder-count="2"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #444;padding:9px 14px;border-radius:999px">{{ r.label }}</span></sc-for>
             </div>
-            <p style="margin:0;font-size:17px;line-height:1.75;color:#c9c6c0;max-width:48ch;text-wrap:pretty">{{ f.bio }}</p>
+            <p class="feat-bio" style="margin:0;font-size:17px;line-height:1.75;color:#c9c6c0;max-width:48ch;text-wrap:pretty;white-space:pre-line">{{ f.bio }}</p>
           </div>
         </sc-if>
         <sc-if value="{{ f.edit }}" hint-placeholder-val="{{ false }}">
@@ -1087,7 +1089,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
       <h2 style="margin:0;font-weight:700;font-stretch:112%;text-transform:uppercase;font-size:clamp(34px,4.4vw,60px);line-height:1.05;text-wrap:balance">Meet the team</h2>
     </div>
     <sc-for list="{{ featuredList }}" as="f" hint-placeholder-count="1">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding-bottom:clamp(56px,7vw,96px);margin-bottom:clamp(56px,7vw,96px);border-bottom:1px solid #eee9f5">
+      <div class="feat-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(28px,4vw,64px);align-items:center;padding-bottom:clamp(56px,7vw,96px);margin-bottom:clamp(56px,7vw,96px);border-bottom:1px solid #eee9f5">
         <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:14px">
           <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#f6f3fb;filter:none">
             <sc-for list="{{ f.slides }}" as="p" hint-placeholder-count="1">
@@ -1103,13 +1105,13 @@ html:not([data-instructor]) image-slot{pointer-events:none}
         </div></sc-if>
         <sc-if value="{{ f.edit }}" hint-placeholder-val="{{ false }}"><label style="display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/5;border:1px dashed #c9bfe3;background:#f6f3fb center/cover no-repeat;background-image:{{ f.bg }};cursor:pointer;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5d5970;filter:none" style-hover="border-color:#2b2838"><span style="background:rgba(255,255,255,.85);padding:10px 14px">{{ f.photoLabel }}</span><input type="file" accept="image/*" onChange="{{ f.onPhoto }}" style="display:none"></label></sc-if>
         <sc-if value="{{ f.view }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;flex-direction:column;gap:20px">
+          <div class="feat-text" style="display:flex;flex-direction:column;gap:20px">
             <p style="margin:0;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#7a6f9a">{{ f.title }}</p>
             <h3 style="margin:0;font-weight:700;font-stretch:112%;text-transform:uppercase;font-size:clamp(56px,8vw,112px);line-height:.95">{{ f.name }}</h3>
             <div style="display:flex;flex-wrap:wrap;gap:8px">
               <sc-for list="{{ f.roleList }}" as="r" hint-placeholder-count="2"><span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #eee9f5;padding:9px 14px;border-radius:999px">{{ r.label }}</span></sc-for>
             </div>
-            <p style="margin:0;font-size:17px;line-height:1.75;color:#5d5970;max-width:48ch;text-wrap:pretty">{{ f.bio }}</p>
+            <p class="feat-bio" style="margin:0;font-size:17px;line-height:1.75;color:#5d5970;max-width:48ch;text-wrap:pretty;white-space:pre-line">{{ f.bio }}</p>
           </div>
         </sc-if>
         <sc-if value="{{ f.edit }}" hint-placeholder-val="{{ false }}">
