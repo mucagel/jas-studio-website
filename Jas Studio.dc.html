@@ -341,10 +341,11 @@ html:not([data-instructor]) image-slot{pointer-events:none}
                         </div>
                       </div>
                     </sc-if>
-                    <sc-if value="{{ e.bookSent }}" hint-placeholder-val="{{ false }}">
-                      <div style="display:flex;flex-direction:column;gap:14px">
-                        <p style="margin:0;font-size:15px;line-height:1.6;color:#c9c6c0">Thank you. We have your details and will contact you on WhatsApp to confirm your place.</p>
-                      </div>
+                    <sc-if value="{{ e.bookPay }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ e.openPay }}" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:16px 30px;border:0;border-radius:999px;background:#f4f2ee;color:#0a0a0a;cursor:pointer" style-hover="background:#fff">Book Now</button>
+                    </sc-if>
+                    <sc-if value="{{ e.bookThanks }}" hint-placeholder-val="{{ false }}">
+                      <p style="margin:0;font-size:15px;line-height:1.6;color:#c9c6c0">Thank you. We have your details and will contact you on WhatsApp to confirm your place.</p>
                     </sc-if>
                   </div>
                 </sc-if>
@@ -1851,7 +1852,7 @@ class Component extends DCLogic {
     catch (e) { return fail('Your details could not be sent. Please try again.'); }
     const pay = (ev.pay || '').trim();
     const payUrl = pay ? pay + (pay.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(email) : '';
-    this.setState(s => ({ booking: { ...s.booking, status: 'sent', err: '', payUrl } }));
+    this.setState(s => ({ booking: { ...s.booking, status: payUrl ? 'pay' : 'thanks', err: '', payUrl } }));
   };
   // Seats, booking form and instructor list for one event.
   bookingProps = (ev) => {
@@ -1869,7 +1870,12 @@ class Component extends DCLogic {
     }));
     return {
       hasCap, hasPay, showBook: hasCap || hasPay, seatsText: soldOut ? 'Sold out' : left + ' of ' + capN + ' seats left', soldOut,
-      canBook: !bk && !soldOut, bookOpen: !!bk && !bk.status, bookSent: !!bk && bk.status === 'sent', bkErr: bk ? (bk.err || '') : '',
+      canBook: !bk && !soldOut, bookOpen: !!bk && !bk.status, bookPay: !!bk && bk.status === 'pay', bookThanks: !!bk && bk.status === 'thanks',
+      openPay: () => {
+        const url = bk && bk.payUrl;
+        if (url) window.open(url, '_blank', 'noopener');
+        setTimeout(() => this.setState(s => ({ booking: s.booking && s.booking.eventId === id ? { ...s.booking, status: 'thanks' } : s.booking })), 3000);
+      }, bkErr: bk ? (bk.err || '') : '',
       bkName: bk ? bk.name || '' : '', bkPhone: bk ? bk.phone || '' : '', bkEmail: bk ? bk.email || '' : '',
       payUrl: bk ? bk.payUrl || '' : '', hasPayUrl: !!(bk && bk.payUrl), noPayUrl: !(bk && bk.payUrl),
       openBook: () => this.setState({ booking: { eventId: id, name: '', phone: '', email: '', status: '', payUrl: '', err: '' } }),
