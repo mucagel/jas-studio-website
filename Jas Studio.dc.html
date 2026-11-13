@@ -149,7 +149,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
     <h1 style="position:absolute;left:50%;bottom:clamp(78px,10vh,110px);transform:translateX(-50%);margin:0;width:min(540px,70vw);pointer-events:none;filter:drop-shadow(0 6px 30px rgba(0,0,0,.55))"><img src="assets/logo-script.svg" alt="Jas' Studio" style="display:block;width:100%;height:auto"><span style="display:block;margin-top:3.2%;text-align:center;font-family:'Montserrat',sans-serif;font-weight:300;font-size:calc(min(540px,70vw) * .036);letter-spacing:.42em;padding-left:.42em;color:#fff;white-space:nowrap">POLE &amp; AERIAL ARTS</span></h1>
     <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(28px,5vh,48px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;pointer-events:none">
       <span></span>
-      <div style="display:{{ heroCtrlDisplay }};align-items:center;gap:18px;pointer-events:auto">
+      <div style="display:none;align-items:center;gap:18px;pointer-events:auto">
         <div style="display:flex;gap:8px">
           <sc-for list="{{ slides }}" as="s" hint-placeholder-count="4">
             <button onClick="{{ s.go }}" aria-label="Show photo {{ s.n }}" style="width:{{ s.dotW }};height:2px;border:0;padding:0;cursor:pointer;background:{{ s.dotBg }};transition:all .4s"></button>
@@ -1965,7 +1965,7 @@ class Component extends DCLogic {
       isMain: !['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page), isKids: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page), isKidPrices: page === 'kidprices', isKidTerms: page === 'kidterms', isKidsHome: page === 'kids', isKidCourse: page === 'kidcourse', kd,
       navBgDark: (scrolled || page !== 'main') ? 'rgba(10,10,10,.92)' : 'transparent',
       navBgLight: scrolled ? 'rgba(255,255,255,.9)' : 'rgba(255,255,255,0)',
-      slides: mkSlides, kidSlides: mkSlides,
+      slides: mkSlides.slice(0, 1).map(s => ({ ...s, opacity: 1 })), kidSlides: mkSlides,
       slideLabel: `0${idx + 1} / 0${this.N}`,
       prev: () => this.setIdx(idx - 1), next: () => this.setIdx(idx + 1),
       goTop: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page) ? nav('kids') : nav('main'),
