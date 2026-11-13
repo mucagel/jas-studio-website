@@ -394,12 +394,13 @@ html:not([data-instructor]) image-slot{pointer-events:none}
               <sc-if value="{{ e.lockedNote }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:13px;color:#6f6c68">{{ e.lockedNote }}</p></sc-if>
               <sc-if value="{{ e.noBookings }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font-size:14px;color:#6f6c68">No bookings yet.</p></sc-if>
               <sc-for list="{{ e.bookingList }}" as="bk" hint-placeholder-count="0">
-                <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr) auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid #222">
+                <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr) auto auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid #222">
                   <span style="font-size:15px;color:#f4f2ee;overflow-wrap:anywhere">{{ bk.name }}</span>
                   <a href="{{ bk.wa }}" target="_blank" rel="noopener" style="font-size:14px;color:#a9a6a0;overflow-wrap:anywhere">WhatsApp {{ bk.phone }}</a>
                   <a href="mailto:{{ bk.email }}" style="font-size:14px;color:#a9a6a0;overflow-wrap:anywhere">{{ bk.email }}</a>
                   <sc-if value="{{ bk.canEdit }}" hint-placeholder-val="{{ true }}"><sc-raw-select value="{{ bk.paidValue }}" onChange="{{ bk.onPaid }}" style="font-family:inherit;font-size:14px;padding:10px 12px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;box-sizing:border-box"><option value="unpaid">Not paid</option><option value="paid">Paid</option></sc-raw-select></sc-if>
                   <sc-if value="{{ bk.locked }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#a9a6a0">{{ bk.statusText }}</span></sc-if>
+                  <sc-if value="{{ bk.canEdit }}" hint-placeholder-val="{{ true }}"><button onClick="{{ bk.remove }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:10px 14px;border:1px solid #6b2b2b;border-radius:999px;background:transparent;color:#f0a0a0;cursor:pointer" style-hover="background:#2a1414">Delete</button></sc-if>
                 </div>
               </sc-for>
             </div>
@@ -1842,6 +1843,15 @@ class Component extends DCLogic {
     jasCloud.setPaid(bid, paid).then(() => { jasCloud.save('jas-seats', seats); this.setState({ seats }); })
       .catch(() => { alert('This could not be saved. Check the connection and try again.'); this.setState(s => ({ bookings: (s.bookings || []).map(b => b.id === bid ? { ...b, paid: !paid } : b) })); });
   };
+  // Instructor deletes a booking for good, after confirming. The public seat count is recalculated.
+  deleteBooking = (bid) => {
+    if (!confirm('Delete this booking permanently? This cannot be undone.')) return;
+    const prev = this.state.bookings || [], next = prev.filter(b => b.id !== bid);
+    const seats = {}; next.forEach(b => { if (b.paid) seats[b.eventId] = (seats[b.eventId] || 0) + 1; });
+    this.setState({ bookings: next });
+    jasCloud.deleteBooking(bid).then(() => { jasCloud.save('jas-seats', seats); this.setState({ seats }); })
+      .catch(() => { alert('This could not be deleted. Check the connection and try again.'); this.setState({ bookings: prev }); });
+  };
   // Visitor sends their details. The booking is saved as not paid, then they are sent to the payment link.
   submitBooking = async (ev) => {
     const bk = this.state.booking || {}, name = (bk.name || '').trim(), phone = (bk.phone || '').trim(), email = (bk.email || '').trim();
@@ -1866,7 +1876,7 @@ class Component extends DCLogic {
     const rows = (this.state.bookings || []).filter(b => b.eventId === id).map(b => ({
       id: b.id, name: b.name, email: b.email, phone: b.phone, wa: 'https://wa.me/' + String(b.phone).replace(/\D/g, ''),
       paidValue: b.paid ? 'paid' : 'unpaid', statusText: b.paid ? 'Paid' : 'Not paid', locked, canEdit: !locked,
-      onPaid: (x) => this.setPaidBooking(b.id, x.target.value === 'paid')
+      onPaid: (x) => this.setPaidBooking(b.id, x.target.value === 'paid'), remove: () => this.deleteBooking(b.id)
     }));
     return {
       hasCap, hasPay, showBook: hasCap || hasPay, seatsText: soldOut ? 'Sold out' : left + ' of ' + capN + ' seats left', soldOut,

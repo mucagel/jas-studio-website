@@ -107,6 +107,9 @@
   window.jasCloud.setPaid = function (id, paid) {
     return db.collection('registrations').doc(id).update({ paid: paid });
   };
+  window.jasCloud.deleteBooking = function (id) {
+    return db.collection('registrations').doc(id).delete();
+  };
   // Sends every change still waiting for its short pause, straight away (the Save button).
   window.jasCloud.flush = function () { return Promise.all(Object.keys(pending).map(function (k) { clearTimeout(timers[k]); return writeNow(k); })); };
   // A save still waiting when the tab closes is sent straight away.
