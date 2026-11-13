@@ -100,6 +100,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
       <a href="#community" onClick="{{ goCommunity }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Community</a>
       <a href="#events" onClick="{{ goEvents }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Events</a>
       <a href="#contact" onClick="{{ goContact }}" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Contact</a>
+      <button onClick="{{ toKids }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#f4f2ee;background:transparent;border:1px solid rgba(244,242,238,.4);border-radius:999px;padding:10px 16px;cursor:pointer;white-space:nowrap" style-hover="background:#f4f2ee;color:#0a0a0a">Kids Side →</button>
       <button onClick="{{ goBook }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#0a0a0a;background:#f4f2ee;border:0;border-radius:999px;padding:11px 18px;cursor:pointer;white-space:nowrap" style-hover="background:#fff">Book Now</button>
     </nav>
     </sc-if>
@@ -122,6 +123,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
       <a href="#community" onClick="{{ goCommunity }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Community</a>
       <a href="#events" onClick="{{ goEvents }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Events</a>
       <a href="#contact" onClick="{{ goContact }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Contact</a>
+      <a href="#kids" onClick="{{ toKids }}" style="font-weight:600;font-stretch:115%;font-size:28px;text-transform:uppercase;letter-spacing:.01em;padding:9px 0;color:#f4f2ee">Kids Side →</a>
     </div>
   </sc-if>
   <sc-if value="{{ trialPopMounted }}" hint-placeholder-val="{{ false }}">
@@ -279,7 +281,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
               <input type="file" accept="image/*" onChange="{{ e.onPhoto }}" style="display:none">
             </label>
             <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-              <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#f4f2ee">{{ e.name }}</span>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Name<input value="{{ e.name }}" onChange="{{ e.onName }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
               <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Level<input value="{{ e.level }}" onChange="{{ e.onLevel }}" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none"></label>
               <label style="display:flex;flex-direction:column;gap:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8d8a85">Description<textarea value="{{ e.desc }}" onChange="{{ e.onDesc }}" rows="3" style="font-family:inherit;font-size:15px;padding:12px 14px;border:1px solid #333;background:#111;color:#f4f2ee;outline:none;width:100%;box-sizing:border-box;letter-spacing:0;text-transform:none;resize:vertical"></textarea></label>
             </div>
@@ -855,6 +857,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
       <a href="#kcommunity" onClick="{{ goKCommunity }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Community</a>
       <a href="#kevents" onClick="{{ goKEvents }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Events</a>
       <a href="#kcontact" onClick="{{ goKContact }}" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">Contact</a>
+      <button onClick="{{ toMain }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#2b2838;background:transparent;border:1px solid #d9d2ea;border-radius:999px;padding:10px 16px;cursor:pointer;white-space:nowrap" style-hover="background:#2b2838;color:#fff">Adult Side →</button>
       <button onClick="{{ goKBook }}" style="font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff;border:0;border-radius:999px;padding:11px 18px;cursor:pointer;white-space:nowrap;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2)" style-hover="filter:brightness(1.05)">Book Now</button>
     </nav>
     </sc-if>
@@ -876,6 +879,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
       <a href="#kcommunity" onClick="{{ goKCommunity }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Community</a>
       <a href="#kevents" onClick="{{ goKEvents }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Events</a>
       <a href="#kcontact" onClick="{{ goKContact }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Contact</a>
+      <a href="#main" onClick="{{ toMain }}" style="font-weight:600;font-stretch:115%;font-size:30px;text-transform:uppercase;letter-spacing:.01em;padding:10px 0;color:#2b2838">Adult Side →</a>
       <button onClick="{{ goKBook }}" style="margin-top:28px;align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff;border:0;border-radius:999px;padding:16px 24px;cursor:pointer;background:linear-gradient(90deg,#f08ad0,#b99cf0,#7fd3f2)">Book Now</button>
     </div>
   </sc-if>
@@ -1576,6 +1580,9 @@ const DEFAULT_INSTRUCTORS = [
   { id: 'rachael', name: 'Rachael', roles: 'Pole Fitness Instructor', bio: "Rachael began her pole journey in January 2022, initially just for fun, but quickly fell completely in love with it!\n\nWhat started as a hobby soon became a passion, leading her to become a fully qualified XPERT Certified Pole Fitness Instructor.\n\nRachael teaches our Beginner to Low Intermediate Pole Fitness classes, helping students build strength, confidence and develop their skills at their own pace.\n\nFor Rachael, pole has been an incredibly empowering experience, and she loves creating a space where everyone feels strong, sexy and supported, with plenty of laughter along the way!\n\nWhether you’re stepping onto the pole for the very first time or working towards your next achievement, Rachael is there to encourage you, celebrate your progress and help you smash your goals! 🖤", photo: '' },
   { id: 'vix', name: 'Vix', roles: 'Advanced Pole Instructor', photo: 'assets/instructor-vix.jpg', photos: ['assets/instructor-vix-2.jpg', 'assets/instructor-vix-3.jpg', 'assets/instructor-vix-4.jpg'] }
 ];
+const DEFAULT_KID_INSTRUCTORS = [
+  { id: 'kid1', name: 'Kids Instructor', title: 'Kids Instructor', roles: 'Kids Pole Fitness, Kids Aerial Hoop', bio: 'Introduce your kids instructor here: their background, what they enjoy about teaching children and what a child will learn in class.', photo: '', photos: [], featured: true }
+];
 const DEFAULT_KEVENTS = [1, 2].map(n => ({ id: 'kd' + n, date: '', time: 'Time TBC', price: '£—', location: 'Unit 54-55, Shannon Way, Canvey Island', name: 'Kids event name', desc: 'Short description of the kids workshop or showcase.', details: '', hero: '', photos: [] }));
 const DEFAULT_KPRICES = [{"id":"kp1","group":"Pay As You Go","name":"PAY AS YOU GO","price":"£15.00","per":"one-time","summary":"Flexible pay-as-you-go pole and aerial classes for juniors in school years 2–6 at Jas’ Studio Pole & Aerial Arts.","details":"Each credit gives access to fun, dynamic, fully coached classes designed to build strength, coordination and confidence in a safe and supportive environment. All classes are taught by experienced, child-qualified instructors and focus on positive progression at each child’s own pace.\n\nBooking & Cancellations:\n\n• Classes must be booked via the system at least 24 hours before class start time\n\n• Bookings can be moved or cancelled up to 24 hours before class\n\n• Any changes made within 24 hours will result in the credit being used\n\n• Credits are non-refundable\n\nCredits are valid for 4 weeks from the date of purchase, making this a great option for trying classes or training around busy family schedules.\n\nA perfect introduction to aerial fitness while having fun and building confidence."},{"id":"kp2","group":"Kids Monthly Memberships","name":"1 SESSION A WEEK","price":"£50.00","per":"per month","summary":"This membership includes one class per week for students in school years 2–11 at Jas’ Studio Pole & Aerial Arts. It is ideal for consistent weekly training and steady progression.","details":"Students are allocated a regular weekly class, which is set up as a repeat booking by the studio. After purchasing, please contact the studio so we can arrange your child’s weekly class slot.\n\nImportant Membership Terms:\n\n• This membership is for a fixed weekly class to retain your child’s place in a small class group\n\n• Classes included in this membership cannot be moved or carried over\n\n• If a student does not attend their allocated class, the credit is forfeited\n\n• Memberships are not paused or credited for holidays\n\n• Membership pricing is calculated across the year, including periods when the studio is closed (e.g. Christmas)\n\nPauses for Extenuating Circumstances:\n\nMemberships may be paused in genuine extenuating circumstances (such as medical issues). Supporting evidence may be required and all requests are assessed on a case-by-case basis.\n\nBilling & Cancellation:\n\n• Memberships are billed monthly on the 1st of each month\n\n• A minimum of 30 days’ notice is required to cancel\n\n• All cancellations must be made via the booking system\n\n• Membership fees are non-refundable"},{"id":"kp3","group":"Kids Monthly Memberships","name":"2 SESSIONS A WEEK","price":"£75.00","per":"per month","summary":"This membership includes two classes per week for students in school years 2–11 at Jas’ Studio Pole & Aerial Arts. It is ideal for students looking to progress faster, build strength, and improve confidence through more consistent training.","details":"Students are allocated regular weekly classes, which are set up as repeat bookings by the studio. After purchasing, please contact the studio so we can arrange your child’s weekly class slots.\n\nImportant Membership Terms:\n\n• This membership is for fixed weekly classes to retain your child’s place in small class groups\n\n• Classes included in this membership cannot be moved or carried over\n\n• If a student does not attend their allocated classes, the credit is forfeited\n\n• Memberships are not paused or credited for holidays\n\n• Membership pricing is calculated across the year, including periods when the studio is closed (e.g. Christmas)\n\nPauses for Extenuating Circumstances:\n\nMemberships may be paused in genuine extenuating circumstances (such as medical issues). Supporting evidence may be required and all requests are assessed on a case-by-case basis.\n\nBilling & Cancellation:\n\n• Memberships are billed monthly on the 1st of each month\n\n• A minimum of 30 days’ notice is required to cancel\n\n• All cancellations must be made via the booking system\n\n• Membership fees are non-refundable"}];
 const DEFAULT_EVENTS = [1, 2, 3].map(n => ({ id: 'd' + n, date: '', time: 'Time TBC', price: '£—', location: 'Unit 54-55, Shannon Way, Canvey Island', name: 'Event name', desc: 'Short description of the workshop or showcase.', details: '', hero: '', photos: [] }));
@@ -1595,9 +1602,10 @@ class Component extends DCLogic {
     // Saved lists come from the cloud, so every visitor sees the instructors' edits.
     if (window.jasCloud) {
       this.unsubUser = jasCloud.onUser(u => this.setState(u ? { instructor: true } : { instructor: false, previewMode: false }));
-      jasCloud.load(['jas-events', 'jas-kids-events', 'jas-kids-prices-v2', 'jas-community', 'jas-prices-v2', 'jas-instructors', 'jas-classes']).then(d => {
+      jasCloud.load(['jas-events', 'jas-kids-events', 'jas-kids-prices-v2', 'jas-community', 'jas-prices-v2', 'jas-instructors', 'jas-classes', 'jas-kids-instructors']).then(d => {
         const st = {}, arr = (k) => Array.isArray(d[k]);
         if (d['jas-classes'] && typeof d['jas-classes'] === 'object') st.classEdits = d['jas-classes'];
+        if (arr('jas-kids-instructors')) st.kidInstructors = d['jas-kids-instructors'];
         if (arr('jas-events')) st.events = this.norm(d['jas-events']); if (arr('jas-kids-events')) st.kevents = this.norm(d['jas-kids-events']);
         if (arr('jas-kids-prices-v2')) st.kprices = d['jas-kids-prices-v2']; if (arr('jas-community')) st.community = d['jas-community'];
         if (arr('jas-prices-v2')) st.prices = d['jas-prices-v2']; if (arr('jas-instructors')) st.instructors = d['jas-instructors'];
@@ -1748,9 +1756,9 @@ class Component extends DCLogic {
     if (l.startsWith('•')) { const it = l.replace(/^•\s*/, ''); const last = out[out.length - 1]; if (last && last.k === 'ul') last.items.push(it); else out.push({ k: 'ul', items: [it] }); }
     else if ((/[:?]$/.test(l) && l.length < 60) || (l.length < 40 && /[A-Z]/.test(l) && l === l.toUpperCase() && !/^£/.test(l))) out.push({ k: 'h', t: l }); else out.push({ k: 'p', t: l }); }); return out; }
   termSecs(k) { return TERMS[k].map((s, i) => ({ t: s.t, no: String(i + 1).padStart(2, '0'), blocks: s.blocks.map(b => ({ ul: !!b.ul, isP: !b.ul, t: b.t || '', items: (b.items || []).map(t => ({ t })) })) })); }
-  instrs = () => { const R = window.__resources || {}, map = { 'assets/instructor-holly.jpg': R.instrHolly, 'assets/instructor-holly-2.jpg': R.instrHolly2, 'assets/instructor-holly-3.jpg': R.instrHolly3, 'assets/instructor-holly-4.jpg': R.instrHolly4 }, fix = (s) => map[s] || s;
-    return (this.state.instructors || DEFAULT_INSTRUCTORS).map(x => ({ ...x, photo: fix(x.photo), photos: (x.photos || []).map(fix) })); };
-  setInstrs = (fn) => this.setState(s => { const a = fn([...(s.instructors || DEFAULT_INSTRUCTORS)]); window.jasCloud && jasCloud.save('jas-instructors', a); return { instructors: a }; });
+  instrs = (kid) => { const R = window.__resources || {}, map = { 'assets/instructor-holly.jpg': R.instrHolly, 'assets/instructor-holly-2.jpg': R.instrHolly2, 'assets/instructor-holly-3.jpg': R.instrHolly3, 'assets/instructor-holly-4.jpg': R.instrHolly4 }, fix = (s) => map[s] || s;
+    return ((kid ? this.state.kidInstructors : this.state.instructors) || (kid ? DEFAULT_KID_INSTRUCTORS : DEFAULT_INSTRUCTORS)).map(x => ({ ...x, photo: fix(x.photo), photos: (x.photos || []).map(fix) })); };
+  setInstrs = (fn, kid = false) => this.setState(s => { const key = kid ? 'kidInstructors' : 'instructors'; const a = fn([...(s[key] || (kid ? DEFAULT_KID_INSTRUCTORS : DEFAULT_INSTRUCTORS))]); window.jasCloud && jasCloud.save(kid ? 'jas-kids-instructors' : 'jas-instructors', a); return { [key]: a }; });
   setGal = (key, store, fn) => this.setState(s => { const a = fn([...(s[key] || [])]); window.jasCloud && jasCloud.save(store, a); return { [key]: a }; });
   setClassEdit = (key, patch) => this.setState(s => { const all = { ...(s.classEdits || {}), [key]: { ...((s.classEdits || {})[key] || {}), ...patch } }; window.jasCloud && jasCloud.save('jas-classes', all); return { classEdits: all }; });
   buildGallery(key, store, cats, inst, p) {
@@ -1810,10 +1818,11 @@ class Component extends DCLogic {
       { key: 'heels', name: 'Pole Choreo', level: 'All levels', desc: 'Choreography in two styles: Pole Flow and Heels After Dark.' }
     ].map((c, i) => {
       const o = (this.state.classEdits || {})[c.key] || {};
-      return { ...c, level: o.level || c.level, desc: o.desc || c.desc, no: String(i + 1).padStart(2, '0'), thumb: o.thumb || (c.key === 'foundations' ? ((window.__resources && window.__resources.classFoundations) || 'assets/class-foundations.jpg') : c.key === 'heels' ? 'assets/class-heels.jpg' : ''), open: () => this.openCourse(i) };
+      return { ...c, name: o.name || c.name, level: o.level || c.level, desc: o.desc || c.desc, no: String(i + 1).padStart(2, '0'), thumb: o.thumb || (c.key === 'foundations' ? ((window.__resources && window.__resources.classFoundations) || 'assets/class-foundations.jpg') : c.key === 'heels' ? 'assets/class-heels.jpg' : ''), open: () => this.openCourse(i) };
     });
     const classEditors = courses.map(c => ({
       key: c.key, name: c.name, bg: c.thumb ? 'url("' + c.thumb + '")' : 'none', photoLabel: c.thumb ? 'Change photo' : '+ Add photo', level: c.level, desc: c.desc,
+      onName: (x) => this.setClassEdit(c.key, { name: x.target.value }),
       onLevel: (x) => this.setClassEdit(c.key, { level: x.target.value }),
       onDesc: (x) => this.setClassEdit(c.key, { desc: x.target.value }),
       onPhoto: async (x) => { const f = x.target.files && x.target.files[0]; if (f) { const url = await this.readPhoto(f, 1000); if (url) this.setClassEdit(c.key, { thumb: url }); } x.target.value = ''; }
@@ -1950,23 +1959,24 @@ class Component extends DCLogic {
         { date: 'Date TBC', name: 'Event name', desc: 'Short description of the workshop or showcase.' }
       ],
       ...(() => {
-        const list = this.instrs();
+        const list = this.instrs(kidSide);
+        const setL = (fn) => this.setInstrs(fn, kidSide);
         const mk = (x) => {
-          const set = (k) => (ev) => { const v = ev.target.value; this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, [k]: v } : y)); };
+          const set = (k) => (ev) => { const v = ev.target.value; setL(a => a.map(y => y.id === x.id ? { ...y, [k]: v } : y)); };
           const roleArr = (x.roles || '').split(',').map(r => r.trim()).filter(Boolean);
-          return { ...x, view: !inst, edit: inst, slotId: 'main-teacher-' + x.id, hasPhoto: !!x.photo, noPhoto: !x.photo,
+          return { ...x, view: !inst, edit: inst, slotId: (kidSide ? 'kids-teacher-' : 'main-teacher-') + x.id, hasPhoto: !!x.photo, noPhoto: !x.photo,
             bg: x.photo ? 'url("' + x.photo + '")' : 'none', photoLabel: x.photo ? 'Change photo' : '+ Add photo',
             roleList: roleArr.map(label => ({ label })), roleText: roleArr.join(' · '),
             onName: set('name'), onRoles: set('roles'), onTitle: set('title'), onBio: set('bio'),
-            onPhoto: async (ev) => { const f = ev.target.files && ev.target.files[0]; ev.target.value = ''; if (!f) return; const src = await this.readPhoto(f, 1200); if (src) this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photo: src } : y)); },
-            remove: () => { if (confirm('Remove ' + (x.name || 'this instructor') + '?')) this.setInstrs(a => a.filter(y => y.id !== x.id)); },
-            feature: () => this.setInstrs(a => a.map(y => ({ ...y, featured: y.id === x.id }))),
-            unfeature: () => this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, featured: false } : y)),
+            onPhoto: async (ev) => { const f = ev.target.files && ev.target.files[0]; ev.target.value = ''; if (!f) return; const src = await this.readPhoto(f, 1200); if (src) setL(a => a.map(y => y.id === x.id ? { ...y, photo: src } : y)); },
+            remove: () => { if (confirm('Remove ' + (x.name || 'this instructor') + '?')) setL(a => a.filter(y => y.id !== x.id)); },
+            feature: () => setL(a => a.map(y => ({ ...y, featured: y.id === x.id }))),
+            unfeature: () => setL(a => a.map(y => y.id === x.id ? { ...y, featured: false } : y)),
             isOpen: this.state.openInstr === x.id ? 'true' : 'false', pillBorder: this.state.openInstr === x.id ? (kidSide ? '2px solid #b99cf0' : '2px solid #f4f2ee') : '2px solid transparent',
             toggle: () => { const o = this.state.openInstr === x.id ? null : x.id; this.setState({ openInstr: o, lastInstr: o || this.state.lastInstr, instrPhoto: 0 }); this.startInstrRoll(); },
             galCount: (x.photos || []).length, galCanAdd: (x.photos || []).length < 3,
-            galList: (x.photos || []).map((src, j) => ({ bg: 'url("' + src + '")', remove: () => this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photos: (y.photos || []).filter((_, k) => k !== j) } : y)) })),
-            onGal: async (ev) => { const files = [...(ev.target.files || [])]; ev.target.value = ''; const have = (x.photos || []).length; const urls = (await Promise.all(files.slice(0, Math.max(0, 3 - have)).map(f => this.readPhoto(f, 1200)))).filter(Boolean); this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photos: [...(y.photos || []), ...urls].slice(0, 3) } : y)); } };
+            galList: (x.photos || []).map((src, j) => ({ bg: 'url("' + src + '")', remove: () => setL(a => a.map(y => y.id === x.id ? { ...y, photos: (y.photos || []).filter((_, k) => k !== j) } : y)) })),
+            onGal: async (ev) => { const files = [...(ev.target.files || [])]; ev.target.value = ''; const have = (x.photos || []).length; const urls = (await Promise.all(files.slice(0, Math.max(0, 3 - have)).map(f => this.readPhoto(f, 1200)))).filter(Boolean); setL(a => a.map(y => y.id === x.id ? { ...y, photos: [...(y.photos || []), ...urls].slice(0, 3) } : y)); } };
         };
         const fe = list.find(x => x.id === 'jas') || list.find(x => x.featured);
         const sel = list.find(x => x.id === (this.state.openInstr || this.state.lastInstr)) || {};
@@ -1976,7 +1986,7 @@ class Component extends DCLogic {
           o.slides = n ? pics.map((src, j) => ({ isImg: true, isSlot: false, bg: 'url("' + src + '")', opacity: j === fi ? 1 : 0, pe: j === fi ? 'auto' : 'none' })) : [{ isImg: false, isSlot: true, opacity: 1, pe: 'auto' }];
           o.multi = n > 1; o.dots = pics.map((_, j) => ({ n: j + 1, w: j === fi ? '28px' : '12px', bg: j === fi ? (kidSide ? '#b99cf0' : '#f4f2ee') : (kidSide ? '#e2dbef' : '#444'), go: () => { this.setState({ featIdx: j }); this.startFeat(); } }));
           o.galCanAdd10 = (x.photos || []).length < 9;
-          o.onGal10 = async (ev) => { const files = [...(ev.target.files || [])]; ev.target.value = ''; const have = (x.photos || []).length; const urls = (await Promise.all(files.slice(0, Math.max(0, 9 - have)).map(f => this.readPhoto(f, 1200)))).filter(Boolean); this.setInstrs(a => a.map(y => y.id === x.id ? { ...y, photos: [...(y.photos || []), ...urls].slice(0, 9) } : y)); };
+          o.onGal10 = async (ev) => { const files = [...(ev.target.files || [])]; ev.target.value = ''; const have = (x.photos || []).length; const urls = (await Promise.all(files.slice(0, Math.max(0, 9 - have)).map(f => this.readPhoto(f, 1200)))).filter(Boolean); setL(a => a.map(y => y.id === x.id ? { ...y, photos: [...(y.photos || []), ...urls].slice(0, 9) } : y)); };
           o.galCount = [x.photo, ...(x.photos || [])].filter(Boolean).length; return o; };
         return { featuredList: fe ? [mkF(fe)] : [], teachers: list.filter(x => x !== fe).map(mk),
           instrView: true, instrEdit: inst, instrRows: this.state.openInstr ? '1fr' : '0fr', instrPanelOpacity: this.state.openInstr ? 1 : 0,
@@ -1989,7 +1999,7 @@ class Component extends DCLogic {
           closeInstr: () => this.setState({ openInstr: null }),
           pillRef: this.pillRef, pillPrev: () => this.pillStep(-1), pillNext: () => this.pillStep(1),
           pillW: mob ? 'calc((100% - 20px) / 2)' : 'calc((100% - 80px) / 5)', pillPause: () => { this._pillHold = true; }, pillResume: () => { this._pillHold = false; },
-          addInstr: () => this.setInstrs(a => [...a, { id: 'i' + Date.now().toString(36), name: 'New instructor', roles: '', title: '', bio: '', photo: '', featured: false }]) };
+          addInstr: () => setL(a => [...a, { id: 'i' + Date.now().toString(36), name: 'New instructor', roles: '', title: '', bio: '', photo: '', featured: false }]) };
       })(),
       isMain: !['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page), isKids: ['kids', 'kidcourse', 'kidprices', 'kidterms', 'kidgallery', 'kidevents', 'kidabout', 'kidinstructors', 'kidcommunity'].includes(page), isKidPrices: page === 'kidprices', isKidTerms: page === 'kidterms', isKidsHome: page === 'kids', isKidCourse: page === 'kidcourse', kd,
       navBgDark: (scrolled || page !== 'main') ? 'rgba(10,10,10,.92)' : 'transparent',
