@@ -15,5 +15,22 @@ service cloud.firestore {
       allow read: if true;
       allow create, update: if isInstructor() && request.resource.data.d is string;
     }
+    // Event bookings. Visitors add one (until the event day is over). Only instructors
+    // can read them, mark them paid, or delete them, and not once the event day is over.
+    match /registrations/{id} {
+      allow create: if request.time < request.resource.data.eventDate + duration.value(1, 'd')
+        && request.resource.data.keys().hasOnly(['eventId', 'eventDate', 'name', 'phone', 'email', 'paid'])
+        && request.resource.data.eventId is string && request.resource.data.eventId.size() <= 80
+        && request.resource.data.eventDate is timestamp
+        && request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 120
+        && request.resource.data.phone is string && request.resource.data.phone.size() > 0 && request.resource.data.phone.size() <= 40
+        && request.resource.data.email is string && request.resource.data.email.size() > 0 && request.resource.data.email.size() <= 200
+        && request.resource.data.paid == false;
+      allow read: if isInstructor();
+      allow update: if isInstructor()
+        && request.time < resource.data.eventDate + duration.value(1, 'd')
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['paid']);
+      allow delete: if isInstructor() && request.time < resource.data.eventDate + duration.value(1, 'd');
+    }
   }
 }

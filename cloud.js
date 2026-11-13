@@ -90,6 +90,23 @@
       timers[key] = setTimeout(function () { writeNow(key); }, 800);
     }
   };
+  // Event bookings: anyone can add one; only instructors can read them or mark them paid.
+  window.jasCloud.addBooking = function (b) {
+    var d = b.eventDate.split('-').map(Number);
+    return db.collection('registrations').add({
+      eventId: b.eventId,
+      eventDate: firebase.firestore.Timestamp.fromDate(new Date(d[0], d[1] - 1, d[2])),
+      name: b.name, phone: b.phone, email: b.email, paid: false
+    });
+  };
+  window.jasCloud.listBookings = function () {
+    return db.collection('registrations').get().then(function (s) {
+      return s.docs.map(function (doc) { return Object.assign({ id: doc.id }, doc.data()); });
+    });
+  };
+  window.jasCloud.setPaid = function (id, paid) {
+    return db.collection('registrations').doc(id).update({ paid: paid });
+  };
   // A save still waiting when the tab closes is sent straight away.
   window.addEventListener('pagehide', function () { Object.keys(pending).forEach(function (k) { clearTimeout(timers[k]); writeNow(k); }); });
 })();
