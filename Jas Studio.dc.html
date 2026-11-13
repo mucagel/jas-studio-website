@@ -343,11 +343,7 @@ html:not([data-instructor]) image-slot{pointer-events:none}
                     </sc-if>
                     <sc-if value="{{ e.bookSent }}" hint-placeholder-val="{{ false }}">
                       <div style="display:flex;flex-direction:column;gap:14px">
-                        <sc-if value="{{ e.hasPayUrl }}" hint-placeholder-val="{{ false }}">
-                          <p style="margin:0;font-size:15px;line-height:1.6;color:#c9c6c0">Thank you. Pay below to secure your place.</p>
-                          <a href="{{ e.payUrl }}" target="_blank" rel="noopener" style="align-self:flex-start;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:16px 30px;border-radius:999px;background:#f4f2ee;color:#0a0a0a;text-decoration:none">Pay now</a>
-                        </sc-if>
-                        <sc-if value="{{ e.noPayUrl }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font-size:15px;line-height:1.6;color:#c9c6c0">Thank you. We have your details and will be in touch on WhatsApp to confirm your place.</p></sc-if>
+                        <p style="margin:0;font-size:15px;line-height:1.6;color:#c9c6c0">Thank you. We have your details and will contact you on WhatsApp to confirm your place.</p>
                       </div>
                     </sc-if>
                   </div>
