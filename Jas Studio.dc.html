@@ -1583,7 +1583,7 @@ const DEFAULT_INSTRUCTORS = [
 // Metallic text for a membership name: one metal per word it names, side by side for combos.
 // Each metal: the word in the name, its base, highlight and shadow tones.
 // Choreo on its own is rose gold; when a metal is in the name, the metal wins.
-// Text is filled with a diagonal sheen, extruded with stacked dark shadows and given a soft glow.
+// Text is filled with a diagonal sheen and given a slight raised edge.
 const METALS = [
   ['BRONZE', '#9a5f2e', '#f5c896', '#4a2a10'],
   ['SILVER', '#9aa1ab', '#ffffff', '#4b525c'],
@@ -1597,8 +1597,8 @@ const metalName = (name) => {
   if (!metal) return 'color:#f4f2ee';
   const [, base, light, dark] = metal;
   const sheen = 'linear-gradient(115deg,' + [dark + ' 0%', base + ' 18%', light + ' 30%', base + ' 42%', dark + ' 52%', base + ' 62%', light + ' 74%', base + ' 86%', dark + ' 100%'].join(',') + ')';
-  const extrude = 'drop-shadow(1px 1px 0 ' + dark + ') drop-shadow(2px 2px 0 ' + dark + ') drop-shadow(3px 3px 0 ' + dark + ') drop-shadow(4px 5px 6px rgba(0,0,0,.6))';
-  return 'background:' + sheen + ';-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:' + extrude + ' drop-shadow(0 0 10px ' + light + '66)';
+  const edge = 'drop-shadow(1px 1px 0 ' + dark + ') drop-shadow(2px 3px 3px rgba(0,0,0,.35))';
+  return 'background:' + sheen + ';-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:' + edge;
 };
 const DEFAULT_KID_INSTRUCTORS = [
   { id: 'kid1', name: 'Kids Instructor', title: 'Kids Instructor', roles: 'Kids Pole Fitness, Kids Aerial Hoop', bio: 'Introduce your kids instructor here: their background, what they enjoy about teaching children and what a child will learn in class.', photo: '', photos: [], featured: true }
