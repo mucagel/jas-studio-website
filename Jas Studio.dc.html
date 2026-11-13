@@ -1581,18 +1581,21 @@ const DEFAULT_INSTRUCTORS = [
   { id: 'vix', name: 'Vix', roles: 'Advanced Pole Instructor', photo: 'assets/instructor-vix.jpg', photos: ['assets/instructor-vix-2.jpg', 'assets/instructor-vix-3.jpg', 'assets/instructor-vix-4.jpg'] }
 ];
 // Metallic text for a membership name: one metal per word it names, side by side for combos.
+// Each metal: the word in the name, its gradient, and its glow colour.
+// Choreo on its own is rose gold; when a metal is in the name, the metal wins.
 const METALS = [
-  ['BRONZE', 'linear-gradient(135deg,#6e4020 0%,#c98a4b 30%,#f6cfa6 50%,#b97a3f 70%,#6e4020 100%)'],
-  ['SILVER', 'linear-gradient(135deg,#5c626b 0%,#c9ced6 30%,#ffffff 50%,#9aa1ab 70%,#5c626b 100%)'],
-  ['GOLD', 'linear-gradient(135deg,#7a5610 0%,#d9b25a 30%,#fff1b8 50%,#c2922e 70%,#7a5610 100%)'],
-  ['CHOREO', 'linear-gradient(135deg,#6b3aa0 0%,#d88ad8 30%,#f7c6ef 50%,#a77bdc 70%,#6b3aa0 100%)']
+  ['BRONZE', 'linear-gradient(135deg,#6e4020 0%,#c98a4b 30%,#f6cfa6 50%,#b97a3f 70%,#6e4020 100%)', '#c98a4b'],
+  ['SILVER', 'linear-gradient(135deg,#5c626b 0%,#c9ced6 30%,#ffffff 50%,#9aa1ab 70%,#5c626b 100%)', '#d4dae3'],
+  ['GOLD', 'linear-gradient(135deg,#7a5610 0%,#d9b25a 30%,#fff1b8 50%,#c2922e 70%,#7a5610 100%)', '#e0b85a'],
+  ['PLATINUM', 'linear-gradient(135deg,#6f7480 0%,#e6e9ee 30%,#ffffff 50%,#a9afb9 70%,#6f7480 100%)', '#dfe4ec'],
+  ['CHOREO', 'linear-gradient(135deg,#8a5a50 0%,#e8b4a6 30%,#fff0ea 50%,#c98a7c 70%,#8a5a50 100%)', '#e8a898']
 ];
 const metalName = (name) => {
-  const n = (name || '').toUpperCase(), parts = METALS.filter(([word]) => n.includes(word)).map(([, g]) => g);
-  if (!parts.length) return 'color:#f4f2ee';
-  const w = 100 / parts.length;
-  const bg = parts.map((g, i) => g + ' ' + (i * w) + '% 0/' + w + '% 100% no-repeat').join(',');
-  return 'background:' + bg + ';-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent';
+  const n = (name || '').toUpperCase();
+  const metal = METALS.find(([word]) => n.includes(word) && (word !== 'CHOREO' || !METALS.slice(0, 4).some(([w]) => n.includes(w))));
+  if (!metal) return 'color:#f4f2ee';
+  const [, bg, glow] = metal;
+  return 'background:' + bg + ';-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 8px ' + glow + ') drop-shadow(0 0 2px ' + glow + ')';
 };
 const DEFAULT_KID_INSTRUCTORS = [
   { id: 'kid1', name: 'Kids Instructor', title: 'Kids Instructor', roles: 'Kids Pole Fitness, Kids Aerial Hoop', bio: 'Introduce your kids instructor here: their background, what they enjoy about teaching children and what a child will learn in class.', photo: '', photos: [], featured: true }
